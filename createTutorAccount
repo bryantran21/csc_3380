@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<html>
+<body>
+
+<h1>Fill out the following information:</h1>
+
+<form action="window.location.href='https://bryantran21.github.io/csc_3380/database.txt';">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"><br><br>
+  <label for="year">What year are you?</label>
+  <select name="year" id="year">
+    <option value="2">2 (Sophomore)</option>
+    <option value="3">3 (Junior)</option>
+    <option value="4">4 (Senior)</option>
+    <option value="5">5+</option>
+    <option value="6">Graduate</option>
+  </select>
+  <br><br>
+  <label for="GPA">GPA:</GPA>
+  <input type="text" id="GPA" name="GPA"><br><br>
+  
+</form>
+</body>
+</html>
