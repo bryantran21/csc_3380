@@ -1,10 +1,15 @@
 <html>
 <body>
 
-<h2>Create a Goober account or login to an existing account</h2>
+<h1>Enter your login information</h1>
 
-<button type="button" onclick="window.location.href='https://bryantran21.github.io/csc_3380/createAccount.html';">Create Account</button>
-<button type="button" onclick="window.location.href='https://bryantran21.github.io/csc_3380/login.html';">Login</button>
-
+<form action="/database.txt">
+	<p>Username:</p>
+	<input type="text" id="username" name="username"><br><br>
+	<p>Password:</p>
+	<input type="text" id="password" name="password"><br><br>
+	<input type="submit" value="Submit">
+  
+<p>Don't have a Goober account? Click <a href="https://bryantran21.github.io/csc_3380/createAccount.html/">here</a></p>
 </body>
 </html>
