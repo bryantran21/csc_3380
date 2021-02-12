@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script language="javascript">
+    function WriteToFile(passForm)
+    {
+      var fso = new ActiveXObject("Scripting.FileSystemObject");
+      var fileLoc = "https://bryantran21.github.io/csc_3380/database.csv";
+      var file = fso.CreateTextFile(fileLoc, true);
+      file.writeline(passForm.email.value + ',' +
+                     passForm.password.value);
+      file.Close();
+      alert('File created sucessfully at location: ' + fileLoc);
+    }
+  </script>
 <title>CSS Template</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,7 +100,7 @@ footer {
           <input type="password" name="password" class="form-control" required><br><br>
         </div>
         <div class="form-group">
-          <input type="submit" name="submit" class="btn btn-primary" value="Submit"><br><br>
+          <input type="submit" name="submit" class="btn btn-primary" value="Submit" onclick="WriteToFile(this.form)"><br><br>
         </div>
         <p style="font-size: 12px">Don't have an account? <a href="https://bryantran21.github.io/csc_3380/register.html">Click here</a>.</p>
       </form>
