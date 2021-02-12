@@ -86,24 +86,10 @@ footer {
                 <label>Full Name</label>
                 <input type-"text" name="name" class="form-control" required/><br><br>
               </div>
-              <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" name="email" class="form-control" required/><br><br>
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" required/><br><br>
-              </div>
-              <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" required/><br><br>
-              </div>
-              <div class="form-group">
-                <input type="submit" name="submit" class="btn btn-primary" value="Submit"/><br><br>
-              </div>   
             </form>
-                                                                                         
-              
+          </div>
+        </div>
+      </div>
   </article>
 </section>
 
