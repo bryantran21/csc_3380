@@ -1,3 +1,18 @@
+<?php
+require_once "config.php";
+require_once "session.php";
+$error= '';
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+  $email = trim($_POST['email']);
+  $password = trim($_POST['password']);
+  // validate if email is empty
+  if (empty($email)){
+    $error .= '<p class="error">Please enter your password.</p>';
+  }
+  if (empty($error)) {
+
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
