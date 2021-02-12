@@ -76,20 +76,14 @@ footer {
 
 <section>
     <article>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Register</h2>
-            <p>Please fill this form to create an account.</p>
-            <form action="" method="post">
-              <div class="form-group">
-                <label>Full Name</label>
-                <input type-"text" name="name" class="form-control" required/><br><br>
-              </div>
-            </form>
-          </div>
-        </div>
+    <h2>Register</h2>
+    <p>Please fill this form to create an account.</p>
+    <form action="" method="post">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type-"text" name="name" class="form-control" required/><br><br>
       </div>
+    </form>
   </article>
 </section>
 
