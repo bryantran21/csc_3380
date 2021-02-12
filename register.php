@@ -76,11 +76,34 @@ footer {
 
 <section>
     <article>
-      <h1>Create your new Goober account<h1>
-
-      <button type="button" onclick="window.location.href='https://bryantran21.github.io/csc_3380/createStudentAccount.html';">Student</button>
-      <button type="button" onclick="window.location.href='https://bryantran21.github.io/csc_3380/createTutorAccount.html';">Tutor</button>
-        <br><br><p style="font-size:12px">To enroll as a tutor, you must have completed at least one year at a university</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Register</h2>
+            <p>Please fill this form to create an account.</p>
+            <form action="" method="post">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type-"text" name="name" class="form-control" required/><br><br>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" class="form-control" required/><br><br>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required/><br><br>
+              </div>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control" required/><br><br>
+              </div>
+              <div class="form-group">
+                <input type="submit" name="submit" class="btn btn-primary" value="Submit"/><br><br>
+              </div>   
+            </form>
+                                                                                         
+              
   </article>
 </section>
 
@@ -88,3 +111,5 @@ footer {
 
 </body>
 </html>
+  
+
