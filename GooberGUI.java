@@ -1,7 +1,9 @@
 package goobergui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -31,12 +33,13 @@ public class GooberGUI implements ActionListener {
         
         panel = new JPanel();
         frame = new JFrame();
-        frame.setBounds(600, 250, 350, 250);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
+        frame.setBounds(600,250,350,250);
+        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.add(panel);
         Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
-        
         panel.setLayout(null);
         panel.setBackground(Color.BLACK);
         
@@ -124,3 +127,4 @@ public class GooberGUI implements ActionListener {
         } 
     }
 }
+
