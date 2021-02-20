@@ -1,8 +1,9 @@
-
 package goobergui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -30,7 +31,9 @@ public class NewAccount {
         
         frame = new JFrame();
         panel = new JPanel();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
         frame.setBounds(600,250,350,250);
+        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
