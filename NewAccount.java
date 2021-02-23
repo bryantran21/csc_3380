@@ -34,6 +34,7 @@ public class NewAccount implements ActionListener{
     private static JButton createAcc;
     private static JLabel rtnLabel;
     private static JButton rtnButton;
+    private static JLabel errorLabel;
     
     NewAccount(){
         
@@ -135,10 +136,14 @@ public class NewAccount implements ActionListener{
         rtnButton.setBounds(140,320,150,25);
         rtnButton.setBackground(Color.green);
         rtnButton.setBorder(border);
-        rtnButton.setFont(new Font(null,Font.PLAIN,10));
         rtnButton.setFocusable(false);
         rtnButton.addActionListener(this);
         panel.add(rtnButton);
+        
+        errorLabel = new JLabel("");
+        errorLabel.setBounds(10,280,250,25);
+        errorLabel.setForeground(Color.green);
+        panel.add(errorLabel);
         
         frame.setVisible(true);
     }
@@ -158,11 +163,27 @@ public class NewAccount implements ActionListener{
             String type = userClass.getSelectedItem().toString();
             String email = emailText.getText();
             String pw = pwText.getText();
+            String pw2 = pwText.getText();
             
-            System.out.println("Email: " + email);
-            System.out.println("Account type: " + type);
-            System.out.println("Username: " + user);
-            System.out.println("Password: " + pw);
+            if(userText.getText().isEmpty() || emailText.getText().isEmpty() || pwText.getText().isEmpty() || pw2Text.getText().isEmpty()){
+       
+                errorLabel.setText("Please fill all required fields.");  
+            
+            } else if(!pw2Text.getText().equals(pwText.getText())) {
+            
+                    errorLabel.setText("Passwords do not match! Try Again.");
+                    pwText.setText("");
+                    pw2Text.setText("");
+            
+            } else if(pw2Text.getText().equals(pwText.getText())){
+                
+                errorLabel.setText("");
+                System.out.println("Email: " + email);
+                System.out.println("Account type: " + type);
+                System.out.println("Username: " + user);
+                System.out.println("Password: " + pw);
+
+            }
         }
     }
 }
