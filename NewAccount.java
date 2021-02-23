@@ -148,7 +148,7 @@ public class NewAccount implements ActionListener{
         
         if(e.getSource() == rtnButton){
 
-            Gui myGui = new Gui();
+            LoginGui myGui = new LoginGui();
             frame.dispose();
         }
         
