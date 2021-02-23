@@ -70,7 +70,7 @@ public class Goober implements ActionListener{
     public void actionPerformed(ActionEvent e){
         
         if(e.getSource() == loginButton){
-            Gui myGui = new Gui();
+            LoginGui myGui = new LoginGui();
             frame.dispose();
         }
         
