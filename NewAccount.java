@@ -1,4 +1,4 @@
-package goober;
+package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import static main.DOMmodifyXML.createAccount;
 
 public class NewAccount implements ActionListener{
     
@@ -164,6 +166,7 @@ public class NewAccount implements ActionListener{
             String email = emailText.getText();
             String pw = pwText.getText();
             String pw2 = pwText.getText();
+            String role = (String)userClass.getSelectedItem();
             
             if(userText.getText().isEmpty() || emailText.getText().isEmpty() || pwText.getText().isEmpty() || pw2Text.getText().isEmpty()){
        
@@ -178,10 +181,7 @@ public class NewAccount implements ActionListener{
             } else if(pw2Text.getText().equals(pwText.getText())){
                 
                 errorLabel.setText("");
-                System.out.println("Email: " + email);
-                System.out.println("Account type: " + type);
-                System.out.println("Username: " + user);
-                System.out.println("Password: " + pw);
+                createAccount(email, user, pw, role);
 
             }
         }

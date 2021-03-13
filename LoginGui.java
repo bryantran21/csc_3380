@@ -1,4 +1,4 @@
-package goober;
+package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import static main.DOMreadXML.login;
 
 public class LoginGui implements ActionListener {
     
@@ -118,7 +119,7 @@ public class LoginGui implements ActionListener {
             String password = pwText.getText();
             System.out.println(user + ", " + password);
             
-            if(user.equals("aduong2") && password.equals("1234")) {
+            if(login(user, password)) {
             success.setText("Login Successful!");
             }else{
                 success.setText("Invalid Username or Password! Try Again.");
