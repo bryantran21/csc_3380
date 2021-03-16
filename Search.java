@@ -1,36 +1,76 @@
+package main;
 
-package gooberdr;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-/**++WIP++
+/**
  *
  * @author Darrion
- * @since 2/17/2021
- * 
- * @see class User
- * 
- * Displays a window with a message.
- * @since
+ * @since 3/16/2021
  */
-public class Search {
-    User user;
-    
-    //Default constructor
-    public Search(){
-        user = new User("Guest");
-        //Create and set up the window.
-            
-            JFrame frame = new JFrame("Search");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+class Search extends JFrame{
 
-            JLabel label = new JLabel(user.getName + " is searching for a tutor for class " + user.getCourses() + " during these times: \n" + user.getTimes());
-            frame.add(label);
+   Dimension ws = new Dimension(600, 400);
 
-            //Display the window.
-            frame.pack();
-            frame.setVisible(true);
-    }
-    
+   public Search(){
+       setSize(ws);
+       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
+       JPanel borderPanel = (JPanel)this.getContentPane();
+       JPanel centerPanel = new JPanel();
+       JTextField t = new JTextField(10);                           
+       JButton b = new JButton("Search");
+       
+       borderPanel.setLayout(new BorderLayout());                   //Setup larger panel with border layout
+       borderPanel.add(new JLabel("SEARCH"), BorderLayout.NORTH);   //Add SEARCH label to north position
+       
+       centerPanel.add(new JLabel("Enter course name:"));           //Add Label to central panel 
+       centerPanel.add(t);                                          //Add a textfield next
+       
+       b.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
+           public void actionPerformed(ActionEvent e){
+               Results(t.getText());
+               }
+       });
+       centerPanel.add(b);                                          //Add the button to central panel
+       borderPanel.add(centerPanel, BorderLayout.CENTER);           //Add the central panel to the center of the larger panel
+       
+       setVisible(true);                                            //Frame to be made visible
+   }
+   
+   public void Results(String course){
+        String tutors[] = {"Darrion Rudd", "Miguel Rojo"};                         //**INPUT FROM DATABASE!!**
+       
+        setSize(ws);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        this.getContentPane().removeAll();                          //Clear leftover items from content pane 
+        JPanel borderPanel = (JPanel) this.getContentPane();
+        borderPanel.setLayout(new BorderLayout());
+        borderPanel.add(new JLabel("SEARCH: Tutors for course " + course), BorderLayout.NORTH);
+      
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new GridLayout(tutors.length, 2));    //Grid layout with n rows, 2 columns
+
+      for (String tutor : tutors)                                   //make a label and button for every item from database
+      {
+         JButton button = new JButton("Add");
+         
+         button.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
+           public void actionPerformed(ActionEvent e){
+               /*ADD TUTOR FUNCTION GOES HERE ** e.g. student.addTutor(tutor)*/;
+               }});
+         
+         centerPanel.add(new JLabel(tutor));
+         centerPanel.add(button);
+      }
+      
+
+      
+      JScrollPane scrollPane = new JScrollPane(centerPanel);         //convert grid to scroll pane
+      borderPanel.add(scrollPane, BorderLayout.CENTER);             //add scroll pane
+      setVisible(true);                                              //make it visible
+   
+   }
 }
