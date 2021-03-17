@@ -28,7 +28,7 @@ public class DOMmodifyXML {
 	
 	public static void createAccount(String email, String firstName, String lastName, String password, String role) {
 		try {
-	        String filepath = "C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml";
+	        String filepath = "src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
@@ -49,6 +49,7 @@ public class DOMmodifyXML {
 	        Element roleElement = doc.createElement("role");
 	        roleElement.appendChild(doc.createTextNode(role));
 	        Element ratings = doc.createElement("ratings");
+	        ratings.setAttribute("numOf", "0");
 	        
 	        Element numOfRatings = doc.createElement("numOfRatings");
 	        numOfRatings.appendChild(doc.createTextNode("0"));
@@ -88,7 +89,7 @@ public class DOMmodifyXML {
 	
 	public static void ratings(String email, String rating) {
 		try {
-	        String filepath = "C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml";
+	        String filepath = "src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
@@ -100,27 +101,23 @@ public class DOMmodifyXML {
 
 		        Node nNode = nList.item(temp);
 		                
-		                
 		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 		            Element eElement = (Element) nNode;
 		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	Element newRating = doc.createElement("rating");
 		    	        newRating.appendChild(doc.createTextNode(rating));
-		            	eElement.getElementsByTagName("ratings").setTextContent(newRating);
+		    	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
+		    	        Ratings.appendChild(newRating);
+		            	NamedNodeMap attr = Ratings.getAttributes();
+		                Node nodeAttr = attr.getNamedItem("numOf");
+		                int numOfRatings = Integer.valueOf(nodeAttr.getTextContent());
+		                numOfRatings++;
+		                nodeAttr.setTextContent(String.valueOf(numOfRatings));
 		            }
 		        }
 		    }
-	        
-	        // Get the staff element by tag name directly
-	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
-
-	        // append a new node to staff
-	        Element ratingElement = doc.createElement("rating");
-	        ratingElement.appendChild(doc.createTextNode(rating));
-	        
-	        Ratings.appendChild(ratingElement);
-
+		    
 	        // write the content into xml file
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();
@@ -146,7 +143,7 @@ public class DOMmodifyXML {
 	public static void main(String argv[]) {
 		
 	       try {
-	        String filepath = "C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml";
+	        String filepath = "src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);

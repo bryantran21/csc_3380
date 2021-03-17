@@ -6,6 +6,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+
 import java.io.File;
 
 public class DOMreadXML {
@@ -14,7 +16,7 @@ public class DOMreadXML {
 		
 		try {
 
-		    File fXmlFile = new File("C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml");
+		    File fXmlFile = new File("src/main/gooberDatabase.xml");
 		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		    Document doc = dBuilder.parse(fXmlFile);
@@ -56,7 +58,7 @@ public class DOMreadXML {
 		
 		try {
 
-		    File fXmlFile = new File("C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml");
+		    File fXmlFile = new File("src/main/gooberDatabase.xml");
 		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		    Document doc = dBuilder.parse(fXmlFile);
@@ -87,6 +89,68 @@ public class DOMreadXML {
 		
 		
 		return tutorList;
+	}
+	
+public int avgRating(String email) {
+	int retAvg = 0;
+		try {
+			
+		    File fXmlFile = new File("src/main/gooberDatabase.xml");
+		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		    Document doc = dBuilder.parse(fXmlFile);
+		            
+		    //optional, but recommended
+		    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+		    doc.getDocumentElement().normalize();
+		            
+		    NodeList nList = doc.getElementsByTagName("User");
+		    
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (email.equals(eElement.getElementsByTagName("username").item(0).getTextContent())) {
+		    	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
+		    	        NodeList nList2 = doc.getElementsByTagName("rating");
+		    	        
+		    	        
+		    	        for (int temp2 = 0; temp2 < nList2.getLength(); temp2++) {
+
+		    		        Node nNode2 = nList2.item(temp2);
+		    		                
+		    		                
+		    		        if (nNode2.getNodeType() == Node.ELEMENT_NODE) {
+
+		    		            Element eElement2 = (Element) nNode2;
+		    		            retAvg += Integer.valueOf(eElement2.getTextContent());
+		    		        }
+		    		    }
+		    	        
+		    	        
+		    	        
+		            	NamedNodeMap attr = Ratings.getAttributes();
+		                Node nodeAttr = attr.getNamedItem("numOf");
+		    	        retAvg = retAvg / Integer.valueOf(nodeAttr.getTextContent());
+		    	        return retAvg;
+		            }
+		        }
+		    }
+		    
+		    return retAvg;
+		    
+		    
+		    
+		    
+		    } catch (Exception e) {
+		    e.printStackTrace();
+		    }
+		return retAvg;
 	}
 	
 	public static void main(String argv[]) {
