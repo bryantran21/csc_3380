@@ -22,6 +22,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 import static main.DOMreadXML.listOfTutors;
 import main.HomePage;
+import static main.DOMmodifyXML.ratings;
 
 public class postMeetingReview implements ActionListener
 {
@@ -150,7 +151,7 @@ public class postMeetingReview implements ActionListener
 		frame.add(scrollPanel);
 		frame.add(tutorPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Goober | Post Meeting Review");
+		frame.setTitle("Goober - Post Meeting Review");
 		frame.setSize(1000,500);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
@@ -189,7 +190,7 @@ public class postMeetingReview implements ActionListener
 		 {
 			 submittedLabel.setText("You have given " + tutors[index] + " a rating of " + ratingSlider.getValue());
 			 submittedLabel.setVisible(true);
-			 // write it to where it sends the rating to the correct user in the database
+			 ratings("mtom@lsu.edu", String.valueOf(ratingSlider.getValue()));
 		 }
 		 if(e.getSource() == returnButton)
 		 {

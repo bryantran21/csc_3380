@@ -93,7 +93,7 @@ public class LoginGui implements ActionListener {
         panel.add(newAccButton);
         
         frame.setVisible(true);
-        frame.setTitle("Goober | Login");
+        frame.setTitle("Goober - Login");
     }
     
     @Override

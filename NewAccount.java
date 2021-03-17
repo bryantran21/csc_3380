@@ -45,7 +45,7 @@ public class NewAccount implements ActionListener{
         frame = new JFrame();
         panel = new JPanel();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
-        frame.setBounds(600,250,310,450);
+        frame.setBounds(600,250,800,600);
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -54,83 +54,90 @@ public class NewAccount implements ActionListener{
         panel.setLayout(null);
         
         titleLabel = new JLabel("Create a Goober Account");
-        titleLabel.setBounds(25, 5, 350, 30);
-        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 20));
+        titleLabel.setBounds(125, 50, 550, 50);
+        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 45));
         panel.add(titleLabel);
         
         userType = new JLabel("Are you a Student or Tutor?");
-        userType.setBounds(10,50,175,25);
+        userType.setBounds(200,162,250,25);
+        userType.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(userType);
         
         String[] options = {"Student", "Tutor"};
         userClass = new JComboBox(options);
-        userClass.setBounds(175, 50, 100, 25);
+        userClass.setBounds(460, 162, 100, 25);
         panel.add(userClass);
         
         emailLabel = new JLabel("Enter a valid e-mail: ");
-        emailLabel.setBounds(10,90,150,25);
+        emailLabel.setBounds(200,202,400,25);
+        emailLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(emailLabel);
         
         emailText = new JTextField();
-        emailText.setBounds(130,90,150,25);
+        emailText.setBounds(412,202,150,25);
         panel.add(emailText);
         
         firstNameLabel = new JLabel("First Name: ");
-        firstNameLabel.setBounds(10, 130, 150, 25);
+        firstNameLabel.setBounds(200, 242, 400, 25);
+        firstNameLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(firstNameLabel);
         
         firstNameText = new JTextField();
-        firstNameText.setBounds(130, 130, 150, 25);
+        firstNameText.setBounds(412, 242, 150, 25);
         panel.add(firstNameText);
         
         lastNameLabel = new JLabel("Last Name: ");
-        lastNameLabel.setBounds(10, 170, 150, 25);
+        lastNameLabel.setBounds(200, 282, 400, 25);
+        lastNameLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(lastNameLabel);
         
         lastNameText = new JTextField();
-        lastNameText.setBounds(130, 170, 150, 25);
+        lastNameText.setBounds(412, 282, 150, 25);
         panel.add(lastNameText);
         
         pwLabel = new JLabel("Create Password: ");
-        pwLabel.setBounds(10, 210, 150, 25);
+        pwLabel.setBounds(200, 322, 400, 25);
+        pwLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(pwLabel);
         
         pwText = new JPasswordField();
-        pwText.setBounds(130, 210, 150, 25);
+        pwText.setBounds(412, 322, 150, 25);
         panel.add(pwText);
         
         pw2Label = new JLabel("Confirm Password: ");
-        pw2Label.setBounds(10, 250, 150, 25);
+        pw2Label.setBounds(200, 362, 400, 25);
+        pw2Label.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(pw2Label);
         
         pw2Text = new JPasswordField();
-        pw2Text.setBounds(130, 250, 150, 25);
+        pw2Text.setBounds(412, 362, 150, 25);
         panel.add(pw2Text);
         
         createAcc = new JButton("Create Account");
-        createAcc.setBounds(130, 290, 150, 25);
+        createAcc.setBounds(325, 402, 150, 25);
         createAcc.setFocusable(false);
         createAcc.addActionListener(this);
         panel.add(createAcc);
         
         rtnLabel = new JLabel("Already have an account?");
-        rtnLabel.setBounds(10,375,150,25);
-        rtnLabel.setFont(new Font(null,Font.PLAIN,10));
+        rtnLabel.setBounds(270,500,150,25);
+        rtnLabel.setFont(new Font(null,Font.PLAIN,12));
         panel.add(rtnLabel);
         
         rtnButton = new JButton("Click Here!");
-        rtnButton.setBounds(140,375,100,25);
+        rtnButton.setBounds(420,503,100,20);
         rtnButton.setFocusable(false);
         rtnButton.addActionListener(this);
         panel.add(rtnButton);
         
         errorLabel = new JLabel("");
-        errorLabel.setBounds(10,325,250,25);
+        errorLabel.setBounds(323,445,200,25);
+        errorLabel.setFont(new Font(null,Font.PLAIN,12));
         panel.add(errorLabel);
         
         frame.setVisible(true);
         frame.setResizable(false);
-        frame.setTitle("Goober | Create A New Account");
+        frame.setTitle("Goober - Create A Goober Account");
     }
     
     @Override

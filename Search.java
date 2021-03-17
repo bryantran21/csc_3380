@@ -38,7 +38,7 @@ class Search extends JFrame{
        setVisible(true);  
        setLocationRelativeTo(null);
        
-       setTitle("Goober | Search");
+       setTitle("Goober - Search");
        
    }
    

@@ -50,6 +50,10 @@ public class DOMmodifyXML {
 	        roleElement.appendChild(doc.createTextNode(role));
 	        Element ratings = doc.createElement("ratings");
 	        ratings.setAttribute("numOf", "0");
+	        
+	        Element numOfRatings = doc.createElement("numOfRatings");
+	        numOfRatings.appendChild(doc.createTextNode("0"));
+	        ratings.appendChild(numOfRatings);
 
 	        
 	        newUser.appendChild(emailElement);

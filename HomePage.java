@@ -68,6 +68,7 @@ public class HomePage implements ActionListener
         panel.add(success);
         
         frame.setVisible(true);
+        frame.setTitle("Goober - HomePage");
 
     }
 
