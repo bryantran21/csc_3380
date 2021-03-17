@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-model href="gooberDatabase.xsd"?>
+<Users>
+      
+  
+  <User>
+            
+    
+    <email>thuval2</email>
+            
+    
+    <username>huvaltrevor</username>
+            
+    
+    <password>BoeJurrow23</password>
+            
+    
+    <role>Student</role>
+            
+    
+    <year>Sophomore</year>
+            
+    
+    <daysAvailable>
+                  
+      
+      <day>Tuesday</day>
+                  
+      
+      <day>Friday</day>
+                
+    
+    </daysAvailable>
+            
+    
+    <courses>
+                  
+      
+      <course>csc3380</course>
+                  
+      
+      <course>csc3501</course>
+                  
+      
+      <course>csc2262</course>
+                
+    
+    </courses>
+            
+    
+    <enrolledUsers>
+                  
+      
+      <enrolledUser>Chanuka</enrolledUser>
+                
+    
+    </enrolledUsers>
+          
+  
+  </User>
+      
+  
+  <User>
+            
+    
+    <email>blalon1</email>
+            
+    
+    <username>lalondeblake</username>
+            
+    
+    <password>BoeJurrow23</password>
+            
+    
+    <role>Student</role>
+            
+    
+    <year>Sophomore</year>
+            
+    
+    <daysAvailable>
+                  
+      
+      <day>Tuesday</day>
+                  
+      
+      <day>Thursday</day>
+                  
+      
+      <day>Friday</day>
+                
+    
+    </daysAvailable>
+            
+    
+    <courses>
+                  
+      
+      <course>cmst1061</course>
+                  
+      
+      <course>eng2023</course>
+                
+    
+    </courses>
+            
+    
+    <enrolledUsers>
+                  
+      
+      <enrolledUser>Chanuka</enrolledUser>
+                
+    
+    </enrolledUsers>
+          
+  
+  </User>
+      
+  
+  <User>
+            
+    
+    <email>dtayl76</email>
+            
+    
+    <username>taylordrake</username>
+            
+    
+    <password>ThuggaDrake</password>
+            
+    
+    <role>Student</role>
+            
+    
+    <year>Sophomore</year>
+            
+    
+    <daysAvailable>
+                  
+      
+      <day>Monday</day>
+                
+    
+    </daysAvailable>
+            
+    
+    <courses>
+                  
+      
+      <course>phys2120</course>
+                
+    
+    </courses>
+            
+    
+    <enrolledUsers>
+                  
+      
+      <enrolledUser>DeSouza</enrolledUser>
+                
+    
+    </enrolledUsers>
+          
+  
+  </User>
+      
+  
+  <User>
+            
+    
+    <email>dtayl76</email>
+            
+    
+    <username>taylordrake</username>
+            
+    
+    <password>ThuggaDrake</password>
+            
+    
+    <role>Student</role>
+            
+    
+    <year>Sophomore</year>
+            
+    
+    <daysAvailable>
+                  
+      
+      <day>Monday</day>
+                
+    
+    </daysAvailable>
+            
+    
+    <courses>
+                  
+      
+      <course>phys2120</course>
+                
+    
+    </courses>
+            
+    
+    <enrolledUsers>
+                  
+      
+      <enrolledUser>DeSouza</enrolledUser>
+                
+    
+    </enrolledUsers>
+          
+  
+  </User>
+    
+
+  <User>
+    <email>slatio8@lsu.edu</email>
+    <username>slatio</username>
+    <password>password123</password>
+    <role>Student</role>
+  </User>
+</Users>
