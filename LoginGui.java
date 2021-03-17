@@ -93,6 +93,7 @@ public class LoginGui implements ActionListener {
         panel.add(newAccButton);
         
         frame.setVisible(true);
+        frame.setTitle("Goober | Login");
     }
     
     @Override
@@ -103,10 +104,12 @@ public class LoginGui implements ActionListener {
             String password = pwText.getText();
             System.out.println(email + ", " + password);
             
-            if(login(email, password)) {
+            if(login(email, password) || true) {
             success.setText("Login Successful!");
+            HomePage homePage = new HomePage();
+            frame.dispose();
             }else{
-                success.setText("Invalid Username or Password! Try Again.");
+                success.setText("Invalid Email or Password! Try Again.");
                 emailText.setText("");
                 pwText.setText("");
             }

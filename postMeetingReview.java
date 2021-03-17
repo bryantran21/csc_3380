@@ -20,8 +20,8 @@ import javax.swing.JSlider;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Stream;
-
 import static main.DOMreadXML.listOfTutors;
+import main.HomePage;
 
 public class postMeetingReview implements ActionListener
 {
@@ -150,7 +150,7 @@ public class postMeetingReview implements ActionListener
 		frame.add(scrollPanel);
 		frame.add(tutorPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Post Meeting Review");
+		frame.setTitle("Goober | Post Meeting Review");
 		frame.setSize(1000,500);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
@@ -161,12 +161,6 @@ public class postMeetingReview implements ActionListener
 		
 	}
 	
-	public static void main(String[] args)
-	{
-
-		new postMeetingReview();
-		
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
@@ -199,7 +193,7 @@ public class postMeetingReview implements ActionListener
 		 }
 		 if(e.getSource() == returnButton)
 		 {
-			 // return to home page
+			 HomePage homepage = new HomePage();
 			 frame.dispose();
 		 }
 	}

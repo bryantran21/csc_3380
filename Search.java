@@ -23,7 +23,6 @@ class Search extends JFrame{
        JButton b = new JButton("Search");
        
        borderPanel.setLayout(new BorderLayout());                   //Setup larger panel with border layout
-       borderPanel.add(new JLabel("SEARCH"), BorderLayout.NORTH);   //Add SEARCH label to north position
        
        centerPanel.add(new JLabel("Enter course name:"));           //Add Label to central panel 
        centerPanel.add(t);                                          //Add a textfield next
@@ -36,7 +35,11 @@ class Search extends JFrame{
        centerPanel.add(b);                                          //Add the button to central panel
        borderPanel.add(centerPanel, BorderLayout.CENTER);           //Add the central panel to the center of the larger panel
        
-       setVisible(true);                                            //Frame to be made visible
+       setVisible(true);  
+       setLocationRelativeTo(null);
+       
+       setTitle("Goober | Search");
+       
    }
    
    public void Results(String course){
@@ -71,6 +74,7 @@ class Search extends JFrame{
       JScrollPane scrollPane = new JScrollPane(centerPanel);         //convert grid to scroll pane
       borderPanel.add(scrollPane, BorderLayout.CENTER);             //add scroll pane
       setVisible(true);                                              //make it visible
+      setLocationRelativeTo(null);
    
    }
 }

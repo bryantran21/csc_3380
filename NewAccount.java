@@ -130,6 +130,7 @@ public class NewAccount implements ActionListener{
         
         frame.setVisible(true);
         frame.setResizable(false);
+        frame.setTitle("Goober | Create A New Account");
     }
     
     @Override
