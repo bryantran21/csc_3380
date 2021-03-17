@@ -32,6 +32,8 @@ public class postMeetingReview implements ActionListener
 	private JLabel submittedLabel;
 	private JPanel scrollPanel;
 	private JPanel tutorPanel;
+	private JLabel errorLabel;
+	private JButton returnButton;
 	private JList list;
 	private JSlider ratingSlider;
 	private JScrollPane scrollPane;
@@ -100,6 +102,11 @@ public class postMeetingReview implements ActionListener
 			submittedLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 			submittedLabel.setHorizontalAlignment(JLabel.CENTER);
 			
+			returnButton = new JButton("Return to the Homepage");
+			returnButton.setBounds(130,370,200,50);
+			returnButton.addActionListener(this);
+			returnButton.setVisible(true);
+			returnButton.setHorizontalAlignment(JLabel.CENTER);
 			
 			tutorPanel.setLayout(null);		// Entire panel that hosts two labels, slider, and submission button
 			tutorPanel.add(titleLabel);
@@ -107,6 +114,7 @@ public class postMeetingReview implements ActionListener
 			tutorPanel.add(ratingSlider);
 			tutorPanel.add(submitButton);
 			tutorPanel.add(submittedLabel);
+			tutorPanel.add(returnButton);
 		}
 		
 		
@@ -138,16 +146,32 @@ public class postMeetingReview implements ActionListener
 		int index = list.getSelectedIndex();
 		 if(e.getSource() == selectButton)
 		 {
-			 titleLabel.setText("LEAVE A RATING FOR");
-			 tutorLabel.setText(tutors[index]);
-			 ratingSlider.setVisible(true);
-			 submitButton.setVisible(true);
+			 if(tutors[index] == null)
+			 {
+				 titleLabel.setText("");
+				 
+				 tutorLabel.setText("Please Select A Tutor");
+				 ratingSlider.setVisible(false);
+				 submitButton.setVisible(false);
+			 }
+			 else
+			 {
+				 titleLabel.setText("LEAVE A RATING FOR");
+				 tutorLabel.setText(tutors[index]);
+				 ratingSlider.setVisible(true);
+				 submitButton.setVisible(true);
+			 }
+			 
 		 }
 		 if(e.getSource() == submitButton)
 		 {
 			 submittedLabel.setText("You have given " + tutors[index] + " a rating of " + ratingSlider.getValue());
 			 submittedLabel.setVisible(true);
 			 // write it to where it sends the rating to the correct user in the database
+		 }
+		 if(e.getSource() == returnButton)
+		 {
+			 // return to home page
 		 }
 	}
 }

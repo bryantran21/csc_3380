@@ -27,8 +27,10 @@ public class NewAccount implements ActionListener{
     private static JTextField emailText;
     private static JLabel userType;
     private static JComboBox userClass;
-    private static JLabel userLabel;
-    private static JTextField userText;
+    private static JLabel firstNameLabel;
+    private static JLabel lastNameLabel;
+    private static JTextField firstNameText;
+    private static JTextField lastNameText;
     private static JLabel pwLabel;
     private static JPasswordField pwText;
     private static JLabel pw2Label;
@@ -43,7 +45,7 @@ public class NewAccount implements ActionListener{
         frame = new JFrame();
         panel = new JPanel();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
-        frame.setBounds(600,250,350,400);
+        frame.setBounds(600,250,350,450);
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -84,44 +86,56 @@ public class NewAccount implements ActionListener{
         emailText.setBorder(border2);
         panel.add(emailText);
         
-        userLabel = new JLabel("Create Username: ");
-        userLabel.setBounds(10, 130, 150, 25);
-        userLabel.setForeground(Color.green);
-        panel.add(userLabel);
+        firstNameLabel = new JLabel("First Name: ");
+        firstNameLabel.setBounds(10, 130, 150, 25);
+        firstNameLabel.setForeground(Color.green);
+        panel.add(firstNameLabel);
         
-        userText = new JTextField();
-        userText.setBounds(130, 130, 150, 25);
-        userText.setBackground(Color.DARK_GRAY);
-        userText.setForeground(Color.green);
-        userText.setBorder(border2);
-        panel.add(userText);
+        firstNameText = new JTextField();
+        firstNameText.setBounds(130, 130, 150, 25);
+        firstNameText.setBackground(Color.DARK_GRAY);
+        firstNameText.setForeground(Color.green);
+        firstNameText.setBorder(border2);
+        panel.add(firstNameText);
+        
+        lastNameLabel = new JLabel("Last Name: ");
+        lastNameLabel.setBounds(10, 170, 150, 25);
+        lastNameLabel.setForeground(Color.green);
+        panel.add(lastNameLabel);
+        
+        lastNameText = new JTextField();
+        lastNameText.setBounds(130, 170, 150, 25);
+        lastNameText.setBackground(Color.DARK_GRAY);
+        lastNameText.setForeground(Color.green);
+        lastNameText.setBorder(border2);
+        panel.add(lastNameText);
         
         pwLabel = new JLabel("Create Password: ");
-        pwLabel.setBounds(10, 170, 150, 25);
+        pwLabel.setBounds(10, 210, 150, 25);
         pwLabel.setForeground(Color.green);
         panel.add(pwLabel);
         
         pwText = new JPasswordField();
-        pwText.setBounds(130, 170, 150, 25);
+        pwText.setBounds(130, 210, 150, 25);
         pwText.setBackground(Color.DARK_GRAY);
         pwText.setForeground(Color.GREEN);
         pwText.setBorder(border2);
         panel.add(pwText);
         
         pw2Label = new JLabel("Confirm Password: ");
-        pw2Label.setBounds(10, 210, 150, 25);
+        pw2Label.setBounds(10, 250, 150, 25);
         pw2Label.setForeground(Color.green);
         panel.add(pw2Label);
         
         pw2Text = new JPasswordField();
-        pw2Text.setBounds(130, 210, 150, 25);
+        pw2Text.setBounds(130, 250, 150, 25);
         pw2Text.setBackground(Color.DARK_GRAY);
         pw2Text.setForeground(Color.GREEN);
         pw2Text.setBorder(border2);
         panel.add(pw2Text);
         
         createAcc = new JButton("Create Account");
-        createAcc.setBounds(10, 250, 150, 25);
+        createAcc.setBounds(10, 290, 150, 25);
         createAcc.setBackground(Color.GREEN);
         createAcc.setBorder(border);
         createAcc.setFocusable(false);
@@ -129,13 +143,13 @@ public class NewAccount implements ActionListener{
         panel.add(createAcc);
         
         rtnLabel = new JLabel("Already have an account?");
-        rtnLabel.setBounds(10,320,150,25);
+        rtnLabel.setBounds(10,375,150,25);
         rtnLabel.setForeground(Color.green);
         rtnLabel.setFont(new Font(null,Font.PLAIN,10));
         panel.add(rtnLabel);
         
         rtnButton = new JButton("Click Here!");
-        rtnButton.setBounds(140,320,150,25);
+        rtnButton.setBounds(140,375,150,25);
         rtnButton.setBackground(Color.green);
         rtnButton.setBorder(border);
         rtnButton.setFocusable(false);
@@ -143,7 +157,7 @@ public class NewAccount implements ActionListener{
         panel.add(rtnButton);
         
         errorLabel = new JLabel("");
-        errorLabel.setBounds(10,280,250,25);
+        errorLabel.setBounds(10,325,250,25);
         errorLabel.setForeground(Color.green);
         panel.add(errorLabel);
         
@@ -161,14 +175,15 @@ public class NewAccount implements ActionListener{
         
         if(e.getSource() == createAcc){
             
-            String user = userText.getText();
+            String firstName = firstNameText.getText();
+            String lastName = lastNameText.getText();
             String type = userClass.getSelectedItem().toString();
             String email = emailText.getText();
             String pw = pwText.getText();
             String pw2 = pwText.getText();
             String role = (String)userClass.getSelectedItem();
             
-            if(userText.getText().isEmpty() || emailText.getText().isEmpty() || pwText.getText().isEmpty() || pw2Text.getText().isEmpty()){
+            if(firstNameText.getText().isEmpty() || lastNameText.getText().isEmpty() || emailText.getText().isEmpty() || pwText.getText().isEmpty() || pw2Text.getText().isEmpty()){
        
                 errorLabel.setText("Please fill all required fields.");  
             
@@ -181,7 +196,7 @@ public class NewAccount implements ActionListener{
             } else if(pw2Text.getText().equals(pwText.getText())){
                 
                 errorLabel.setText("");
-                createAccount(email, user, pw, role);
+                createAccount(email, firstName, lastName, pw, role);
 
             }
         }
