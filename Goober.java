@@ -1,4 +1,4 @@
-package goober;
+package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,9 +32,7 @@ public class Goober implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
        
-        Border border = BorderFactory.createLineBorder(Color.green);
         panel.setLayout(null);
-        panel.setBackground(Color.BLACK);
         
         title = new JLabel("Welcome to Goober!", JLabel.CENTER);
 //        title.setAlignmentX(0);
@@ -42,28 +40,22 @@ public class Goober implements ActionListener{
 //        title.setVerticalAlignment(JLabel.CENTER);
         title.setBounds(75,10,200,30);
 //        title.setSize(200,30);
-        title.setForeground(Color.green);
         title.setFont(new Font(null, Font.CENTER_BASELINE, 20));
         panel.add(title);
 
         loginButton = new JButton("Log In");
         loginButton.setBounds(120,70,90,30); 
-        loginButton.setBackground(Color.green);
-        loginButton.setForeground(Color.BLACK);
-        loginButton.setBorder(border);
         loginButton.setFocusable(false);
         loginButton.addActionListener(new Goober());
         panel.add(loginButton);
         
         newButton = new JButton("Sign Up");
         newButton.setBounds(120,110,90,30); 
-        newButton.setBackground(Color.green);
-        newButton.setForeground(Color.BLACK);
-        newButton.setBorder(border);
         newButton.setFocusable(false);
         newButton.addActionListener(new Goober());
         panel.add(newButton);
         
+        frame.setResizable(false);
         frame.setVisible(true);
     }
     
@@ -78,7 +70,6 @@ public class Goober implements ActionListener{
             
             NewAccount newAcc = new NewAccount();
             frame.dispose();
-
         }
     }
 }
