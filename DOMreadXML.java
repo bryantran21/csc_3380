@@ -50,6 +50,45 @@ public class DOMreadXML {
 		
 	}
 	
+	public static String[] listOfTutors() {
+		String[] tutorList = new String[100];
+		int listIndex = 0;
+		
+		try {
+
+		    File fXmlFile = new File("C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml");
+		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		    Document doc = dBuilder.parse(fXmlFile);
+
+		    doc.getDocumentElement().normalize();
+		            
+		    NodeList nList = doc.getElementsByTagName("User");
+		            
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+
+		            if (eElement.getElementsByTagName("role").item(0).getTextContent().equals("Tutor")) {
+		            	tutorList[listIndex] = eElement.getElementsByTagName("username").item(0).getTextContent();
+		            	listIndex++;
+		            }
+
+
+		        }
+		    }
+		    } catch (Exception e) {
+		    e.printStackTrace();
+		    }
+		
+		
+		return tutorList;
+	}
+	
 	public static void main(String argv[]) {
 
 	    try {

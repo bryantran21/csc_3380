@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
 
 public class DOMmodifyXML {
 	
-	public static void createAccount(String email, String username, String password, String role) {
+	public static void createAccount(String email, String firstName, String lastName, String password, String role) {
 		try {
 	        String filepath = "C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -40,19 +40,86 @@ public class DOMmodifyXML {
 	        Element newUser = doc.createElement("User");
 	        Element emailElement = doc.createElement("email");
 	        emailElement.appendChild(doc.createTextNode(email));
-	        Element usernameElement = doc.createElement("username");
-	        usernameElement.appendChild(doc.createTextNode(username));
+	        Element firstNameElement = doc.createElement("firstName");
+	        firstNameElement.appendChild(doc.createTextNode(firstName));
+	        Element lastNameElement = doc.createElement("lastName");
+	        lastNameElement.appendChild(doc.createTextNode(lastName));
 	        Element passwordElement = doc.createElement("password");
 	        passwordElement.appendChild(doc.createTextNode(password));
 	        Element roleElement = doc.createElement("role");
 	        roleElement.appendChild(doc.createTextNode(role));
+	        Element ratings = doc.createElement("ratings");
+	        
+	        Element numOfRatings = doc.createElement("numOfRatings");
+	        numOfRatings.appendChild(doc.createTextNode("0"));
+	        ratings.appendChild(numOfRatings);
+
 	        
 	        newUser.appendChild(emailElement);
-	        newUser.appendChild(usernameElement);
+	        newUser.appendChild(firstNameElement);
+	        newUser.appendChild(lastNameElement);
 	        newUser.appendChild(passwordElement);
 	        newUser.appendChild(roleElement);
+	        newUser.appendChild(ratings);
 	        
 	        Users.appendChild(newUser);
+
+	        // write the content into xml file
+	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        Transformer transformer = transformerFactory.newTransformer();
+	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        DOMSource source = new DOMSource(doc);
+	        StreamResult result = new StreamResult(new File(filepath));
+	        transformer.transform(source, result);
+
+	       } catch (ParserConfigurationException pce) {
+	        pce.printStackTrace();
+	       } catch (TransformerException tfe) {
+	        tfe.printStackTrace();
+	       } catch (IOException ioe) {
+	        ioe.printStackTrace();
+	       } catch (SAXException sae) {
+	        sae.printStackTrace();
+	       } catch (Exception ex) {
+	    	   ex.printStackTrace();
+	       }
+		}
+	
+	public static void ratings(String email, String rating) {
+		try {
+	        String filepath = "C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml";
+	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	        Document doc = docBuilder.parse(filepath);
+	        
+	        NodeList nList = doc.getElementsByTagName("User");
+
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	Element newRating = doc.createElement("rating");
+		    	        newRating.appendChild(doc.createTextNode(rating));
+		            	eElement.getElementsByTagName("ratings").setTextContent(newRating);
+		            }
+		        }
+		    }
+	        
+	        // Get the staff element by tag name directly
+	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
+
+	        // append a new node to staff
+	        Element ratingElement = doc.createElement("rating");
+	        ratingElement.appendChild(doc.createTextNode(rating));
+	        
+	        Ratings.appendChild(ratingElement);
 
 	        // write the content into xml file
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -88,11 +155,6 @@ public class DOMmodifyXML {
 	        //String constant = XMLConstants.W3C_XML_SCHEMA_NS_URI;
 	        // SchemaFactory xsdFactory = SchemaFactory.newInstance(constant);
 	        // Schema schema = xsdFactory.newSchema(schemaFile);
-	        // 
-	        // // set schema
-	        // docFactory.setSchema(schema);
-	        // 
-	        // System.out.println("" + docFactory.getSchema());
 
 	        // Get the root element
 	        //Node Users = doc.getFirstChild();
@@ -102,7 +164,7 @@ public class DOMmodifyXML {
 	        // getElementsByTagName() to get it directly.
 	        // Node staff = company.getFirstChild();
 
-	        // Get the staff element by tag name directly
+	        // Get the Users element by tag name directly
 	        Node Users = doc.getElementsByTagName("Users").item(0);
 
 	        // update staff attribute
