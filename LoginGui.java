@@ -81,7 +81,7 @@ public class LoginGui implements ActionListener {
         panel.add(pwText);
         
         loginButton = new JButton("Login");
-        loginButton.setBounds(10, 120, 80, 25);
+        loginButton.setBounds(130, 125, 80, 25);
         loginButton.setBackground(Color.GREEN);
         loginButton.setBorder(border);
         loginButton.setFocusable(false);
@@ -100,7 +100,7 @@ public class LoginGui implements ActionListener {
         panel.add(newAccLabel);
         
         newAccButton = new JButton("Click here!");
-        newAccButton.setBounds(80, 180, 90, 20);
+        newAccButton.setBounds(85, 180, 90, 20);
         newAccButton.setBackground(Color.green);
         newAccButton.setBorder(border);
         newAccButton.setFont(new Font(null,Font.PLAIN,10));
