@@ -21,8 +21,8 @@ public class LoginGui implements ActionListener {
     private static JPanel panel;
     private static JFrame frame;
     private static JLabel titleLabel;
-    private static JLabel userLabel;
-    private static JTextField userText;
+    private static JLabel emailLabel;
+    private static JTextField emailText;
     private static JLabel pwLabel;
     private static JPasswordField pwText;
     private static JButton loginButton;
@@ -56,17 +56,17 @@ public class LoginGui implements ActionListener {
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 20));
         panel.add(titleLabel);
         
-        userLabel = new JLabel("Username: ");
-        userLabel.setBounds(10, 50, 80, 25);
-        userLabel.setForeground(Color.GREEN);
-        panel.add(userLabel);
+        emailLabel = new JLabel("Email: ");
+        emailLabel.setBounds(10, 50, 80, 25);
+        emailLabel.setForeground(Color.GREEN);
+        panel.add(emailLabel);
 
-        userText = new JTextField();
-        userText.setBounds(90, 50, 165, 25);
-        userText.setBackground(Color.DARK_GRAY);
-        userText.setForeground(Color.green);
-        userText.setBorder(border2);
-        panel.add(userText);
+        emailText = new JTextField();
+        emailText.setBounds(90, 50, 165, 25);
+        emailText.setBackground(Color.DARK_GRAY);
+        emailText.setForeground(Color.green);
+        emailText.setBorder(border2);
+        panel.add(emailText);
         
         pwLabel = new JLabel("Password: ");
         pwLabel.setBounds(10, 90, 80, 25);
@@ -115,15 +115,15 @@ public class LoginGui implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == loginButton){
-            String user = userText.getText();
+            String email= emailText.getText();
             String password = pwText.getText();
-            System.out.println(user + ", " + password);
+            System.out.println(email + ", " + password);
             
-            if(login(user, password)) {
+            if(login(email, password)) {
             success.setText("Login Successful!");
             }else{
                 success.setText("Invalid Username or Password! Try Again.");
-                userText.setText("");
+                emailText.setText("");
                 pwText.setText("");
             }
         }

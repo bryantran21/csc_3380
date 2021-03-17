@@ -37,11 +37,34 @@ public class postMeetingReview implements ActionListener
 	private JList list;
 	private JSlider ratingSlider;
 	private JScrollPane scrollPane;
-	private JButton submitButton;
-	String tutors[] = listOfTutors();	// Receives the list of tutors from the database
+	private JButton submitButton;	
+	String tutors[] = listOfTutors(); // Receives the list of tutors from the database
+	
+	
+	public void sortTutors()
+	{
+		int count = 3;					// Hard-coded
+		String temp;
+		
+		for (int i = 0; i < count; i++)
+		{
+			for (int j = i + 1; j < count; j++)
+			{
+				if(tutors[i].compareTo(tutors[j]) > 0)
+				{
+					temp = tutors[i];
+					tutors[i] = tutors[j];
+					tutors[j] = temp;
+				}
+			}
+		}
+	}
+	
 	
 	public postMeetingReview()
 	{
+		sortTutors();
+		
 		frame = new JFrame();
 		scrollPanel = new JPanel();		// Right panel that hosts objects
 		tutorPanel = new JPanel();		// Left panel that hosts objects
@@ -56,6 +79,7 @@ public class postMeetingReview implements ActionListener
 		{
 			list = new JList(tutors);	// List of all available tutors
 			list.setBounds(30,30,200,400);
+
 			
 			scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
 			scrollPane.setBounds(150,30,200,300);
@@ -64,10 +88,12 @@ public class postMeetingReview implements ActionListener
 			selectButton = new JButton("Select Tutor");	// Button that enables a review for selected tutor
 			selectButton.setBounds(150,370,200,50);
 			selectButton.addActionListener(this);
+
 			
 			scrollPanel.setLayout(null);	// Entire panel that hosts list of tutors, scroll pane, and button
 			scrollPanel.add(scrollPane);
 			scrollPanel.add(selectButton);
+
 			
 		}
 		
@@ -77,10 +103,12 @@ public class postMeetingReview implements ActionListener
 			titleLabel.setBounds(30,30,400,30);		// Static text label
 			titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 			titleLabel.setHorizontalAlignment(JLabel.CENTER);
+
 			
 			tutorLabel.setBounds(30,55,400,30);		// Text label that gets updated with selected tutor's name
 			tutorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 25));
 			tutorLabel.setHorizontalAlignment(JLabel.CENTER);
+
 
 			int ratingMin = 0;		// The minimum rating available for a tutor
 			int ratingMax = 10;		// The maximum rating available for a tutor
@@ -108,7 +136,7 @@ public class postMeetingReview implements ActionListener
 			returnButton.setVisible(true);
 			returnButton.setHorizontalAlignment(JLabel.CENTER);
 			
-			tutorPanel.setLayout(null);		// Entire panel that hosts two labels, slider, and submission button
+			tutorPanel.setLayout(null);		// Entire panel that hosts three labels, slider, and submission and return buttons
 			tutorPanel.add(titleLabel);
 			tutorPanel.add(tutorLabel);
 			tutorPanel.add(ratingSlider);
@@ -172,6 +200,7 @@ public class postMeetingReview implements ActionListener
 		 if(e.getSource() == returnButton)
 		 {
 			 // return to home page
+			 frame.dispose();
 		 }
 	}
 }
