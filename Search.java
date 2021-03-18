@@ -60,7 +60,7 @@ class Search extends JFrame{
       {
          JButton button = new JButton("Add");
          
-         button.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
+         button.addActionListener(new ActionListener(){                    //Create a button with action "addTutor()"
            public void actionPerformed(ActionEvent e){
                /*ADD TUTOR FUNCTION GOES HERE ** e.g. student.addTutor(tutor)*/;
                }});
