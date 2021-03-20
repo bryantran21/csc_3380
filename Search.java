@@ -6,49 +6,51 @@ import java.awt.*;
 
 /**
  *
- * @author Darrion
+ * @author Darrion Rudd
  * @since 3/16/2021
  */
 class Search extends JFrame{
 
-
+   Dimension ws = new Dimension(600, 400);
 
    public Search(){
-	   setBounds(0,0,400,150);
-	   setLocationRelativeTo(null);
-       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       setSize(ws);
+       setDefaultCloseOperation(DISPOSE_ON_CLOSE);
        
        JPanel borderPanel = (JPanel)this.getContentPane();
        JPanel centerPanel = new JPanel();
        JTextField t = new JTextField(10);                           
        JButton b = new JButton("Search");
-       
-       borderPanel.setLayout(new BorderLayout());                   //Setup larger panel with border layout
-       
-       centerPanel.add(new JLabel("Enter course name:"));           //Add Label to central panel 
-       centerPanel.add(t);                                          //Add a textfield next
-       
        b.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
            public void actionPerformed(ActionEvent e){
                Results(t.getText());
                }
-       
        });
+       JButton h = new JButton("HOME");
+       h.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
+           public void actionPerformed(ActionEvent e){
+               new HomePage();
+               dispose();
+               }
+       });
+       
+       borderPanel.setLayout(new BorderLayout());                   //Setup larger panel with border layout
+       borderPanel.add(h, BorderLayout.NORTH);                      //Add HOME button to north position
+       
+       centerPanel.add(new JLabel("Enter course name:"));           //Add Label to central panel 
+       centerPanel.add(t);                                          //Add a textfield next
+       
+       
        centerPanel.add(b);                                          //Add the button to central panel
        borderPanel.add(centerPanel, BorderLayout.CENTER);           //Add the central panel to the center of the larger panel
        
-       setVisible(true);  
-       setLocationRelativeTo(null);
-       
-       setTitle("Goober - Search");
-       
+       setVisible(true);                                            //Frame to be made visible
    }
    
    public void Results(String course){
         String tutors[] = {"Darrion Rudd", "Miguel Rojo"};                         //**INPUT FROM DATABASE!!**
        
-        setBounds(0,0,800,600);
-        setLocationRelativeTo(null);
+        setSize(ws);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.getContentPane().removeAll();                          //Clear leftover items from content pane 
@@ -63,21 +65,18 @@ class Search extends JFrame{
       {
          JButton button = new JButton("Add");
          
-         button.addActionListener(new ActionListener(){                    //Create a button with action "addTutor()"
+         button.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
            public void actionPerformed(ActionEvent e){
-               /*ADD TUTOR FUNCTION GOES HERE ** e.g. student.addTutor(tutor)*/;
+               /*ADD TUTOR FUNCTION GOES HERE ** e.g. student.addTutor(tutor);*/
                }});
          
          centerPanel.add(new JLabel(tutor));
          centerPanel.add(button);
       }
       
-
-      
       JScrollPane scrollPane = new JScrollPane(centerPanel);         //convert grid to scroll pane
       borderPanel.add(scrollPane, BorderLayout.CENTER);             //add scroll pane
       setVisible(true);                                              //make it visible
-      setLocationRelativeTo(null);
    
    }
 }
