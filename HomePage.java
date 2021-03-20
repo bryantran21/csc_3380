@@ -35,30 +35,27 @@ public class HomePage implements ActionListener
         panel = new JPanel();
         frame = new JFrame();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setBounds(1000,500,600,500);
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        frame.setBounds(600,250,800,600);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         
         panel.setLayout(null);
         
-        titleLabel = new JLabel("Welcome to Goober! :D");
-        titleLabel.setBounds(250,100,500,100);
-        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE,20));
+        titleLabel = new JLabel("Welcome back,");	// Add user's name
+        titleLabel.setBounds(0,100,800,100);
+        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE,40));
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(titleLabel);
-        
-        welcomeLabel = new JLabel("Hi, **username**");
-        welcomeLabel.setBounds(0,0,100,80);
-        panel.add(welcomeLabel);
-        
+                
         searchButton = new JButton("Search For Tutors");
-        searchButton.setBounds(250, 200, 200, 25);
+        searchButton.setBounds(300, 200, 200, 25);
         searchButton.setFocusable(false);
         searchButton.addActionListener(this);
         panel.add(searchButton);
         
         reviewButton = new JButton("Post-Meeting Review");
-        reviewButton.setBounds(250, 235, 200, 25);
+        reviewButton.setBounds(300, 235, 200, 25);
         reviewButton.setFocusable(false);
         reviewButton.addActionListener(this);
         panel.add(reviewButton);
@@ -68,7 +65,7 @@ public class HomePage implements ActionListener
         panel.add(success);
         
         frame.setVisible(true);
-        frame.setTitle("Goober - HomePage");
+        frame.setTitle("Goober - Homepage");
 
     }
 

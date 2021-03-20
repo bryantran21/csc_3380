@@ -35,8 +35,8 @@ public class LoginGui implements ActionListener {
         panel = new JPanel();
         frame = new JFrame();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
-        frame.setBounds(600,250,350,250);
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        frame.setBounds(600,250,800,600);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.setResizable(false);
         frame.add(panel);
@@ -44,49 +44,51 @@ public class LoginGui implements ActionListener {
 
         panel.setLayout(null);
         
-        titleLabel = new JLabel("Welcome to Goober!");
+        titleLabel = new JLabel("Enter Your Login Information");
 //        titleLabel.setSize(250, 30);
-        titleLabel.setBounds(80,10,200,30);
+        titleLabel.setBounds(125,125,550,50);
 //        titleLabel.setHorizontalAlignment(JLabel.CENTER);
 //        titleLabel.setVerticalAlignment(JLabel.CENTER);
 //        titleLabel.setLocation(frame.getSize().width/2-titleLabel.getX()/2, 5);
-        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 20));
+        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 40));
         panel.add(titleLabel);
         
         emailLabel = new JLabel("Email: ");
-        emailLabel.setBounds(10, 50, 80, 25);
+        emailLabel.setBounds(263, 253, 100, 25);
+        emailLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(emailLabel);
 
         emailText = new JTextField();
-        emailText.setBounds(90, 50, 165, 25);
+        emailText.setBounds(371, 253, 165, 25);
         panel.add(emailText);
         
         pwLabel = new JLabel("Password: ");
-        pwLabel.setBounds(10, 90, 80, 25);
+        pwLabel.setBounds(263, 288, 100, 25);
+        pwLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
         panel.add(pwLabel);
         
         pwText = new JPasswordField();
-        pwText.setBounds(90, 90, 165, 25);
+        pwText.setBounds(371, 288, 165, 25);
         panel.add(pwText);
         
         loginButton = new JButton("Login");
-        loginButton.setBounds(130, 125, 80, 25);
+        loginButton.setBounds(360, 341, 80, 25);
 
         loginButton.setFocusable(false);
         loginButton.addActionListener(this);
         panel.add(loginButton);
         
         success = new JLabel("");
-        success.setBounds(10, 150, 300, 25);
+        success.setBounds(295, 380, 210, 25);
         panel.add(success);
         
         newAccLabel = new JLabel("New Account?");
-        newAccLabel.setBounds(10, 180, 100, 20);
+        newAccLabel.setBounds(318, 500, 100, 20);
         newAccLabel.setFont(new Font(null,Font.PLAIN,10));
         panel.add(newAccLabel);
         
         newAccButton = new JButton("Click here!");
-        newAccButton.setBounds(85, 180, 90, 20);
+        newAccButton.setBounds(393, 500, 90, 20);
         newAccButton.setFont(new Font(null,Font.PLAIN,10));
         newAccButton.setFocusable(false);
         newAccButton.addActionListener(this);

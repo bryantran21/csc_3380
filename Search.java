@@ -11,10 +11,11 @@ import java.awt.*;
  */
 class Search extends JFrame{
 
-   Dimension ws = new Dimension(600, 400);
+
 
    public Search(){
-       setSize(ws);
+	   setBounds(0,0,400,150);
+	   setLocationRelativeTo(null);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
        JPanel borderPanel = (JPanel)this.getContentPane();
@@ -31,6 +32,7 @@ class Search extends JFrame{
            public void actionPerformed(ActionEvent e){
                Results(t.getText());
                }
+       
        });
        centerPanel.add(b);                                          //Add the button to central panel
        borderPanel.add(centerPanel, BorderLayout.CENTER);           //Add the central panel to the center of the larger panel
@@ -45,7 +47,8 @@ class Search extends JFrame{
    public void Results(String course){
         String tutors[] = {"Darrion Rudd", "Miguel Rojo"};                         //**INPUT FROM DATABASE!!**
        
-        setSize(ws);
+        setBounds(0,0,800,600);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.getContentPane().removeAll();                          //Clear leftover items from content pane 

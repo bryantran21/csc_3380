@@ -36,9 +36,13 @@ public class postMeetingReview implements ActionListener
 	private JLabel errorLabel;
 	private JButton returnButton;
 	private JList list;
+	private JLabel newLabel;
 	private JSlider ratingSlider;
 	private JScrollPane scrollPane;
-	private JButton submitButton;	
+	private JButton submitButton;
+	private JFrame smallFrame;
+	private JPanel smallPanel;
+	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	String tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	
 	
@@ -67,6 +71,8 @@ public class postMeetingReview implements ActionListener
 		sortTutors();
 		
 		frame = new JFrame();
+		frame.setBounds(0,0,800,600);
+		frame.setLocationRelativeTo(null);
 		scrollPanel = new JPanel();		// Right panel that hosts objects
 		tutorPanel = new JPanel();		// Left panel that hosts objects
 		scrollPane = new JScrollPane();	// Allows scrolling through list of tutors
@@ -79,15 +85,13 @@ public class postMeetingReview implements ActionListener
 		// LEFT PANEL (panel that holds the list of available tutors and the selection button)
 		{
 			list = new JList(tutors);	// List of all available tutors
-			list.setBounds(30,30,200,400);
-
 			
 			scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
-			scrollPane.setBounds(150,30,200,300);
+			scrollPane.setBounds(100,30,200,430);
 			list.setLayoutOrientation(JList.VERTICAL);
 			
 			selectButton = new JButton("Select Tutor");	// Button that enables a review for selected tutor
-			selectButton.setBounds(150,370,200,50);
+			selectButton.setBounds(100,500,200,30);
 			selectButton.addActionListener(this);
 
 			
@@ -101,12 +105,12 @@ public class postMeetingReview implements ActionListener
 		
 		// RIGHT PANEL (panel that labels the selected tutor, slider for rating, and submission button to update tutor's rating in DB)
 		{
-			titleLabel.setBounds(30,30,400,30);		// Static text label
+			titleLabel.setBounds(0,118,400,30);		// Static text label
 			titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 			titleLabel.setHorizontalAlignment(JLabel.CENTER);
 
 			
-			tutorLabel.setBounds(30,55,400,30);		// Text label that gets updated with selected tutor's name
+			tutorLabel.setBounds(0,140,400,30);		// Text label that gets updated with selected tutor's name
 			tutorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 25));
 			tutorLabel.setHorizontalAlignment(JLabel.CENTER);
 
@@ -118,21 +122,16 @@ public class postMeetingReview implements ActionListener
 			ratingSlider = new JSlider(JSlider.HORIZONTAL, ratingMin, ratingMax, ratingInitial);	// Slider that allows to select desired rating
 			ratingSlider.setMajorTickSpacing(1);
 			ratingSlider.setPaintLabels(true);
-			ratingSlider.setPaintLabels(true);
-			ratingSlider.setBounds(30,100,400,50);
+			ratingSlider.setBounds(50,185,300,50);
 			ratingSlider.setVisible(false);
 			
 			submitButton = new JButton("Submit Rating");	// Button that updates the specific tutor's rating average with new number
-			submitButton.setBounds(30,175,400,30);
+			submitButton.setBounds(100,250,200,30);
 			submitButton.addActionListener(this);
 			submitButton.setVisible(false);
 			
-			submittedLabel.setBounds(30,225,400,30);
-			submittedLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
-			submittedLabel.setHorizontalAlignment(JLabel.CENTER);
-			
 			returnButton = new JButton("Return to the Homepage");
-			returnButton.setBounds(130,370,200,50);
+			returnButton.setBounds(100,500,200,30);
 			returnButton.addActionListener(this);
 			returnButton.setVisible(true);
 			returnButton.setHorizontalAlignment(JLabel.CENTER);
@@ -152,14 +151,32 @@ public class postMeetingReview implements ActionListener
 		frame.add(tutorPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Goober - Post Meeting Review");
-		frame.setSize(1000,500);
-		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
+	}
+	
+	
+	public void submittedRating(String text)
+	{
+		smallFrame = new JFrame();
+		smallFrame.setBounds(600,250,400,150);
+		smallFrame.setLocationRelativeTo(null);
+		smallPanel = new JPanel();
 		
-
-		
-		
+        
+        newLabel = new JLabel(text);
+        newLabel.setBounds(0,30,400,30);
+        newLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        newLabel.setHorizontalAlignment(JLabel.CENTER);
+       
+        smallPanel.setLayout(null);
+        smallPanel.add(newLabel);
+        
+		smallFrame.add(smallPanel);
+        smallFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        smallFrame.setTitle("Goober - Rating");
+        smallFrame.setVisible(true);
+        smallFrame.setResizable(false);
 	}
 	
 
@@ -188,8 +205,10 @@ public class postMeetingReview implements ActionListener
 		 }
 		 if(e.getSource() == submitButton)
 		 {
-			 submittedLabel.setText("You have given " + tutors[index] + " a rating of " + ratingSlider.getValue());
-			 submittedLabel.setVisible(true);
+			 String labelText = "You have given " + tutors[index] + " a rating of " + ratingSlider.getValue();
+			 HomePage homepage = new HomePage();
+			 submittedRating(labelText);
+			 frame.dispose();
 			 ratings("mtom@lsu.edu", String.valueOf(ratingSlider.getValue()));
 		 }
 		 if(e.getSource() == returnButton)

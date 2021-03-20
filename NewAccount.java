@@ -46,7 +46,7 @@ public class NewAccount implements ActionListener{
         panel = new JPanel();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
         frame.setBounds(600,250,800,600);
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.add(panel);
