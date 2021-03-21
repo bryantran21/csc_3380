@@ -95,6 +95,7 @@ public class LoginGui implements ActionListener {
         panel.add(newAccButton);
         
         frame.setVisible(true);
+        frame.setResizable(false);
         frame.setTitle("Goober - Login");
     }
     

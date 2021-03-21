@@ -15,7 +15,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import main.postMeetingReview;
@@ -30,6 +32,11 @@ public class HomePage implements ActionListener
     private static JButton searchButton;
     private static JButton reviewButton;
     private static JLabel success;
+    private JList upcoming;
+    private static JScrollPane scrollPane;
+    private JLabel upcomingLabel;
+    String upcomingString[] = {"Monday, March 22   -   csc3380 @ 5:00p","Tuesday, March 23   -   csc3501 @ 9:30a"};
+
     
     HomePage(){
         panel = new JPanel();
@@ -49,13 +56,13 @@ public class HomePage implements ActionListener
         panel.add(titleLabel);
                 
         searchButton = new JButton("Search For Tutors");
-        searchButton.setBounds(300, 200, 200, 25);
+        searchButton.setBounds(250, 225, 300, 40);
         searchButton.setFocusable(false);
         searchButton.addActionListener(this);
         panel.add(searchButton);
         
         reviewButton = new JButton("Post-Meeting Review");
-        reviewButton.setBounds(300, 235, 200, 25);
+        reviewButton.setBounds(250, 275, 300, 40);
         reviewButton.setFocusable(false);
         reviewButton.addActionListener(this);
         panel.add(reviewButton);
@@ -64,7 +71,22 @@ public class HomePage implements ActionListener
         success.setBounds(10, 150, 300, 25);
         panel.add(success);
         
+        upcoming = new JList(upcomingString);
+        
+        scrollPane = new JScrollPane(upcoming);
+        scrollPane.setViewportView(upcoming);
+        scrollPane.setBounds(250,375,300,150);
+        upcoming.setLayoutOrientation(JList.VERTICAL);
+        panel.add(scrollPane);
+        
+        upcomingLabel = new JLabel("Upcoming Meetings");
+        upcomingLabel.setBounds(250,355,300,25);
+        upcomingLabel.setFont(new Font(null,Font.PLAIN,10));
+        panel.add(upcomingLabel);
+        
+        
         frame.setVisible(true);
+        frame.setResizable(false);
         frame.setTitle("Goober - Homepage");
 
     }
