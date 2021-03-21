@@ -95,8 +95,47 @@ public static User returnUser(String email) {
 		return null;
 		
 	}
+
+public static User[] listOfTutors() {
+	User[] tutorList = new User[100];
+	int listIndex = 0;
 	
-	public static String[] listOfTutors() {
+	try {
+
+	    File fXmlFile = new File("src/main/gooberDatabase.xml");
+	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	    Document doc = dBuilder.parse(fXmlFile);
+
+	    doc.getDocumentElement().normalize();
+	            
+	    NodeList nList = doc.getElementsByTagName("User");
+	            
+	    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+	        Node nNode = nList.item(temp);
+	                
+	        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+	            Element eElement = (Element) nNode;
+
+	            if (eElement.getElementsByTagName("role").item(0).getTextContent().equals("Tutor")) {
+	            	tutorList[listIndex] = returnUser(eElement.getElementsByTagName("email").item(0).getTextContent());
+	            	listIndex++;
+	            }
+
+
+	        }
+	    }
+	    } catch (Exception e) {
+	    e.printStackTrace();
+	    }
+	
+	
+	return tutorList;
+}
+	
+	public static String[] listOfTutorsOLD() {
 		String[] tutorList = new String[100];
 		int listIndex = 0;
 		
