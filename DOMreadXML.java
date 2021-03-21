@@ -12,7 +12,7 @@ import java.io.File;
 
 public class DOMreadXML {
 	
-	public static Boolean login(String username, String password) {
+	public static Boolean login(String email, String password) {
 		
 		try {
 
@@ -35,7 +35,7 @@ public class DOMreadXML {
 		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 		            Element eElement = (Element) nNode;
-		            if (username.equals(eElement.getElementsByTagName("username").item(0).getTextContent())) {
+		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	if (password.equals(eElement.getElementsByTagName("password").item(0).getTextContent())) {
 		            		return true;
 		            	}
@@ -49,6 +49,50 @@ public class DOMreadXML {
 		    }
 		
 		return false;
+		
+	}
+	
+public static User returnUser(String email) {
+		
+		try {
+
+		    File fXmlFile = new File("src/main/gooberDatabase.xml");
+		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		    Document doc = dBuilder.parse(fXmlFile);
+		            
+		    //optional, but recommended
+		    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+		    doc.getDocumentElement().normalize();
+		            
+		    NodeList nList = doc.getElementsByTagName("User");
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	String firstName = eElement.getElementsByTagName("firstName").item(0).getTextContent();
+		            	String lastName = eElement.getElementsByTagName("lastName").item(0).getTextContent();
+		            	String password = eElement.getElementsByTagName("password").item(0).getTextContent();
+		            	String role = eElement.getElementsByTagName("role").item(0).getTextContent();
+		            	Ratings ratings = new Ratings();
+		            	ratings.numOfRatings = Integer.valueOf(eElement.getElementsByTagName("ratings").item(0).getAttributes().getNamedItem("numOf").getTextContent());
+		            	//User user1 = new User.userBuilder(email, firstName, lastName, password, role, ratings);
+		            	User user1 = new User.userBuilder(email, firstName, lastName, password, role, ratings).build();
+		            	return user1;
+		            }
+		        }
+		    }
+		    } catch (Exception e) {
+		    e.printStackTrace();
+		    }
+		
+		return null;
 		
 	}
 	
@@ -76,7 +120,7 @@ public class DOMreadXML {
 		            Element eElement = (Element) nNode;
 
 		            if (eElement.getElementsByTagName("role").item(0).getTextContent().equals("Tutor")) {
-		            	tutorList[listIndex] = eElement.getElementsByTagName("username").item(0).getTextContent();
+		            	tutorList[listIndex] = eElement.getElementsByTagName("email").item(0).getTextContent();
 		            	listIndex++;
 		            }
 
@@ -115,7 +159,7 @@ public int avgRating(String email) {
 		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 		            Element eElement = (Element) nNode;
-		            if (email.equals(eElement.getElementsByTagName("username").item(0).getTextContent())) {
+		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		    	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
 		    	        NodeList nList2 = doc.getElementsByTagName("rating");
 		    	        
@@ -183,7 +227,6 @@ public int avgRating(String email) {
 	            Element eElement = (Element) nNode;
 
 	            System.out.println("Email : " + eElement.getElementsByTagName("email").item(0).getTextContent());
-	            System.out.println("Username : " + eElement.getElementsByTagName("username").item(0).getTextContent());
 	            System.out.println("Days available : " + eElement.getElementsByTagName("daysAvailable").item(0).getTextContent());
 	            System.out.println("Courses : " + eElement.getElementsByTagName("courses").item(0).getTextContent());
 

@@ -30,6 +30,8 @@ public class DOMmodifyXML {
 		try {
 	        String filepath = "src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+	        //docFactory.setValidating(true);
+	        //docFactory.setIgnoringElementContentWhitespace(true);
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
 	        
@@ -51,9 +53,9 @@ public class DOMmodifyXML {
 	        Element ratings = doc.createElement("ratings");
 	        ratings.setAttribute("numOf", "0");
 	        
-	        Element numOfRatings = doc.createElement("numOfRatings");
-	        numOfRatings.appendChild(doc.createTextNode("0"));
-	        ratings.appendChild(numOfRatings);
+	        //Element numOfRatings = doc.createElement("numOfRatings");
+	        //numOfRatings.appendChild(doc.createTextNode("0"));
+	        //ratings.appendChild(numOfRatings);
 
 	        
 	        newUser.appendChild(emailElement);
@@ -107,7 +109,7 @@ public class DOMmodifyXML {
 		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	Element newRating = doc.createElement("rating");
 		    	        newRating.appendChild(doc.createTextNode(rating));
-		    	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
+		    	        Node Ratings = eElement.getElementsByTagName("ratings").item(0);
 		    	        Ratings.appendChild(newRating);
 		            	NamedNodeMap attr = Ratings.getAttributes();
 		                Node nodeAttr = attr.getNamedItem("numOf");
