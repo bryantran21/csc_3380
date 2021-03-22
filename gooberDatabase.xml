@@ -1,222 +1,308 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-model href="gooberDatabase.xsd"?>
-<Users>
-      
+<?xml-model href="gooberDatabase.xsd"?><Users>
+                  
+  
+  
+  
+  
+  
+  
+  
   
   <User>
-            
+                                    
     
-    <email>thuval2</email>
-            
     
-    <username>huvaltrevor</username>
-            
     
-    <password>BoeJurrow23</password>
-            
     
-    <role>Student</role>
-            
     
-    <year>Sophomore</year>
-            
     
-    <daysAvailable>
-                  
+    
+    <email>mtom@lsu.edu</email>
+                                    
+    
+    
+    
+    
+    
+    
+    
+    <firstName>Michael</firstName>
+                                    
+    
+    
+    
+    
+    
+    
+    
+    <lastName>Tom</lastName>
+                                    
+    
+    
+    
+    
+    
+    
+    
+    <password>mtom</password>
+                                    
+    
+    
+    
+    
+    
+    
+    
+    <role>Tutor</role>
+                                    
+    
+    
+    
+    
+    
+    
+    
+    <ratings numOf="3">
+                        
       
-      <day>Tuesday</day>
-                  
       
-      <day>Friday</day>
+      <rating>1</rating>
+                      
+      
+      
+      <rating>6</rating>
                 
     
-    </daysAvailable>
-            
-    
-    <courses>
-                  
-      
-      <course>csc3380</course>
-                  
-      
-      <course>csc3501</course>
-                  
-      
-      <course>csc2262</course>
-                
-    
-    </courses>
-            
-    
-    <enrolledUsers>
-                  
-      
-      <enrolledUser>Chanuka</enrolledUser>
-                
-    
-    </enrolledUsers>
-          
+      <rating>10</rating>
+    </ratings>
+                                  
+  
+  
+  
+  
+  
+  
   
   </User>
-      
+                
+  
+  
+  
+  
+  
+  
   
   <User>
-            
+                                
     
-    <email>blalon1</email>
-            
     
-    <username>lalondeblake</username>
-            
     
-    <password>BoeJurrow23</password>
-            
     
-    <role>Student</role>
-            
     
-    <year>Sophomore</year>
-            
     
-    <daysAvailable>
-                  
-      
-      <day>Tuesday</day>
-                  
-      
-      <day>Thursday</day>
-                  
-      
-      <day>Friday</day>
-                
+    <email>mconrad@lsu.edu</email>
+                                
     
-    </daysAvailable>
-            
     
-    <courses>
-                  
-      
-      <course>cmst1061</course>
-                  
-      
-      <course>eng2023</course>
-                
     
-    </courses>
-            
     
-    <enrolledUsers>
-                  
-      
-      <enrolledUser>Chanuka</enrolledUser>
-                
     
-    </enrolledUsers>
-          
+    
+    <firstName>Max</firstName>
+                                
+    
+    
+    
+    
+    
+    
+    <lastName>Conrad</lastName>
+                                
+    
+    
+    
+    
+    
+    
+    <password>mconrad</password>
+                                
+    
+    
+    
+    
+    
+    
+    <role>Tutor</role>
+                                
+    
+    
+    
+    
+    
+    
+    <ratings numOf="0"/>
+                              
+  
+  
+  
+  
+  
   
   </User>
-      
+              
+  
+  
+  
+  
+  
   
   <User>
-            
+                            
     
-    <email>dtayl76</email>
-            
     
-    <username>taylordrake</username>
-            
     
-    <password>ThuggaDrake</password>
-            
     
-    <role>Student</role>
-            
     
-    <year>Sophomore</year>
-            
+    <email>paymond@lsu.edu</email>
+                            
     
-    <daysAvailable>
-                  
-      
-      <day>Monday</day>
-                
     
-    </daysAvailable>
-            
     
-    <courses>
-                  
-      
-      <course>phys2120</course>
-                
     
-    </courses>
-            
     
-    <enrolledUsers>
-                  
-      
-      <enrolledUser>DeSouza</enrolledUser>
-                
+    <firstName>Patti</firstName>
+                            
     
-    </enrolledUsers>
-          
+    
+    
+    
+    
+    <lastName>Aymond</lastName>
+                            
+    
+    
+    
+    
+    
+    <password>paymond</password>
+                            
+    
+    
+    
+    
+    
+    <role>Tutor</role>
+                            
+    
+    
+    
+    
+    
+    <ratings numOf="0"/>
+                          
+  
+  
+  
+  
   
   </User>
-      
+            
+  
+  
+  
+  
   
   <User>
-            
+                        
     
-    <email>dtayl76</email>
-            
     
-    <username>taylordrake</username>
-            
     
-    <password>ThuggaDrake</password>
-            
     
-    <role>Student</role>
-            
+    <email>wduncan@lsu.edu</email>
+                        
     
-    <year>Sophomore</year>
-            
     
-    <daysAvailable>
-                  
-      
-      <day>Monday</day>
-                
     
-    </daysAvailable>
-            
     
-    <courses>
-                  
-      
-      <course>phys2120</course>
-                
+    <firstName>William</firstName>
+                        
     
-    </courses>
-            
     
-    <enrolledUsers>
-                  
-      
-      <enrolledUser>DeSouza</enrolledUser>
-                
     
-    </enrolledUsers>
-          
+    
+    <lastName>Duncan</lastName>
+                        
+    
+    
+    
+    
+    <password>wduncan</password>
+                        
+    
+    
+    
+    
+    <role>Tutor</role>
+                        
+    
+    
+    
+    
+    <ratings numOf="0"/>
+                      
+  
+  
+  
   
   </User>
+          
+  
+  
+  
+  
+  <User>
+                    
     
+    
+    
+    <email>jnotell@lsu.edu</email>
+                    
+    
+    
+    
+    <firstName>Joe</firstName>
+                    
+    
+    
+    
+    <lastName>Notell</lastName>
+                    
+    
+    
+    
+    <password>jnotell</password>
+                    
+    
+    
+    
+    <role>Tutor</role>
+                    
+    
+    
+    
+    <ratings numOf="1">
+            
+      <rating>10</rating>
+          
+    </ratings>
+                  
+  
+  
+  
+  </User>
+        
 
-  <User>
-    <email>slatio8@lsu.edu</email>
-    <username>slatio</username>
-    <password>password123</password>
-    <role>Student</role>
-  </User>
+
+
 </Users>

@@ -18,11 +18,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.stream.Stream;
 import static main.DOMreadXML.listOfTutors;
 import main.HomePage;
 import static main.DOMmodifyXML.ratings;
+import static main.DOMreadXML.avgRating;;
 
 public class postMeetingReview implements ActionListener
 {
@@ -34,8 +37,10 @@ public class postMeetingReview implements ActionListener
 	private JPanel scrollPanel;
 	private JPanel tutorPanel;
 	private JLabel errorLabel;
-	private JButton returnButton;
+	private JButton A;
 	private JList list;
+	private JButton returnButton;
+	private JLabel averageRating;
 	private JLabel newLabel;
 	private JSlider ratingSlider;
 	private JScrollPane scrollPane;
@@ -43,26 +48,47 @@ public class postMeetingReview implements ActionListener
 	private JFrame smallFrame;
 	private JPanel smallPanel;
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	String tutors[] = listOfTutors(); // Receives the list of tutors from the database
+	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
+	String tutorNames[] = new String[100];
 	
+	public class ComparatorUser implements Comparator {
+
+	    public int compare(Object arg0, Object arg1) 
+	    {
+	        User user0 = (User) arg0;
+	        User user1 = (User) arg1;
+	        
+	        String userZero = user0.getLastName() + user0.getFirstName();
+	        String userOne = user1.getLastName() + user1.getFirstName();
+
+	        int flag = userZero.compareTo(userOne);
+	        return flag;
+	    }
+	}
 	
 	public void sortTutors()
 	{
-		int count = 3;					// Hard-coded
-		String temp;
 		
-		for (int i = 0; i < count; i++)
+		int count = 0;					
+		User temp = null;
+		
+		ComparatorUser comparator = new ComparatorUser();
+		
+		
+		for(int i = 0; tutors[i] != null; i++)
 		{
-			for (int j = i + 1; j < count; j++)
-			{
-				if(tutors[i].compareTo(tutors[j]) > 0)
-				{
-					temp = tutors[i];
-					tutors[i] = tutors[j];
-					tutors[j] = temp;
-				}
-			}
+			
+			count++;
 		}
+		Arrays.sort(tutors,0,count,comparator);
+		
+		for(int i = 0; tutors[i] != null; i++)
+		{
+			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName();	
+		}
+
+		
+//		Arrays.sort(tutorNames,0,count);
 	}
 	
 	
@@ -84,7 +110,7 @@ public class postMeetingReview implements ActionListener
 		
 		// LEFT PANEL (panel that holds the list of available tutors and the selection button)
 		{
-			list = new JList(tutors);	// List of all available tutors
+			list = new JList(tutorNames);	// List of all available tutors
 			
 			scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
 			scrollPane.setBounds(100,30,200,430);
@@ -114,6 +140,12 @@ public class postMeetingReview implements ActionListener
 			tutorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 25));
 			tutorLabel.setHorizontalAlignment(JLabel.CENTER);
 
+			averageRating = new JLabel();
+			averageRating.setBounds(0,165,400,30);
+			averageRating.setFont(new Font(null,Font.PLAIN,12));
+			averageRating.setHorizontalAlignment(JLabel.CENTER);
+			averageRating.setVisible(false);
+			
 
 			int ratingMin = 0;		// The minimum rating available for a tutor
 			int ratingMax = 10;		// The maximum rating available for a tutor
@@ -122,11 +154,11 @@ public class postMeetingReview implements ActionListener
 			ratingSlider = new JSlider(JSlider.HORIZONTAL, ratingMin, ratingMax, ratingInitial);	// Slider that allows to select desired rating
 			ratingSlider.setMajorTickSpacing(1);
 			ratingSlider.setPaintLabels(true);
-			ratingSlider.setBounds(50,185,300,50);
+			ratingSlider.setBounds(50,200,300,50);
 			ratingSlider.setVisible(false);
 			
 			submitButton = new JButton("Submit Rating");	// Button that updates the specific tutor's rating average with new number
-			submitButton.setBounds(100,250,200,30);
+			submitButton.setBounds(100,275,200,30);
 			submitButton.addActionListener(this);
 			submitButton.setVisible(false);
 			
@@ -143,6 +175,7 @@ public class postMeetingReview implements ActionListener
 			tutorPanel.add(submitButton);
 			tutorPanel.add(submittedLabel);
 			tutorPanel.add(returnButton);
+			tutorPanel.add(averageRating);
 		}
 		
 		
@@ -197,7 +230,12 @@ public class postMeetingReview implements ActionListener
 			 else
 			 {
 				 titleLabel.setText("LEAVE A RATING FOR");
-				 tutorLabel.setText(tutors[index]);
+				 tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
+				 String avg = String.valueOf(avgRating(tutors[index].getEmail()));
+				 int maxLength = (avg.length() < 4)?avg.length():4;
+				 avg = avg.substring(0,maxLength);
+				 averageRating.setText("Average rating is: " + avg);
+				 averageRating.setVisible(true);
 				 ratingSlider.setVisible(true);
 				 submitButton.setVisible(true);
 			 }
@@ -205,11 +243,11 @@ public class postMeetingReview implements ActionListener
 		 }
 		 if(e.getSource() == submitButton)
 		 {
-			 String labelText = "You have given " + tutors[index] + " a rating of " + ratingSlider.getValue();
+			 String labelText = "You have given " + tutors[index].getFirstName() + " " + tutors[index].getLastName() + " a rating of " + ratingSlider.getValue();
 			 HomePage homepage = new HomePage();
 			 submittedRating(labelText);
 			 frame.dispose();
-			 ratings("mtom@lsu.edu", String.valueOf(ratingSlider.getValue()));
+			 ratings(tutors[index].getEmail(), String.valueOf(ratingSlider.getValue()));
 		 }
 		 if(e.getSource() == returnButton)
 		 {

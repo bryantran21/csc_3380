@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 public class DOMreadXML {
 	
@@ -174,8 +175,16 @@ public static User[] listOfTutors() {
 		return tutorList;
 	}
 	
-public int avgRating(String email) {
-	int retAvg = 0;
+public static float round(float d, int decimalPlace){
+	if(d == 0)
+	{
+		return 0;
+	}
+	return BigDecimal.valueOf(d).setScale(decimalPlace,BigDecimal.ROUND_HALF_UP).floatValue();     
+}	
+	
+public static float avgRating(String email) {
+	float retAvg = 0;
 		try {
 			
 		    File fXmlFile = new File("src/main/gooberDatabase.xml");
@@ -199,8 +208,8 @@ public int avgRating(String email) {
 
 		            Element eElement = (Element) nNode;
 		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
-		    	        Node Ratings = doc.getElementsByTagName("ratings").item(0);
-		    	        NodeList nList2 = doc.getElementsByTagName("rating");
+		    	        Node Ratings = eElement.getElementsByTagName("ratings").item(0);
+		    	        NodeList nList2 = eElement.getElementsByTagName("rating");
 		    	        
 		    	        
 		    	        for (int temp2 = 0; temp2 < nList2.getLength(); temp2++) {
@@ -220,11 +229,13 @@ public int avgRating(String email) {
 		            	NamedNodeMap attr = Ratings.getAttributes();
 		                Node nodeAttr = attr.getNamedItem("numOf");
 		    	        retAvg = retAvg / Integer.valueOf(nodeAttr.getTextContent());
+		    	        //return round(retAvg,2);
 		    	        return retAvg;
 		            }
 		        }
 		    }
 		    
+		    //return round(retAvg,2);
 		    return retAvg;
 		    
 		    
@@ -233,47 +244,48 @@ public int avgRating(String email) {
 		    } catch (Exception e) {
 		    e.printStackTrace();
 		    }
+		//return round(retAvg,2);
 		return retAvg;
 	}
 	
-	public static void main(String argv[]) {
-
-	    try {
-
-	    File fXmlFile = new File("C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml");
-	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    Document doc = dBuilder.parse(fXmlFile);
-	            
-	    //optional, but recommended
-	    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-	    doc.getDocumentElement().normalize();
-
-	    System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-	            
-	    NodeList nList = doc.getElementsByTagName("User");
-	            
-	    System.out.println("----------------------------");
-
-	    for (int temp = 0; temp < nList.getLength(); temp++) {
-
-	        Node nNode = nList.item(temp);
-	                
-	        System.out.println("\nCurrent Element :" + nNode.getNodeName());
-	                
-	        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-	            Element eElement = (Element) nNode;
-
-	            System.out.println("Email : " + eElement.getElementsByTagName("email").item(0).getTextContent());
-	            System.out.println("Days available : " + eElement.getElementsByTagName("daysAvailable").item(0).getTextContent());
-	            System.out.println("Courses : " + eElement.getElementsByTagName("courses").item(0).getTextContent());
-
-	        }
-	    }
-	    } catch (Exception e) {
-	    e.printStackTrace();
-	    }
-	  }
+//	public static void main(String argv[]) {
+//
+//	    try {
+//
+//	    File fXmlFile = new File("C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml");
+//	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+//	    Document doc = dBuilder.parse(fXmlFile);
+//	            
+//	    //optional, but recommended
+//	    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+//	    doc.getDocumentElement().normalize();
+//
+//	    System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+//	            
+//	    NodeList nList = doc.getElementsByTagName("User");
+//	            
+//	    System.out.println("----------------------------");
+//
+//	    for (int temp = 0; temp < nList.getLength(); temp++) {
+//
+//	        Node nNode = nList.item(temp);
+//	                
+//	        System.out.println("\nCurrent Element :" + nNode.getNodeName());
+//	                
+//	        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+//
+//	            Element eElement = (Element) nNode;
+//
+//	            System.out.println("Email : " + eElement.getElementsByTagName("email").item(0).getTextContent());
+//	            System.out.println("Days available : " + eElement.getElementsByTagName("daysAvailable").item(0).getTextContent());
+//	            System.out.println("Courses : " + eElement.getElementsByTagName("courses").item(0).getTextContent());
+//
+//	        }
+//	    }
+//	    } catch (Exception e) {
+//	    e.printStackTrace();
+//	    }
+//	  }
 	
 }
