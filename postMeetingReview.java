@@ -47,6 +47,7 @@ public class postMeetingReview implements ActionListener
 	private JButton submitButton;
 	private JFrame smallFrame;
 	private JPanel smallPanel;
+
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	String tutorNames[] = new String[100];
@@ -119,11 +120,20 @@ public class postMeetingReview implements ActionListener
 			selectButton = new JButton("Select Tutor");	// Button that enables a review for selected tutor
 			selectButton.setBounds(100,500,200,30);
 			selectButton.addActionListener(this);
+			
+			errorLabel = new JLabel("");
+	        errorLabel.setBounds(0,465,400,35);
+	        errorLabel.setHorizontalAlignment(JLabel.CENTER);
+	        errorLabel.setFont(new Font(null,Font.CENTER_BASELINE,12));
+	        errorLabel.setForeground(Color.RED);
+	        scrollPanel.add(errorLabel);
 
 			
 			scrollPanel.setLayout(null);	// Entire panel that hosts list of tutors, scroll pane, and button
 			scrollPanel.add(scrollPane);
 			scrollPanel.add(selectButton);
+			
+			
 
 			
 		}
@@ -167,6 +177,7 @@ public class postMeetingReview implements ActionListener
 			returnButton.addActionListener(this);
 			returnButton.setVisible(true);
 			returnButton.setHorizontalAlignment(JLabel.CENTER);
+			
 			
 			tutorPanel.setLayout(null);		// Entire panel that hosts three labels, slider, and submission and return buttons
 			tutorPanel.add(titleLabel);
@@ -221,11 +232,12 @@ public class postMeetingReview implements ActionListener
 		 {
 			 if(tutors[index] == null)
 			 {
+				 errorLabel.setText("No tutor selected.  Please select a tutor.");
 				 titleLabel.setText("");
-				 
-				 tutorLabel.setText("Please Select A Tutor");
+				 tutorLabel.setText("");
 				 ratingSlider.setVisible(false);
 				 submitButton.setVisible(false);
+				 averageRating.setVisible(false);
 			 }
 			 else
 			 {
@@ -235,6 +247,7 @@ public class postMeetingReview implements ActionListener
 				 int maxLength = (avg.length() < 4)?avg.length():4;
 				 avg = avg.substring(0,maxLength);
 				 averageRating.setText("Average rating is: " + avg);
+				 errorLabel.setText("");
 				 averageRating.setVisible(true);
 				 ratingSlider.setVisible(true);
 				 submitButton.setVisible(true);

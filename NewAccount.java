@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-
+import static main.DOMreadXML.returnUser;
 import static main.DOMmodifyXML.createAccount;
 
 public class NewAccount implements ActionListener{
@@ -131,8 +131,10 @@ public class NewAccount implements ActionListener{
         panel.add(rtnButton);
         
         errorLabel = new JLabel("");
-        errorLabel.setBounds(323,445,200,25);
-        errorLabel.setFont(new Font(null,Font.PLAIN,12));
+        errorLabel.setBounds(0,445,800,35);
+        errorLabel.setHorizontalAlignment(JLabel.CENTER);
+        errorLabel.setFont(new Font(null,Font.CENTER_BASELINE,12));
+        errorLabel.setForeground(Color.RED);
         panel.add(errorLabel);
         
         frame.setVisible(true);
@@ -169,12 +171,19 @@ public class NewAccount implements ActionListener{
                     pwText.setText("");
                     pw2Text.setText("");
             
-            } else if(pw2Text.getText().equals(pwText.getText())){
+            } else if(returnUser(email) != null){
+            		errorLabel.setText("An account with this email already exists.  \nPlease enter a different email address.");
+            }
+            
+            else if(pw2Text.getText().equals(pwText.getText())){
                 
                 errorLabel.setText("");
                 createAccount(email, firstName, lastName, pw, role);
+                LoginGui login = new LoginGui();
+            	frame.dispose();
 
             }
+           
         }
     }
 }
