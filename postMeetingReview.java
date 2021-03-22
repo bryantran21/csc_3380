@@ -1,5 +1,12 @@
 package main;
 
+/**
+*
+* @author 	Blake Lalonde
+* @since 	2/26/2021
+* @about 	A class that creates a java window where a user can give a tutor a rating. Meant for after they've had a meeting.
+*/
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -52,7 +59,7 @@ public class postMeetingReview implements ActionListener
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	String tutorNames[] = new String[100];
 	
-	public class ComparatorUser implements Comparator {
+	public class ComparatorUser implements Comparator {							// A comparator function used to alphabetically compare users
 
 	    public int compare(Object arg0, Object arg1) 
 	    {
@@ -67,7 +74,7 @@ public class postMeetingReview implements ActionListener
 	    }
 	}
 	
-	public void sortTutors()
+	public void sortTutors()			// A sort function that sorts tutors alphabetically
 	{
 		
 		int count = 0;					
@@ -76,16 +83,16 @@ public class postMeetingReview implements ActionListener
 		ComparatorUser comparator = new ComparatorUser();
 		
 		
-		for(int i = 0; tutors[i] != null; i++)
+		for(int i = 0; tutors[i] != null; i++)		// For loop that runs through entire list of tutors
 		{
 			
 			count++;
 		}
-		Arrays.sort(tutors,0,count,comparator);
+		Arrays.sort(tutors,0,count,comparator);		// Sorts users alphabetically
 		
-		for(int i = 0; tutors[i] != null; i++)
+		for(int i = 0; tutors[i] != null; i++)		// Creates a string array of tutors with the first and last name, sorted
 		{
-			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName();	
+			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName();		
 		}
 
 		
@@ -200,7 +207,7 @@ public class postMeetingReview implements ActionListener
 	}
 	
 	
-	public void submittedRating(String text)
+	public void submittedRating(String text)		// Creates a window pop-up "notification" that tells the user the rating is give to x tutor
 	{
 		smallFrame = new JFrame();
 		smallFrame.setBounds(600,250,400,150);
@@ -230,7 +237,7 @@ public class postMeetingReview implements ActionListener
 		int index = list.getSelectedIndex();
 		 if(e.getSource() == selectButton)
 		 {
-			 if(tutors[index] == null)
+			 if(tutors[index] == null)			// If no tutor was selected from the list
 			 {
 				 errorLabel.setText("No tutor selected.  Please select a tutor.");
 				 titleLabel.setText("");
@@ -239,7 +246,7 @@ public class postMeetingReview implements ActionListener
 				 submitButton.setVisible(false);
 				 averageRating.setVisible(false);
 			 }
-			 else
+			 else								// If an appropriate tutor was selected
 			 {
 				 titleLabel.setText("LEAVE A RATING FOR");
 				 tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
@@ -254,7 +261,7 @@ public class postMeetingReview implements ActionListener
 			 }
 			 
 		 }
-		 if(e.getSource() == submitButton)
+		 if(e.getSource() == submitButton)		// Closes the current window and opens up the home page as well as a notification window
 		 {
 			 String labelText = "You have given " + tutors[index].getFirstName() + " " + tutors[index].getLastName() + " a rating of " + ratingSlider.getValue();
 			 HomePage homepage = new HomePage();
@@ -262,7 +269,7 @@ public class postMeetingReview implements ActionListener
 			 frame.dispose();
 			 ratings(tutors[index].getEmail(), String.valueOf(ratingSlider.getValue()));
 		 }
-		 if(e.getSource() == returnButton)
+		 if(e.getSource() == returnButton)		// Closes the current window and returns to the home page
 		 {
 			 HomePage homepage = new HomePage();
 			 frame.dispose();
