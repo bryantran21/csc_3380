@@ -1,9 +1,13 @@
 package main;
 
+/*
+*
+*@author Anthony Duong
+*
+*/
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -34,11 +38,9 @@ public class LoginGui implements ActionListener {
         
         panel = new JPanel();
         frame = new JFrame();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
         frame.setBounds(600,250,800,600);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setResizable(false);
         frame.add(panel);
         
 
@@ -102,12 +104,12 @@ public class LoginGui implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(e.getSource() == loginButton){
+        if(e.getSource() == loginButton){ // Collects the texts of the following variables
             String email= emailText.getText();
             String password = pwText.getText();
             System.out.println(email + ", " + password);
             
-            if(login(email, password) || true) {
+            if(login(email, password) || true) { // If login credentials are correct, it sends the user to the homepage
             success.setText("Login Successful!");
             HomePage homePage = new HomePage();
             frame.dispose();
@@ -118,7 +120,7 @@ public class LoginGui implements ActionListener {
             }
         }
         
-        if(e.getSource() == newAccButton){
+        if(e.getSource() == newAccButton){ // Sends the user to the account creation page and closes this window
             
             NewAccount newAcc = new NewAccount();
             frame.dispose();
