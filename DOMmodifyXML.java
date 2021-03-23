@@ -52,6 +52,8 @@ public class DOMmodifyXML {
 	        roleElement.appendChild(doc.createTextNode(role));
 	        Element ratings = doc.createElement("ratings");
 	        ratings.setAttribute("numOf", "0");
+	        Element classes = doc.createElement("classes");
+	        ratings.setAttribute("numOf", "0");
 	        
 	        //Element numOfRatings = doc.createElement("numOfRatings");
 	        //numOfRatings.appendChild(doc.createTextNode("0"));
@@ -64,9 +66,64 @@ public class DOMmodifyXML {
 	        newUser.appendChild(passwordElement);
 	        newUser.appendChild(roleElement);
 	        newUser.appendChild(ratings);
+	        newUser.appendChild(classes);
 	        
 	        Users.appendChild(newUser);
 
+	        // write the content into xml file
+	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        Transformer transformer = transformerFactory.newTransformer();
+	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        DOMSource source = new DOMSource(doc);
+	        StreamResult result = new StreamResult(new File(filepath));
+	        transformer.transform(source, result);
+
+	       } catch (ParserConfigurationException pce) {
+	        pce.printStackTrace();
+	       } catch (TransformerException tfe) {
+	        tfe.printStackTrace();
+	       } catch (IOException ioe) {
+	        ioe.printStackTrace();
+	       } catch (SAXException sae) {
+	        sae.printStackTrace();
+	       } catch (Exception ex) {
+	    	   ex.printStackTrace();
+	       }
+		}
+	
+	public static void addClass(String email, String newClass, String grade) {
+		try {
+	        String filepath = "src/main/gooberDatabase.xml";
+	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	        Document doc = docBuilder.parse(filepath);
+	        
+	        NodeList nList = doc.getElementsByTagName("User");
+
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	Element classElement = doc.createElement("class");
+		    	        classElement.appendChild(doc.createTextNode("class"));
+		    	        classElement.setAttribute("Grade", grade);
+		    	        Node Classes = eElement.getElementsByTagName("classes").item(0);
+		    	        Classes.appendChild(classElement);
+		            	NamedNodeMap attr = Classes.getAttributes();
+		                Node classesAttr = attr.getNamedItem("numOf");
+		                int numOfClasses = Integer.valueOf(classesAttr.getTextContent());
+		                numOfClasses++;
+		                classesAttr.setTextContent(String.valueOf(numOfClasses));
+		            }
+		        }
+		    }
+		    
 	        // write the content into xml file
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();
