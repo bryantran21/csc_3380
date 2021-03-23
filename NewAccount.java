@@ -1,9 +1,13 @@
 package main;
 
+/*
+*
+*@author Anthony Duong
+*
+*/
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -44,11 +48,9 @@ public class NewAccount implements ActionListener{
         
         frame = new JFrame();
         panel = new JPanel();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
         frame.setBounds(600,250,800,600);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
         frame.add(panel);
         
         panel.setLayout(null);
@@ -143,7 +145,7 @@ public class NewAccount implements ActionListener{
     }
     
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e){ // Sends user to the login page and closes this window
         
         if(e.getSource() == rtnButton){
 
@@ -151,7 +153,7 @@ public class NewAccount implements ActionListener{
             frame.dispose();
         }
         
-        if(e.getSource() == createAcc){
+        if(e.getSource() == createAcc){ // Collects the texts of the following variables
             
             String firstName = firstNameText.getText();
             String lastName = lastNameText.getText();
@@ -161,21 +163,21 @@ public class NewAccount implements ActionListener{
             String pw2 = pwText.getText();
             String role = (String)userClass.getSelectedItem();
             
-            if(firstNameText.getText().isEmpty() || lastNameText.getText().isEmpty() || emailText.getText().isEmpty() || pwText.getText().isEmpty() || pw2Text.getText().isEmpty()){
+            if(firstNameText.getText().isEmpty() || lastNameText.getText().isEmpty() || emailText.getText().isEmpty() || pwText.getText().isEmpty() || pw2Text.getText().isEmpty()){ // Checks if any of the text fields are empty
        
                 errorLabel.setText("Please fill all required fields.");  
             
-            } else if(!pw2Text.getText().equals(pwText.getText())) {
+            } else if(!pw2Text.getText().equals(pwText.getText())) { // Checks if the two password inputs match
             
                     errorLabel.setText("Passwords do not match! Try Again.");
                     pwText.setText("");
                     pw2Text.setText("");
             
-            } else if(returnUser(email) != null){
+            } else if(returnUser(email) != null){ // Checks if the entered email already exists in the database
             		errorLabel.setText("An account with this email already exists.  \nPlease enter a different email address.");
             }
             
-            else if(pw2Text.getText().equals(pwText.getText())){
+            else if(pw2Text.getText().equals(pwText.getText())){ // Once it passes all fields, account credentials are stored into database
                 
                 errorLabel.setText("");
                 createAccount(email, firstName, lastName, pw, role);
