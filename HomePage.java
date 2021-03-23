@@ -6,9 +6,7 @@ package main;
  */
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -35,6 +33,8 @@ public class HomePage implements ActionListener
     private JList upcoming;
     private static JScrollPane scrollPane;
     private JLabel upcomingLabel;
+    private static JButton logoutBtn;
+	
     String upcomingString[] = {"Monday, March 22   -   csc3380 @ 5:00p","Tuesday, March 23   -   csc3501 @ 9:30a"};
 
     
@@ -49,7 +49,7 @@ public class HomePage implements ActionListener
         
         panel.setLayout(null);
         
-        titleLabel = new JLabel("Welcome back,");	// Add user's name
+        titleLabel = new JLabel("Welcome back, Loser");	// Add user's name
         titleLabel.setBounds(0,100,800,100);
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE,40));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -84,6 +84,11 @@ public class HomePage implements ActionListener
         upcomingLabel.setFont(new Font(null,Font.PLAIN,10));
         panel.add(upcomingLabel);
         
+	logoutBtn = new JButton("Logout");
+        logoutBtn.setBounds(700,10,80,30);
+        logoutBtn.setFocusable(false);
+        logoutBtn.addActionListener(this);
+        panel.add(logoutBtn);
         
         frame.setVisible(true);
         frame.setResizable(false);
@@ -93,16 +98,21 @@ public class HomePage implements ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == searchButton)
+		if (e.getSource() == searchButton) // Sends the user to a window to search for tutors
 		{
 			Search search = new Search();
 			frame.dispose();
 		}
-		if (e.getSource() == reviewButton)
+		if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor
 		{
 			postMeetingReview pmr = new postMeetingReview();
 			frame.dispose();
 		}
+		if (e.getSource() == logoutBtn) // Logs the user out of the application
+                {
+                    LoginGui login = new LoginGui();
+                    frame.dispose();
+                }
 		
 	}
 }
