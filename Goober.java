@@ -1,9 +1,13 @@
 package main;
 
+/*
+*
+*@author Anthony Duong
+*
+*/
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -31,8 +35,7 @@ public class Goober implements ActionListener{
     public static void main(String[] args) throws IOException {
         
         panel = new JPanel();
-        frame = new JFrame();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();         
+        frame = new JFrame();   
         frame.setBounds(600,250,800,600);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,14 +69,14 @@ public class Goober implements ActionListener{
         frame.setTitle("Goober");
     }
     
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e){ // Sends the user to the login page and closes this window
         
         if(e.getSource() == loginButton){
             LoginGui myGui = new LoginGui();
             frame.dispose();
         }
         
-        if(e.getSource() == newButton) {
+        if(e.getSource() == newButton) { // Sends the user to an account creation page and closes this window
             
             NewAccount newAcc = new NewAccount();
             frame.dispose();
