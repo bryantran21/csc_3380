@@ -97,6 +97,60 @@ public static User returnUser(String email) {
 		
 	}
 
+public static User[] tutorsInClass(String classCode) {
+	User[] tutorList = new User[100];
+	int listIndex = 0;
+	
+	try {
+
+	    File fXmlFile = new File("src/main/gooberDatabase.xml");
+	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	    Document doc = dBuilder.parse(fXmlFile);
+
+	    doc.getDocumentElement().normalize();
+	            
+	    NodeList nList = doc.getElementsByTagName("User");
+	            
+	    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+	        Node nNode = nList.item(temp);
+	                
+	        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+	            Element eElement = (Element) nNode;
+
+	            if (eElement.getElementsByTagName("role").item(0).getTextContent().equals("Tutor")) {
+	            	NodeList nList2 = eElement.getElementsByTagName("class");
+	    	        
+	    	        
+	    	        for (int temp2 = 0; temp2 < nList2.getLength(); temp2++) {
+
+	    		        Node nNode2 = nList2.item(temp2);
+	    		        
+	    		        if (nNode2.getNodeType() == Node.ELEMENT_NODE) {
+
+	    		            Element eElement2 = (Element) nNode2;
+	    		            if (eElement2.getTextContent() == classCode) {
+	    		            	tutorList[listIndex] = returnUser(eElement.getElementsByTagName("email").item(0).getTextContent());
+	    		            	listIndex++;
+	    		            }
+	    		        }
+	    		    }
+
+	            }
+
+
+	        }
+	    }
+	    } catch (Exception e) {
+	    e.printStackTrace();
+	    }
+	
+	
+	return tutorList;
+}
+
 public static User[] listOfTutors() {
 	User[] tutorList = new User[100];
 	int listIndex = 0;
@@ -135,45 +189,6 @@ public static User[] listOfTutors() {
 	
 	return tutorList;
 }
-	
-	public static String[] listOfTutorsOLD() {
-		String[] tutorList = new String[100];
-		int listIndex = 0;
-		
-		try {
-
-		    File fXmlFile = new File("src/main/gooberDatabase.xml");
-		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		    Document doc = dBuilder.parse(fXmlFile);
-
-		    doc.getDocumentElement().normalize();
-		            
-		    NodeList nList = doc.getElementsByTagName("User");
-		            
-		    for (int temp = 0; temp < nList.getLength(); temp++) {
-
-		        Node nNode = nList.item(temp);
-		                
-		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-		            Element eElement = (Element) nNode;
-
-		            if (eElement.getElementsByTagName("role").item(0).getTextContent().equals("Tutor")) {
-		            	tutorList[listIndex] = eElement.getElementsByTagName("email").item(0).getTextContent();
-		            	listIndex++;
-		            }
-
-
-		        }
-		    }
-		    } catch (Exception e) {
-		    e.printStackTrace();
-		    }
-		
-		
-		return tutorList;
-	}
 	
 public static float round(float d, int decimalPlace){
 	if(d == 0)
