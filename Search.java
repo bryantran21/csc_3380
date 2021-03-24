@@ -12,7 +12,8 @@ import java.awt.*;
 class Search extends JFrame{
 
 
-   public Search(){
+   public Search(User passedUser){
+	   User currentUser = passedUser;
 	   setBounds(600,250,400,150);
 	   setLocationRelativeTo(null);
 	   setResizable(false);
@@ -20,25 +21,37 @@ class Search extends JFrame{
        
        JPanel borderPanel = (JPanel)this.getContentPane();
        JPanel centerPanel = new JPanel();
+       borderPanel.setBackground(Color.decode("#36393f"));
+       centerPanel.setBackground(Color.decode("#36393f"));
        JTextField t = new JTextField(10);                           
        JButton b = new JButton("Search");
        b.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
            public void actionPerformed(ActionEvent e){
-               Results(t.getText());
+               Results(t.getText(), currentUser);
                }
        });
+       b.setBackground(Color.decode("#7289da"));
+       b.setForeground(Color.decode("#dcddde"));
+       
+       
        JButton h = new JButton("HOME");
        h.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
            public void actionPerformed(ActionEvent e){
-               new HomePage();
+               new HomePage(passedUser);
                dispose();
                }
        });
+       h.setBackground(Color.decode("#7289da"));
+       h.setForeground(Color.decode("#dcddde"));
        
        borderPanel.setLayout(new BorderLayout());                   //Setup larger panel with border layout
        borderPanel.add(h, BorderLayout.NORTH);                      //Add HOME button to north position
        
-       centerPanel.add(new JLabel("Enter course name:"));           //Add Label to central panel 
+       JLabel e = new JLabel("Enter course name:");
+       e.setForeground(Color.decode("#dcddde"));
+       centerPanel.add(e);           //Add Label to central panel 
+       t.setForeground(Color.decode("#23272a"));
+       t.setBackground(Color.decode("#99aab5"));
        centerPanel.add(t);                                          //Add a textfield next
        
        
@@ -48,7 +61,7 @@ class Search extends JFrame{
        setVisible(true);                                            //Frame to be made visible
    }
    
-   public void Results(String course){
+   public void Results(String course, User passedUser){
         String tutors[] = {"Darrion Rudd", "Miguel Rojo"};                         //**INPUT FROM DATABASE!!**
        
         setBounds(0,0,800,600);
@@ -59,7 +72,10 @@ class Search extends JFrame{
         this.getContentPane().removeAll();                          //Clear leftover items from content pane 
         JPanel borderPanel = (JPanel) this.getContentPane();
         borderPanel.setLayout(new BorderLayout());
-        borderPanel.add(new JLabel("SEARCH: Tutors for course " + course), BorderLayout.NORTH);
+        borderPanel.setBackground(Color.decode("#36393f"));
+        JLabel z = new JLabel("SEARCH: Tutors for course " + course);
+        z.setForeground(Color.decode("#dcddde"));
+        borderPanel.add(z);
       
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new GridLayout(tutors.length, 2));    //Grid layout with n rows, 2 columns
@@ -67,14 +83,19 @@ class Search extends JFrame{
       for (String tutor : tutors)                                   //make a label and button for every item from database
       {
          JButton button = new JButton("Add");
-         
+         button.setBackground(Color.decode("#7289da"));
+         button.setForeground(Color.decode("#dcddde"));
          button.addActionListener(new ActionListener(){                    //Create a button with action "Call Results()"
            public void actionPerformed(ActionEvent e){
                /*ADD TUTOR FUNCTION GOES HERE ** e.g. student.addTutor(tutor);*/
                }});
          
-         centerPanel.add(new JLabel(tutor));
+         JLabel tutorLabel = new JLabel(tutor);
+         tutorLabel.setForeground(Color.decode("#dcddde"));
+         
+         centerPanel.add(tutorLabel);
          centerPanel.add(button);
+         centerPanel.setBackground(Color.decode("#36393f"));
       }
       
       JScrollPane scrollPane = new JScrollPane(centerPanel);         //convert grid to scroll pane

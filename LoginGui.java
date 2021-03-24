@@ -19,6 +19,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import static main.DOMreadXML.login;
+import static main.DOMreadXML.returnUser;
 
 public class LoginGui implements ActionListener {
     
@@ -53,28 +54,38 @@ public class LoginGui implements ActionListener {
 //        titleLabel.setVerticalAlignment(JLabel.CENTER);
 //        titleLabel.setLocation(frame.getSize().width/2-titleLabel.getX()/2, 5);
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 40));
+        titleLabel.setForeground(Color.decode("#dcddde"));
         panel.add(titleLabel);
         
         emailLabel = new JLabel("Email: ");
         emailLabel.setBounds(263, 253, 100, 25);
         emailLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        emailLabel.setForeground(Color.decode("#dcddde"));
         panel.add(emailLabel);
 
         emailText = new JTextField();
         emailText.setBounds(371, 253, 165, 25);
+        emailText.setForeground(Color.decode("#23272a"));
+        emailText.setBackground(Color.decode("#99aab5"));
+        
         panel.add(emailText);
         
         pwLabel = new JLabel("Password: ");
         pwLabel.setBounds(263, 288, 100, 25);
         pwLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        pwLabel.setForeground(Color.decode("#dcddde"));
         panel.add(pwLabel);
         
         pwText = new JPasswordField();
         pwText.setBounds(371, 288, 165, 25);
+        pwText.setForeground(Color.decode("#23272a"));
+        pwText.setBackground(Color.decode("#99aab5"));
         panel.add(pwText);
         
         loginButton = new JButton("Login");
         loginButton.setBounds(360, 341, 80, 25);
+        loginButton.setBackground(Color.decode("#7289da"));
+        loginButton.setForeground(Color.decode("#dcddde"));
 
         loginButton.setFocusable(false);
         loginButton.addActionListener(this);
@@ -82,11 +93,14 @@ public class LoginGui implements ActionListener {
         
         success = new JLabel("");
         success.setBounds(295, 380, 210, 25);
+        success.setFont(new Font(null,Font.CENTER_BASELINE,12));
+        success.setForeground(Color.RED);
         panel.add(success);
         
         newAccLabel = new JLabel("New Account?");
         newAccLabel.setBounds(318, 500, 100, 20);
         newAccLabel.setFont(new Font(null,Font.PLAIN,10));
+        newAccLabel.setForeground(Color.decode("#dcddde"));
         panel.add(newAccLabel);
         
         newAccButton = new JButton("Click here!");
@@ -94,7 +108,10 @@ public class LoginGui implements ActionListener {
         newAccButton.setFont(new Font(null,Font.PLAIN,10));
         newAccButton.setFocusable(false);
         newAccButton.addActionListener(this);
+        newAccButton.setBackground(Color.decode("#7289da"));
+        newAccButton.setForeground(Color.decode("#dcddde"));
         panel.add(newAccButton);
+        panel.setBackground(Color.decode("#36393f"));
         
         frame.setVisible(true);
         frame.setResizable(false);
@@ -107,11 +124,11 @@ public class LoginGui implements ActionListener {
         if(e.getSource() == loginButton){ // Collects the texts of the following variables
             String email= emailText.getText();
             String password = pwText.getText();
-            System.out.println(email + ", " + password);
             
-            if(login(email, password) || true) { // If login credentials are correct, it sends the user to the homepage
+            if(login(email, password)) { // If login credentials are correct, it sends the user to the homepage
             success.setText("Login Successful!");
-            HomePage homePage = new HomePage();
+            User currentUser = returnUser(email);
+            HomePage homePage = new HomePage(currentUser);
             frame.dispose();
             }else{
                 success.setText("Invalid Email or Password! Try Again.");

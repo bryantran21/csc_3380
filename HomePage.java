@@ -34,35 +34,44 @@ public class HomePage implements ActionListener
     private static JScrollPane scrollPane;
     private JLabel upcomingLabel;
     private static JButton logoutBtn;
+    private User currentUser;
 	
     String upcomingString[] = {"Monday, March 22   -   csc3380 @ 5:00p","Tuesday, March 23   -   csc3501 @ 9:30a"};
 
     
-    HomePage(){
+    HomePage(User passedUser){
+    	currentUser = passedUser;
+    	
+    	
         panel = new JPanel();
         frame = new JFrame();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setBounds(600,250,800,600);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
+        panel.setBackground(Color.decode("#36393f"));
         
         panel.setLayout(null);
         
-        titleLabel = new JLabel("Welcome back, Loser");	// Add user's name
+        titleLabel = new JLabel("Welcome back, " + currentUser.getFirstName());	// Add user's name
         titleLabel.setBounds(0,100,800,100);
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE,40));
+        titleLabel.setForeground(Color.decode("#dcddde"));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(titleLabel);
                 
         searchButton = new JButton("Search For Tutors");
         searchButton.setBounds(250, 225, 300, 40);
+        searchButton.setBackground(Color.decode("#7289da"));
+        searchButton.setForeground(Color.decode("#dcddde"));
         searchButton.setFocusable(false);
         searchButton.addActionListener(this);
         panel.add(searchButton);
         
         reviewButton = new JButton("Post-Meeting Review");
         reviewButton.setBounds(250, 275, 300, 40);
+        reviewButton.setBackground(Color.decode("#7289da"));
+        reviewButton.setForeground(Color.decode("#dcddde"));
         reviewButton.setFocusable(false);
         reviewButton.addActionListener(this);
         panel.add(reviewButton);
@@ -72,6 +81,8 @@ public class HomePage implements ActionListener
         panel.add(success);
         
         upcoming = new JList(upcomingString);
+        upcoming.setForeground(Color.decode("#23272a"));
+        upcoming.setBackground(Color.decode("#99aab5"));
         
         scrollPane = new JScrollPane(upcoming);
         scrollPane.setViewportView(upcoming);
@@ -82,10 +93,13 @@ public class HomePage implements ActionListener
         upcomingLabel = new JLabel("Upcoming Meetings");
         upcomingLabel.setBounds(250,355,300,25);
         upcomingLabel.setFont(new Font(null,Font.PLAIN,10));
+        upcomingLabel.setForeground(Color.decode("#dcddde"));
         panel.add(upcomingLabel);
         
 	logoutBtn = new JButton("Logout");
-        logoutBtn.setBounds(700,10,80,30);
+        logoutBtn.setBounds(690,10,80,30);
+        logoutBtn.setBackground(Color.decode("#7289da"));
+        logoutBtn.setForeground(Color.decode("#dcddde"));
         logoutBtn.setFocusable(false);
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
@@ -100,13 +114,12 @@ public class HomePage implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == searchButton) // Sends the user to a window to search for tutors
 		{
-			//Search search = new Search();
-			SearchGui search = new SearchGui();
+			Search search = new Search(currentUser);
 			frame.dispose();
 		}
 		if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor
 		{
-			postMeetingReview pmr = new postMeetingReview();
+			postMeetingReview pmr = new postMeetingReview(currentUser);
 			frame.dispose();
 		}
 		if (e.getSource() == logoutBtn) // Logs the user out of the application

@@ -58,65 +58,86 @@ public class NewAccount implements ActionListener{
         titleLabel = new JLabel("Create a Goober Account");
         titleLabel.setBounds(125, 50, 550, 50);
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 45));
+        titleLabel.setForeground(Color.decode("#dcddde"));
         panel.add(titleLabel);
         
         userType = new JLabel("Are you a Student or Tutor?");
         userType.setBounds(200,162,250,25);
         userType.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        userType.setForeground(Color.decode("#dcddde"));
         panel.add(userType);
         
         String[] options = {"Student", "Tutor"};
         userClass = new JComboBox(options);
         userClass.setBounds(460, 162, 100, 25);
+        userClass.setForeground(Color.decode("#23272a"));
+        userClass.setBackground(Color.decode("#99aab5"));
         panel.add(userClass);
         
         emailLabel = new JLabel("Enter a valid e-mail: ");
         emailLabel.setBounds(200,202,400,25);
         emailLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        emailLabel.setForeground(Color.decode("#dcddde"));
         panel.add(emailLabel);
         
         emailText = new JTextField();
         emailText.setBounds(412,202,150,25);
+        emailText.setForeground(Color.decode("#23272a"));
+        emailText.setBackground(Color.decode("#99aab5"));
         panel.add(emailText);
         
         firstNameLabel = new JLabel("First Name: ");
         firstNameLabel.setBounds(200, 242, 400, 25);
         firstNameLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        firstNameLabel.setForeground(Color.decode("#dcddde"));
         panel.add(firstNameLabel);
         
         firstNameText = new JTextField();
         firstNameText.setBounds(412, 242, 150, 25);
+        firstNameText.setForeground(Color.decode("#23272a"));
+        firstNameText.setBackground(Color.decode("#99aab5"));
         panel.add(firstNameText);
         
         lastNameLabel = new JLabel("Last Name: ");
         lastNameLabel.setBounds(200, 282, 400, 25);
         lastNameLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        lastNameLabel.setForeground(Color.decode("#dcddde"));
         panel.add(lastNameLabel);
         
         lastNameText = new JTextField();
         lastNameText.setBounds(412, 282, 150, 25);
+        lastNameText.setForeground(Color.decode("#23272a"));
+        lastNameText.setBackground(Color.decode("#99aab5"));
         panel.add(lastNameText);
         
         pwLabel = new JLabel("Create Password: ");
         pwLabel.setBounds(200, 322, 400, 25);
         pwLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        pwLabel.setForeground(Color.decode("#dcddde"));
         panel.add(pwLabel);
         
         pwText = new JPasswordField();
         pwText.setBounds(412, 322, 150, 25);
+        pwText.setForeground(Color.decode("#23272a"));
+        pwText.setBackground(Color.decode("#99aab5"));
         panel.add(pwText);
         
         pw2Label = new JLabel("Confirm Password: ");
         pw2Label.setBounds(200, 362, 400, 25);
         pw2Label.setFont(new Font(null, Font.CENTER_BASELINE, 18));
+        pw2Label.setForeground(Color.decode("#dcddde"));
         panel.add(pw2Label);
         
         pw2Text = new JPasswordField();
         pw2Text.setBounds(412, 362, 150, 25);
+        pw2Text.setForeground(Color.decode("#23272a"));
+        pw2Text.setBackground(Color.decode("#99aab5"));
         panel.add(pw2Text);
         
         createAcc = new JButton("Create Account");
         createAcc.setBounds(325, 402, 150, 25);
+        createAcc.setBackground(Color.decode("#7289da"));
+        createAcc.setForeground(Color.decode("#dcddde"));
         createAcc.setFocusable(false);
         createAcc.addActionListener(this);
         panel.add(createAcc);
@@ -124,10 +145,13 @@ public class NewAccount implements ActionListener{
         rtnLabel = new JLabel("Already have an account?");
         rtnLabel.setBounds(270,500,150,25);
         rtnLabel.setFont(new Font(null,Font.PLAIN,12));
+        rtnLabel.setForeground(Color.decode("#dcddde"));
         panel.add(rtnLabel);
         
         rtnButton = new JButton("Click Here!");
         rtnButton.setBounds(420,503,100,20);
+        rtnButton.setBackground(Color.decode("#7289da"));
+        rtnButton.setForeground(Color.decode("#dcddde"));
         rtnButton.setFocusable(false);
         rtnButton.addActionListener(this);
         panel.add(rtnButton);
@@ -138,6 +162,7 @@ public class NewAccount implements ActionListener{
         errorLabel.setFont(new Font(null,Font.CENTER_BASELINE,12));
         errorLabel.setForeground(Color.RED);
         panel.add(errorLabel);
+        panel.setBackground(Color.decode("#36393f"));
         
         frame.setVisible(true);
         frame.setResizable(false);

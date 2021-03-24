@@ -39,6 +39,7 @@ public class Goober implements ActionListener{
         frame.setBounds(600,250,800,600);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel.setBackground(Color.decode("#36393f"));
         frame.add(panel);
        
         panel.setLayout(null);
@@ -50,17 +51,22 @@ public class Goober implements ActionListener{
         title.setBounds(180,120,440,150);
 //        title.setSize(200,30);
         title.setFont(new Font(null, Font.CENTER_BASELINE, 45));
+        title.setForeground(Color.decode("#dcddde"));
         panel.add(title);
 
         loginButton = new JButton("Log In");
         loginButton.setBounds(200,250,400,30); 
         loginButton.setFocusable(false);
+        loginButton.setBackground(Color.decode("#7289da"));
+        loginButton.setForeground(Color.decode("#dcddde"));
         loginButton.addActionListener(new Goober());
         panel.add(loginButton);
         
         newButton = new JButton("Sign Up");
         newButton.setBounds(200,290,400,30); 
         newButton.setFocusable(false);
+        newButton.setBackground(Color.decode("#7289da"));
+        newButton.setForeground(Color.decode("#dcddde"));
         newButton.addActionListener(new Goober());
         panel.add(newButton);
         

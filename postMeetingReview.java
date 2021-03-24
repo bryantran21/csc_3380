@@ -54,6 +54,7 @@ public class postMeetingReview implements ActionListener
 	private JButton submitButton;
 	private JFrame smallFrame;
 	private JPanel smallPanel;
+	private User currentUser;
 
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
@@ -100,8 +101,10 @@ public class postMeetingReview implements ActionListener
 	}
 	
 	
-	public postMeetingReview()
+	public postMeetingReview(User passedUser)
 	{
+		currentUser = passedUser;
+		
 		sortTutors();
 		
 		frame = new JFrame();
@@ -119,6 +122,8 @@ public class postMeetingReview implements ActionListener
 		// LEFT PANEL (panel that holds the list of available tutors and the selection button)
 		{
 			list = new JList(tutorNames);	// List of all available tutors
+			list.setForeground(Color.decode("#23272a"));
+	        list.setBackground(Color.decode("#99aab5"));
 			
 			scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
 			scrollPane.setBounds(100,30,200,430);
@@ -126,6 +131,8 @@ public class postMeetingReview implements ActionListener
 			
 			selectButton = new JButton("Select Tutor");	// Button that enables a review for selected tutor
 			selectButton.setBounds(100,500,200,30);
+			selectButton.setBackground(Color.decode("#7289da"));
+	        selectButton.setForeground(Color.decode("#dcddde"));
 			selectButton.addActionListener(this);
 			
 			errorLabel = new JLabel("");
@@ -139,6 +146,7 @@ public class postMeetingReview implements ActionListener
 			scrollPanel.setLayout(null);	// Entire panel that hosts list of tutors, scroll pane, and button
 			scrollPanel.add(scrollPane);
 			scrollPanel.add(selectButton);
+			scrollPanel.setBackground(Color.decode("#36393f"));
 			
 			
 
@@ -150,16 +158,19 @@ public class postMeetingReview implements ActionListener
 		{
 			titleLabel.setBounds(0,118,400,30);		// Static text label
 			titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+			titleLabel.setForeground(Color.decode("#dcddde"));
 			titleLabel.setHorizontalAlignment(JLabel.CENTER);
 
 			
 			tutorLabel.setBounds(0,140,400,30);		// Text label that gets updated with selected tutor's name
 			tutorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 25));
+			tutorLabel.setForeground(Color.decode("#dcddde"));
 			tutorLabel.setHorizontalAlignment(JLabel.CENTER);
 
 			averageRating = new JLabel();
 			averageRating.setBounds(0,165,400,30);
 			averageRating.setFont(new Font(null,Font.PLAIN,12));
+			averageRating.setForeground(Color.decode("#dcddde"));
 			averageRating.setHorizontalAlignment(JLabel.CENTER);
 			averageRating.setVisible(false);
 			
@@ -172,15 +183,21 @@ public class postMeetingReview implements ActionListener
 			ratingSlider.setMajorTickSpacing(1);
 			ratingSlider.setPaintLabels(true);
 			ratingSlider.setBounds(50,200,300,50);
+			ratingSlider.setForeground(Color.decode("#dcddde"));
+			ratingSlider.setBackground(Color.decode("#36393f"));
 			ratingSlider.setVisible(false);
 			
 			submitButton = new JButton("Submit Rating");	// Button that updates the specific tutor's rating average with new number
 			submitButton.setBounds(100,275,200,30);
+			submitButton.setBackground(Color.decode("#7289da"));
+			submitButton.setForeground(Color.decode("#dcddde"));
 			submitButton.addActionListener(this);
 			submitButton.setVisible(false);
 			
 			returnButton = new JButton("Return to the Homepage");
 			returnButton.setBounds(100,500,200,30);
+			returnButton.setBackground(Color.decode("#7289da"));
+	        returnButton.setForeground(Color.decode("#dcddde"));
 			returnButton.addActionListener(this);
 			returnButton.setVisible(true);
 			returnButton.setHorizontalAlignment(JLabel.CENTER);
@@ -194,6 +211,7 @@ public class postMeetingReview implements ActionListener
 			tutorPanel.add(submittedLabel);
 			tutorPanel.add(returnButton);
 			tutorPanel.add(averageRating);
+			tutorPanel.setBackground(Color.decode("#36393f"));
 		}
 		
 		
@@ -213,11 +231,13 @@ public class postMeetingReview implements ActionListener
 		smallFrame.setBounds(600,250,400,150);
 		smallFrame.setLocationRelativeTo(null);
 		smallPanel = new JPanel();
+		smallPanel.setBackground(Color.decode("#36393f"));
 		
         
         newLabel = new JLabel(text);
         newLabel.setBounds(0,30,400,30);
         newLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        newLabel.setForeground(Color.decode("#dcddde"));
         newLabel.setHorizontalAlignment(JLabel.CENTER);
        
         smallPanel.setLayout(null);
@@ -264,14 +284,14 @@ public class postMeetingReview implements ActionListener
 		 if(e.getSource() == submitButton)		// Closes the current window and opens up the home page as well as a notification window
 		 {
 			 String labelText = "You have given " + tutors[index].getFirstName() + " " + tutors[index].getLastName() + " a rating of " + ratingSlider.getValue();
-			 HomePage homepage = new HomePage();
+			 HomePage homepage = new HomePage(currentUser);
 			 submittedRating(labelText);
 			 frame.dispose();
 			 ratings(tutors[index].getEmail(), String.valueOf(ratingSlider.getValue()));
 		 }
 		 if(e.getSource() == returnButton)		// Closes the current window and returns to the home page
 		 {
-			 HomePage homepage = new HomePage();
+			 HomePage homepage = new HomePage(currentUser);
 			 frame.dispose();
 		 }
 	}
