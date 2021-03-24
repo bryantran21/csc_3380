@@ -100,7 +100,8 @@ public class HomePage implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == searchButton) // Sends the user to a window to search for tutors
 		{
-			Search search = new Search();
+			//Search search = new Search();
+			SearchGui search = new SearchGui();
 			frame.dispose();
 		}
 		if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor
