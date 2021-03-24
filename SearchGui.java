@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Comparator;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -61,7 +63,48 @@ public class SearchGui implements ActionListener{
     User tutors[] = listOfTutors(); // Receives the list of tutors from the database
     String tutorNames[] = new String[100];
     
+	public class ComparatorUser implements Comparator {	// A comparator function used to alphabetically compare users
+
+	    public int compare(Object arg0, Object arg1) 
+	    {
+	        User user0 = (User) arg0;
+	        User user1 = (User) arg1;
+	        
+	        String userZero = user0.getLastName() + user0.getFirstName();
+	        String userOne = user1.getLastName() + user1.getFirstName();
+
+	        int flag = userZero.compareTo(userOne);
+	        return flag;
+	    }
+	}
+	
+	public void sortTutors()			// A sort function that sorts tutors alphabetically
+	{
+		
+		int count = 0;					
+		User temp = null;
+		
+		ComparatorUser comparator = new ComparatorUser();
+		
+		
+		for(int i = 0; tutors[i] != null; i++)		// For loop that runs through entire list of tutors
+		{
+			
+			count++;
+		}
+		Arrays.sort(tutors,0,count,comparator);		// Sorts users alphabetically
+		
+		for(int i = 0; tutors[i] != null; i++)		// Creates a string array of tutors with the first and last name, sorted
+		{
+			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName();		
+		}
+
+		
+//		Arrays.sort(tutorNames,0,count);
+	}    
     public SearchGui(){
+        
+        sortTutors();
         
         frame = new JFrame();
         frame.setBounds(0,0,800,600);
@@ -94,7 +137,7 @@ public class SearchGui implements ActionListener{
         scrollPanel.add(scrollPane);
         
         errorLabel = new JLabel("");
-        errorLabel.setBounds(0,465,400,35);
+        errorLabel.setBounds(0,470,400,35);
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
         errorLabel.setFont(new Font(null,Font.CENTER_BASELINE,12));
 	errorLabel.setForeground(Color.RED);
@@ -112,6 +155,7 @@ public class SearchGui implements ActionListener{
         
         tutorPanel = new JPanel();
         tutorPanel.setLayout(null);
+        tutorPanel.setVisible(false);
         
         titleLabel = new JLabel("SCHEDULE A MEETING WITH");
         titleLabel.setBounds(0,100,400,30);
@@ -119,7 +163,7 @@ public class SearchGui implements ActionListener{
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         tutorPanel.add(titleLabel);
         
-        tutorLabel = new JLabel("Anthony");
+        tutorLabel = new JLabel();
         tutorLabel.setBounds(0,122,400,30);
         tutorLabel.setFont(new Font(null,Font.CENTER_BASELINE,25));
         tutorLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -251,16 +295,33 @@ public class SearchGui implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        int index = list.getSelectedIndex();
+        if(e.getSource() == selectBtn){
+            
+            if(tutors[index] == null){	// If no tutor was selected from the list
+                
+                errorLabel.setText("No tutor selected.  Please select a tutor.");
+                titleLabel.setText("");
+                tutorLabel.setText("");
+
+            }else{
+                
+                tutorPanel.setVisible(true);
+                tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
+                errorLabel.setText("");
+                
+            }
+        }
         if(e.getSource() == scheduleBtn){
             
-            String confirmText = "Schedule to meet with (insert tutor) on (days) at (time)?";
+            String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " " + tutors[index].getLastName() + " on (days) at (time)?";
             confirmPage(confirmText);
             
         }
         
         if(e.getSource() == confirmBtn){
             
-            String successText = "You have successfully scheduled to meet with (tutor) on (days) at (time)!";
+            String successText = "You have successfully scheduled to meet with " + tutors[index].getFirstName() + " " + tutors[index].getLastName() + " on (days) at (time)!";
             HomePage homepage = new HomePage();
             successPage(successText);
             confirmFrame.dispose();
