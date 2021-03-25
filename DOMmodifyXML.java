@@ -40,25 +40,45 @@ public class DOMmodifyXML {
 
 	        // append a new node to staff
 	        Element newUser = doc.createElement("User");
+	        
 	        Element emailElement = doc.createElement("email");
 	        emailElement.appendChild(doc.createTextNode(email));
+	        
 	        Element firstNameElement = doc.createElement("firstName");
 	        firstNameElement.appendChild(doc.createTextNode(firstName));
+	        
 	        Element lastNameElement = doc.createElement("lastName");
 	        lastNameElement.appendChild(doc.createTextNode(lastName));
+	        
 	        Element passwordElement = doc.createElement("password");
 	        passwordElement.appendChild(doc.createTextNode(password));
+	        
 	        Element roleElement = doc.createElement("role");
 	        roleElement.appendChild(doc.createTextNode(role));
+	        
 	        Element ratings = doc.createElement("ratings");
 	        ratings.setAttribute("numOf", "0");
-	        Element classes = doc.createElement("classes");
-	        ratings.setAttribute("numOf", "0");
 	        
-	        //Element numOfRatings = doc.createElement("numOfRatings");
-	        //numOfRatings.appendChild(doc.createTextNode("0"));
-	        //ratings.appendChild(numOfRatings);
-
+	        Element classes = doc.createElement("classes");
+	        classes.setAttribute("numOf", "0");
+	        
+	        Element schedule = doc.createElement("schedule");
+	        Element sunday = doc.createElement("Sunday");
+	        Element monday = doc.createElement("Monday");
+	        Element tuesday = doc.createElement("Tuesday");
+	        Element wednesday = doc.createElement("Wednesday");
+	        Element thursday = doc.createElement("Thursday");
+	        Element friday = doc.createElement("Friday");
+	        Element saturday = doc.createElement("Saturday");
+	        
+	        schedule.appendChild(sunday);
+	        schedule.appendChild(monday);
+	        schedule.appendChild(tuesday);
+	        schedule.appendChild(wednesday);
+	        schedule.appendChild(thursday);
+	        schedule.appendChild(friday);
+	        schedule.appendChild(saturday);
+	        
 	        
 	        newUser.appendChild(emailElement);
 	        newUser.appendChild(firstNameElement);
@@ -67,9 +87,75 @@ public class DOMmodifyXML {
 	        newUser.appendChild(roleElement);
 	        newUser.appendChild(ratings);
 	        newUser.appendChild(classes);
+	        newUser.appendChild(schedule);
 	        
 	        Users.appendChild(newUser);
 
+	        // write the content into xml file
+	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        Transformer transformer = transformerFactory.newTransformer();
+	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        DOMSource source = new DOMSource(doc);
+	        StreamResult result = new StreamResult(new File(filepath));
+	        transformer.transform(source, result);
+
+	       } catch (ParserConfigurationException pce) {
+	        pce.printStackTrace();
+	       } catch (TransformerException tfe) {
+	        tfe.printStackTrace();
+	       } catch (IOException ioe) {
+	        ioe.printStackTrace();
+	       } catch (SAXException sae) {
+	        sae.printStackTrace();
+	       } catch (Exception ex) {
+	    	   ex.printStackTrace();
+	       }
+		}
+	
+	public static void schedule(String studentEmail, String tutorEmail, String meetingDay, String meetingTime) {
+		try {
+	        String filepath = "src/main/gooberDatabase.xml";
+	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	        Document doc = docBuilder.parse(filepath);
+	        
+	        NodeList nList = doc.getElementsByTagName("User");
+
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	
+		            	Element timeScheduled = doc.createElement("meetingTime");
+		            	timeScheduled.appendChild(doc.createTextNode(meetingTime));
+		            	
+		            	timeScheduled.setAttribute("meetingWith", studentEmail);
+		            	
+		    	        Node schedule = eElement.getElementsByTagName(meetingDay).item(0);
+		    	        schedule.appendChild(timeScheduled);
+		            }
+		            
+		            if (studentEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	
+		            	Element timeScheduled = doc.createElement("meetingTime");
+		            	timeScheduled.appendChild(doc.createTextNode(meetingTime));
+		            	
+		            	timeScheduled.setAttribute("meetingWith", tutorEmail);
+		            	
+		    	        Node schedule = eElement.getElementsByTagName(meetingDay).item(0);
+		    	        schedule.appendChild(timeScheduled);
+		            }
+		            
+		            
+		        }
+		    }
+		    
 	        // write the content into xml file
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();
@@ -112,7 +198,7 @@ public class DOMmodifyXML {
 		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	Element classElement = doc.createElement("class");
 		    	        classElement.appendChild(doc.createTextNode("class"));
-		    	        classElement.setAttribute("Grade", grade);
+		    	        classElement.setAttribute("grade", grade);
 		    	        Node Classes = eElement.getElementsByTagName("classes").item(0);
 		    	        Classes.appendChild(classElement);
 		            	NamedNodeMap attr = Classes.getAttributes();
