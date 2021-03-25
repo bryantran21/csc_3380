@@ -2,7 +2,7 @@ package main;
 
 /**
  *
- * @author Darrion Rudd
+ * @author Darrion Rudd, Anthony Duong, Blake Lalonde
  * @since 3/16/2021
  */
 
