@@ -306,7 +306,7 @@ public class SearchGui implements ActionListener {
 		successPanel.add(successLabel1);
 
 		successLabel2 = new JLabel(text2);
-		successLabel2.setBounds(0, 40, 400, 30);
+		successLabel2.setBounds(0, 40, 380, 30);
 		successLabel2.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 		successLabel2.setHorizontalAlignment(JLabel.CENTER);
 		successLabel2.setForeground(Color.decode("#dcddde"));
