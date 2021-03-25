@@ -99,6 +99,7 @@ public class ClassGui implements ActionListener {
         addButton.setBounds(150, 200, 125, 30);
         addButton.setBackground(Color.decode("#7289da"));
         addButton.setForeground(Color.decode("#dcddde"));
+        addButton.addActionListener(this);
         panel.add(addButton);
 
         courseLabel = new JLabel("Enter course: ");
@@ -148,7 +149,8 @@ public class ClassGui implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-            addClass(currentUser.getEmail(), addText.getText(), gradeBox.getSelectedItem().toString());
+        	System.out.print("Test");
+            addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
         }
         if (e.getSource() == homeButton) {
             HomePage home = new HomePage(currentUser);

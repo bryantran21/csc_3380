@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 
 import static main.DOMreadXML.avgRating;
 import static main.DOMreadXML.listOfTutors;
+import static main.DOMreadXML.tutorsInClass;
+import static main.DOMmodifyXML.schedule;
 //import static main.postMeetingReview;
 
 public class SearchGui implements ActionListener {
@@ -54,14 +56,16 @@ public class SearchGui implements ActionListener {
 	private JLabel confirmLabel1;
 	private JLabel confirmLabel2;
 	private JButton confirmBtn;
+	private JButton declineBtn;
 	private JFrame successFrame;
 	private JPanel successPanel;
 	private JLabel successLabel1;
 	private JLabel successLabel2;
 	private User currentUser;
+	private JList newList;
+	private JLabel exampleLabel;
 	private String daySelect;
 	private String timeSelect;
-
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	String tutorNames[] = new String[100];
 
@@ -108,7 +112,6 @@ public class SearchGui implements ActionListener {
 	public SearchGui(User passedUser) {
 
 		currentUser = passedUser;
-		sortTutors();
 
 		frame = new JFrame();
 		frame.setBounds(0, 0, 800, 600);
@@ -119,10 +122,11 @@ public class SearchGui implements ActionListener {
 
 		scrollPanel = new JPanel();
 
-		list = new JList(tutorNames);
+		list = new JList();
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setForeground(Color.decode("#23272a"));
 		list.setBackground(Color.decode("#99aab5"));
+		
 
 		searchLabel = new JLabel("Enter course: ");
 		searchLabel.setForeground(Color.decode("#dcddde"));
@@ -140,6 +144,12 @@ public class SearchGui implements ActionListener {
 		searchBtn.setFocusable(false);
 		searchBtn.addActionListener(this);
 		scrollPanel.add(searchBtn);
+		
+		exampleLabel = new JLabel("(Ex. CSC 3380)");
+		exampleLabel.setBounds(10,25,90,25);
+		exampleLabel.setFont(new Font(null,Font.PLAIN,10));
+		exampleLabel.setForeground(Color.decode("#dcddde"));
+        scrollPanel.add(exampleLabel);
 
 		scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);
@@ -274,12 +284,20 @@ public class SearchGui implements ActionListener {
 		confirmPanel.add(confirmLabel2);
 
 		confirmBtn = new JButton("Confirm");
-		confirmBtn.setBounds(160, 70, 80, 30);
+		confirmBtn.setBounds(110, 70, 80, 30);
 		confirmBtn.setBackground(Color.decode("#7289da"));
 		confirmBtn.setForeground(Color.decode("#dcddde"));
 		confirmBtn.setFocusable(false);
 		confirmBtn.addActionListener(this);
 		confirmPanel.add(confirmBtn);
+		
+		declineBtn = new JButton("Decline");
+		declineBtn.setBounds(210, 70, 80, 30);
+		declineBtn.setBackground(Color.decode("#7289da"));
+		declineBtn.setForeground(Color.decode("#dcddde"));
+		declineBtn.setFocusable(false);
+		declineBtn.addActionListener(this);
+		confirmPanel.add(declineBtn);
 
 		confirmFrame.add(confirmPanel);
 		confirmFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -306,7 +324,7 @@ public class SearchGui implements ActionListener {
 		successPanel.add(successLabel1);
 
 		successLabel2 = new JLabel(text2);
-		successLabel2.setBounds(0, 40, 380, 30);
+		successLabel2.setBounds(0, 40, 400, 30);
 		successLabel2.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 		successLabel2.setHorizontalAlignment(JLabel.CENTER);
 		successLabel2.setForeground(Color.decode("#dcddde"));
@@ -323,6 +341,31 @@ public class SearchGui implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		int index = list.getSelectedIndex();
+		if (e.getSource() == searchBtn)
+		{
+			String className = searchText.getText().toUpperCase();
+			tutors = tutorsInClass(className);
+			
+			if(className.equals(""))
+			{
+				String nullList[] = new String[1];
+				nullList[0] = "";
+				list.setListData(nullList);
+				scrollPane.add(list);
+				errorLabel.setText("<html> Please type in a course and try again.</html>");
+			} else if(tutors[0] == null){
+				String nullList[] = new String[1];
+				nullList[0] = "";
+				list.setListData(nullList);
+				scrollPane.add(list);
+				errorLabel.setText("<html> There are currently no tutors for this course.<br/>  Please enter a different course.</html>");
+			} else {
+				sortTutors();
+				list.setListData(tutorNames);
+				scrollPane.add(list);
+				errorLabel.setText("");
+			}	
+		}
 		if (e.getSource() == selectBtn) {
 
 			if (tutors[index] == null) { // If no tutor was selected from the list
@@ -366,10 +409,21 @@ public class SearchGui implements ActionListener {
 			String successText2 = " on " + daySelect + " at " + timeSelect + ".";
 			HomePage homepage = new HomePage(currentUser);
 			successPage(successText1, successText2);
+			schedule(currentUser.getEmail(),tutors[index].getEmail(),daySelect,timeSelect);
 			confirmFrame.dispose();
 			frame.dispose();
 		}
-
+		if(e.getSource() == declineBtn)
+		{
+			confirmFrame.dispose();
+			titleLabel.setText("");
+			tutorLabel.setText("");
+			scheduleBtn.setVisible(false);
+			Days.setVisible(false);
+			Times.setVisible(false);
+			dayLabel.setVisible(false);
+			timeLabel.setVisible(false);
+		}
 		if (e.getSource() == logoutBtn) {
 
 			LoginGui login = new LoginGui();

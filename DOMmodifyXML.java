@@ -197,7 +197,7 @@ public class DOMmodifyXML {
 		            Element eElement = (Element) nNode;
 		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	Element classElement = doc.createElement("class");
-		    	        classElement.appendChild(doc.createTextNode("class"));
+		    	        classElement.appendChild(doc.createTextNode(newClass));
 		    	        classElement.setAttribute("grade", grade);
 		    	        Node Classes = eElement.getElementsByTagName("classes").item(0);
 		    	        Classes.appendChild(classElement);

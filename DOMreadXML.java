@@ -127,11 +127,9 @@ public static User[] tutorsInClass(String classCode) {
 	    	        for (int temp2 = 0; temp2 < nList2.getLength(); temp2++) {
 
 	    		        Node nNode2 = nList2.item(temp2);
-	    		        
 	    		        if (nNode2.getNodeType() == Node.ELEMENT_NODE) {
-
 	    		            Element eElement2 = (Element) nNode2;
-	    		            if (eElement2.getTextContent() == classCode) {
+	    		            if (eElement2.getTextContent().equals(classCode)){
 	    		            	tutorList[listIndex] = returnUser(eElement.getElementsByTagName("email").item(0).getTextContent());
 	    		            	listIndex++;
 	    		            }

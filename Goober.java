@@ -31,6 +31,7 @@ public class Goober implements ActionListener{
     private static JLabel title;
     private static JButton loginButton;
     private static JButton newButton;
+    private static JLabel imageLabel;
 
     public static void main(String[] args) throws IOException {
         
@@ -53,6 +54,10 @@ public class Goober implements ActionListener{
         title.setFont(new Font(null, Font.CENTER_BASELINE, 45));
         title.setForeground(Color.decode("#dcddde"));
         panel.add(title);
+        
+        BufferedImage GooberLogo = ImageIO.read(new File("src/main/pngaaa.com-2341836.png"));
+        imageLabel = new  JLabel(new ImageIcon(GooberLogo));
+        panel.add(imageLabel);
 
         loginButton = new JButton("Log In");
         loginButton.setBounds(200,250,400,30); 

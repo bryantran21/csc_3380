@@ -1,144 +1,533 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-model href="gooberDatabase.xsd"?><Users>
+                                          
 
-  <User>
-    
-    <email>mconrad@lsu.edu</email>
 
-    <firstName>Max</firstName>
- 
-    <lastName>Conrad</lastName>
-         
-    <password>mconrad</password>
-         
-    <role>Tutor</role>
-        
-    <ratings numOf="2">
-              
-      <rating>4</rating>
-           
-      <rating>8</rating>
-           
-    </ratings>
-         
-  </User>
-     
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   <User>
-         
-    <email>mtom@lsu.edu</email>
-                                                                                   
-    <firstName>Michael</firstName>
-          
-    <lastName>Tom</lastName>
-             
-    <password>mtom</password>
-         
-    <role>Tutor</role>
-          
-    <ratings numOf="5">
-                
-      <rating>1</rating>
-           
-      <rating>6</rating>
-            
-      <rating>10</rating>
-              
-      <rating>8</rating>
-            
-      <rating>10</rating>
-          
-    </ratings>
-          
-  </User>
-                
-  
-  <User>
-       
-    <email>paymond@lsu.edu</email>
-        
-    <firstName>Patti</firstName>
-        
-    <lastName>Aymond</lastName>
-            
-    <password>paymond</password>
-              
-    <role>Tutor</role>
-                 
-    <ratings numOf="1">
-         
-      <rating>6</rating>
-       
-    </ratings>
-   
-  
-  </User>
-                                    
- 
-  <User>
-         
-    <email>wduncan@lsu.edu</email>
+                                                
     
-    <firstName>William</firstName>
-       
-    <lastName>Duncan</lastName>
-        
-    <password>wduncan</password>
-        
-    <role>Tutor</role>
-             
-    <ratings numOf="3">
-          
-      <rating>6</rating>
-                
-      <rating>2</rating>
-          
-      <rating>9</rating>
-    </ratings>
-            
-  
-  </User>
-        
-  <User>
-           
-    <email>jnotell@lsu.edu</email>
-         
-    <firstName>Joe</firstName>      
     
-    <lastName>Notell</lastName>
-             
-    <password>jnotell</password>
-             
-    <role>Tutor</role>
-          
-    <ratings numOf="2">
-     
-      <rating>10</rating>
-          
-      <rating>10</rating>
-             
-    </ratings>
-          
+    
+    
+    
+    
+    
+    
+    
+    
+    <email>blalon3@lsu.edu</email>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <firstName>Blake</firstName>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <lastName>Lalonde</lastName>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <password>1</password>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <role>Student</role>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <ratings numOf="0"/>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <classes numOf="0"/>
+                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <schedule>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Sunday/>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Monday/>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Tuesday/>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Wednesday/>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Thursday/>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Friday>
+        <meetingTime meetingWith="mtom@lsu.edu">2:30 PM</meetingTime>
+      </Friday>
+                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Saturday/>
+                                                                      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </schedule>
+                                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   </User>
                     
+
+
+  
+  
+  
+  
+  
   
   
   <User>
-          
-    <email>blalon3@lsu.edu</email>
-         
-    <firstName>Blake</firstName>
-         
-    <lastName>Lalonde</lastName>
-        
-    <password>1</password>
-       
-    <role>Student</role>
-      
-    <ratings numOf="0"/>
+                                
     
+    
+    
+    
+    
+    
+    <email>mtom@lsu.edu</email>
+                                
+    
+    
+    
+    
+    
+    
+    <firstName>Micheal</firstName>
+                                
+    
+    
+    
+    
+    
+    
+    <lastName>Tom</lastName>
+                                
+    
+    
+    
+    
+    
+    
+    <password>mtom</password>
+                                
+    
+    
+    
+    
+    
+    
+    <role>Tutor</role>
+                                
+    
+    
+    
+    
+    
+    
+    <ratings numOf="1">
+            
+      <rating>10</rating>
+          
+    </ratings>
+                                
+    
+    
+    
+    
+    
+    
+    <classes numOf="2">
+                                          
+      
+      
+      
+      
+      
+      <class grade="A">CSC 3380</class>
+                                        
+    
+    
+      
+      
+      
+      <class grade="A">MATH 1552</class>
+                      
+    
+    
+    </classes>
+                                
+    
+    
+    
+    
+    
+    
+    <schedule>
+                                                
+      
+      
+      
+      
+      
+      
+      <Sunday/>
+                                                
+      
+      
+      
+      
+      
+      
+      <Monday/>
+                                                
+      
+      
+      
+      
+      
+      
+      <Tuesday/>
+                                                
+      
+      
+      
+      
+      
+      
+      <Wednesday/>
+                                                
+      
+      
+      
+      
+      
+      
+      <Thursday/>
+                                                
+      
+      
+      
+      
+      
+      
+      <Friday>
+        <meetingTime meetingWith="blalon3@lsu.edu">2:30 PM</meetingTime>
+      </Friday>
+                                                
+      
+      
+      
+      
+      
+      
+      <Saturday/>
+                                              
+    
+    
+    
+    
+    
+    
+    </schedule>
+                              
+  
+  
+  
+  
+  
+  
   </User>
- 
+              
+
+  
+  
+  
+  
+  
+  <User>
+                        
+    
+    
+    
+    
+    <email>paymond@lsu.edu</email>
+                        
+    
+    
+    
+    
+    <firstName>Patti</firstName>
+                        
+    
+    
+    
+    
+    <lastName>Aymond</lastName>
+                        
+    
+    
+    
+    
+    <password>paymond</password>
+                        
+    
+    
+    
+    
+    <role>Tutor</role>
+                        
+    
+    
+    
+    
+    <ratings numOf="1">
+                  
+      
+      <rating>7</rating>
+                
+    
+    </ratings>
+                        
+    
+    
+    
+    
+    <classes numOf="1">
+                              
+      
+      
+      
+      <class grade="A">CSC 3380</class>
+                            
+    
+    
+    
+    </classes>
+                        
+    
+    
+    
+    
+    <schedule>
+                                    
+      
+      
+      
+      
+      <Sunday/>
+                                    
+      
+      
+      
+      
+      <Monday/>
+                                    
+      
+      
+      
+      
+      <Tuesday/>
+                                    
+      
+      
+      
+      
+      <Wednesday/>
+                                    
+      
+      
+      
+      
+      <Thursday/>
+                                    
+      
+      
+      
+      
+      <Friday/>
+                                    
+      
+      
+      
+      
+      <Saturday/>
+                                  
+    
+    
+    
+    
+    </schedule>
+                      
+  
+  
+  
+  
+  </User>
+          
+
+
+
 
 </Users>

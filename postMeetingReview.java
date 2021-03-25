@@ -55,11 +55,12 @@ public class postMeetingReview implements ActionListener
 	private JPanel smallPanel;
 	private User currentUser;
 	private JButton logoutButton;
+	private JLabel nanLabel;
 	private JButton homeButton;
 
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
-	String tutorNames[] = new String[100];
+	String tutorNames[] = new String[500];
 	
 	public class ComparatorUser implements Comparator {							// A comparator function used to alphabetically compare users
 
@@ -92,9 +93,13 @@ public class postMeetingReview implements ActionListener
 		}
 		Arrays.sort(tutors,0,count,comparator);		// Sorts users alphabetically
 		
+		
 		for(int i = 0; tutors[i] != null; i++)		// Creates a string array of tutors with the first and last name, sorted
 		{
-			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName();		
+			String avg = String.valueOf(avgRating(tutors[i].getEmail()));
+			int maxLength = (avg.length() < 4)?avg.length():4;
+			avg = avg.substring(0,maxLength);
+			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName() + " (" + avg + ")";	
 		}
 
 		
@@ -142,6 +147,12 @@ public class postMeetingReview implements ActionListener
 	        errorLabel.setFont(new Font(null,Font.CENTER_BASELINE,12));
 	        errorLabel.setForeground(Color.RED);
 	        scrollPanel.add(errorLabel);
+	        
+	        nanLabel = new JLabel("*NaN = No Rating");
+	        nanLabel.setBounds(10,25,90,25);
+	        nanLabel.setFont(new Font(null,Font.PLAIN,10));
+	        nanLabel.setForeground(Color.decode("#dcddde"));
+	        scrollPanel.add(nanLabel);
 
 			
 			scrollPanel.setLayout(null);	// Entire panel that hosts list of tutors, scroll pane, and button

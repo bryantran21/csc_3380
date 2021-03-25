@@ -172,7 +172,7 @@ public class HomePage implements ActionListener {
         
         if(e.getSource() == scheduleButton)
         {
-            Schedule sch = new Schedule();
+          //  Schedule sch = new Schedule();
             frame.dispose();
         }
     }
