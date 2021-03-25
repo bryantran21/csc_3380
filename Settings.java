@@ -341,9 +341,22 @@ public class Settings implements ActionListener {
             }
         }
 
-        if (e.getSource() == pwChangeBtn) {
+        if (e.getSource() == pwChangeBtn) 
+        {
             changePW();
         }
+        
+        if (e.getSource() == pwCancel)
+        {
+            pwFrame.dispose();
+        }   
+        
+        if (e.getSource() == pwSubmit)
+        {
+            
+            
+        }
     }
+    
 
 }
