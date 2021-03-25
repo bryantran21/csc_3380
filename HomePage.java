@@ -34,6 +34,7 @@ public class HomePage implements ActionListener {
     private static JScrollPane scrollPane;
     private JLabel upcomingLabel;
     private static JButton logoutBtn;
+    private static JButton settingsBtn;
     private User currentUser;
     private static JButton classButton;
     private static JButton scheduleButton;
@@ -79,6 +80,14 @@ public class HomePage implements ActionListener {
         upcomingLabel.setFont(new Font(null, Font.PLAIN, 10));
         upcomingLabel.setForeground(Color.decode("#dcddde"));
         panel.add(upcomingLabel);
+        
+        settingsBtn = new JButton("Settings");
+        settingsBtn.setBounds(590,10,90,30);
+        settingsBtn.setBackground(Color.decode("#7289da"));
+        settingsBtn.setForeground(Color.decode("#dcddde"));
+        settingsBtn.setFocusable(false);
+        settingsBtn.addActionListener(this);
+        panel.add(settingsBtn);
 
         logoutBtn = new JButton("Logout");
         logoutBtn.setBounds(690, 10, 80, 30);
@@ -136,21 +145,31 @@ public class HomePage implements ActionListener {
             SearchGui search = new SearchGui(currentUser);
             frame.dispose();
         }
+        
         if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor
         {
             postMeetingReview pmr = new postMeetingReview(currentUser);
             frame.dispose();
         }
+        
+        if (e.getSource() == settingsBtn)
+        {
+            Settings settings = new Settings(currentUser);
+            frame.dispose();
+        }
+        
         if (e.getSource() == logoutBtn) // Logs the user out of the application
         {
             LoginGui login = new LoginGui();
             frame.dispose();
         }
+        
         if (e.getSource() == classButton)
         {
             ClassGui clgui = new ClassGui(currentUser);
             frame.dispose();
         }
+        
         if(e.getSource() == scheduleButton)
         {
             Schedule sch = new Schedule();
