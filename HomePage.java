@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import main.postMeetingReview;
 import main.Search;
+import main.SearchGui;
 
 public class HomePage implements ActionListener
 {  
@@ -114,7 +115,7 @@ public class HomePage implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == searchButton) // Sends the user to a window to search for tutors
 		{
-			Search search = new Search(currentUser);
+			SearchGui search = new SearchGui(currentUser);
 			frame.dispose();
 		}
 		if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor

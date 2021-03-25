@@ -44,7 +44,6 @@ public class postMeetingReview implements ActionListener
 	private JPanel scrollPanel;
 	private JPanel tutorPanel;
 	private JLabel errorLabel;
-	private JButton A;
 	private JList list;
 	private JButton returnButton;
 	private JLabel averageRating;
@@ -55,6 +54,8 @@ public class postMeetingReview implements ActionListener
 	private JFrame smallFrame;
 	private JPanel smallPanel;
 	private User currentUser;
+	private JButton logoutButton;
+	private JButton homeButton;
 
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
@@ -194,13 +195,21 @@ public class postMeetingReview implements ActionListener
 			submitButton.addActionListener(this);
 			submitButton.setVisible(false);
 			
-			returnButton = new JButton("Return to the Homepage");
-			returnButton.setBounds(100,500,200,30);
-			returnButton.setBackground(Color.decode("#7289da"));
-	        returnButton.setForeground(Color.decode("#dcddde"));
-			returnButton.addActionListener(this);
-			returnButton.setVisible(true);
-			returnButton.setHorizontalAlignment(JLabel.CENTER);
+			logoutButton = new JButton("Logout");
+			logoutButton.setBounds(300,10,80,30);
+			logoutButton.setBackground(Color.decode("#7289da"));
+			logoutButton.setForeground(Color.decode("#dcddde"));
+			logoutButton.setFocusable(false);
+			logoutButton.addActionListener(this);
+	        tutorPanel.add(logoutButton);
+	        
+	        homeButton = new JButton("Home");
+	        homeButton.setBounds(210,10,80,30);
+	        homeButton.setBackground(Color.decode("#7289da"));
+	        homeButton.setForeground(Color.decode("#dcddde"));
+	        homeButton.setFocusable(false);
+	        homeButton.addActionListener(this);
+	        tutorPanel.add(homeButton);
 			
 			
 			tutorPanel.setLayout(null);		// Entire panel that hosts three labels, slider, and submission and return buttons
@@ -209,7 +218,8 @@ public class postMeetingReview implements ActionListener
 			tutorPanel.add(ratingSlider);
 			tutorPanel.add(submitButton);
 			tutorPanel.add(submittedLabel);
-			tutorPanel.add(returnButton);
+			tutorPanel.add(logoutButton);
+			tutorPanel.add(homeButton);
 			tutorPanel.add(averageRating);
 			tutorPanel.setBackground(Color.decode("#36393f"));
 		}
@@ -288,6 +298,16 @@ public class postMeetingReview implements ActionListener
 			 submittedRating(labelText);
 			 frame.dispose();
 			 ratings(tutors[index].getEmail(), String.valueOf(ratingSlider.getValue()));
+		 }
+		 if(e.getSource() == homeButton)
+		 {
+	 		HomePage home = new HomePage(currentUser);
+		 	frame.dispose();
+		 }
+		 if(e.getSource() == logoutButton)
+		 {
+			 LoginGui login = new LoginGui();
+	         frame.dispose();
 		 }
 		 if(e.getSource() == returnButton)		// Closes the current window and returns to the home page
 		 {
