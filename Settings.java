@@ -27,7 +27,6 @@ public class Settings implements ActionListener {
     private static JButton emailChangeBtn;
     private static JLabel pwLabel;
     private static JButton pwChangeBtn;
-    private static JButton deleteBtn;
     private static JFrame emailFrame;
     private static JPanel emailPanel;
     private static JLabel emailTitle;
@@ -49,8 +48,16 @@ public class Settings implements ActionListener {
     private static JLabel newPW2Label;
     private static JPasswordField newPW2Text;
     private static JLabel error2Label;
+    private static JLabel error3Label;
     private static JButton pwSubmit;
     private static JButton pwCancel;
+    private static JButton deleteBtn;
+    private static JFrame deleteFrame;
+    private static JPanel deletePanel;
+    private static JLabel deleteTitle;
+    private static JLabel deleteLabel;
+    private static JButton deleteYes;
+    private static JButton deleteNo;
 
     private User currentUser;
 
@@ -59,7 +66,7 @@ public class Settings implements ActionListener {
 
         panel = new JPanel();
         frame = new JFrame();
-        frame.setBounds(600, 250, 800, 600);
+        frame.setBounds(600, 250, 600, 400);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
@@ -86,7 +93,7 @@ public class Settings implements ActionListener {
         panel.add(emailLabel);
 
         emailChangeBtn = new JButton("Change");
-        emailChangeBtn.setBounds(400, 150, 90, 30);
+        emailChangeBtn.setBounds(300, 150, 90, 30);
         emailChangeBtn.setBackground(Color.decode("#7289da"));
         emailChangeBtn.setForeground(Color.decode("#dcddde"));
         emailChangeBtn.setFocusable(false);
@@ -100,7 +107,7 @@ public class Settings implements ActionListener {
         panel.add(pwLabel);
 
         pwChangeBtn = new JButton("Change");
-        pwChangeBtn.setBounds(400, 190, 90, 30);
+        pwChangeBtn.setBounds(300, 190, 90, 30);
         pwChangeBtn.setBackground(Color.decode("#7289da"));
         pwChangeBtn.setForeground(Color.decode("#dcddde"));
         pwChangeBtn.setFocusable(false);
@@ -116,7 +123,7 @@ public class Settings implements ActionListener {
         panel.add(deleteBtn);
 
         homeBtn = new JButton("Home");
-        homeBtn.setBounds(600, 10, 80, 30);
+        homeBtn.setBounds(400, 10, 80, 30);
         homeBtn.setBackground(Color.decode("#7289da"));
         homeBtn.setForeground(Color.decode("#dcddde"));
         homeBtn.setFocusable(false);
@@ -124,7 +131,7 @@ public class Settings implements ActionListener {
         panel.add(homeBtn);
 
         logoutBtn = new JButton("Logout");
-        logoutBtn.setBounds(690, 10, 80, 30);
+        logoutBtn.setBounds(490, 10, 80, 30);
         logoutBtn.setBackground(Color.decode("#7289da"));
         logoutBtn.setForeground(Color.decode("#dcddde"));
         logoutBtn.setFocusable(false);
@@ -177,7 +184,7 @@ public class Settings implements ActionListener {
         emailPanel.add(newEmailText);
 
         errorLabel = new JLabel("");
-        errorLabel.setBounds(90, 145, 400, 30);
+        errorLabel.setBounds(90, 150, 400, 30);
         errorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 15));
         errorLabel.setForeground(Color.RED);
         emailPanel.add(errorLabel);
@@ -206,18 +213,6 @@ public class Settings implements ActionListener {
 
     public void changePW() {
 
-//    private static JFrame pwFrame;
-//    private static JPanel pwPanel;
-//    private static JLabel pwTitle;
-//    private static JLabel pwSmallLabel;
-//    private static JLabel currentPWLabel;
-//    private static JPasswordField currentPWText;
-//    private static JLabel newPWLabel;
-//    private static JPasswordField newPWText;
-//    private static JLabel newPW2Label;
-//    private static JPasswordField newPW2Text;
-//    private static JButton pwSubmit;
-//    private static JButton pwCancel;
         pwFrame = new JFrame();
         pwFrame.setBounds(600, 250, 400, 350);
         pwFrame.setLocationRelativeTo(null);
@@ -274,10 +269,18 @@ public class Settings implements ActionListener {
         pwPanel.add(newPW2Text);
 
         error2Label = new JLabel("Your new password cannot match the old password");
-        error2Label.setBounds(40, 185, 400, 30);
+        error2Label.setBounds(40, 190, 400, 30);
         error2Label.setFont(new Font(null, Font.CENTER_BASELINE, 12));
         error2Label.setForeground(Color.RED);
+        error2Label.setVisible(false);
         pwPanel.add(error2Label);
+
+        error3Label = new JLabel("");
+        error3Label.setBounds(113, 190, 400, 30);
+        error3Label.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        error3Label.setForeground(Color.RED);
+        error3Label.setVisible(false);
+        pwPanel.add(error3Label);
 
         pwSubmit = new JButton("Save Password");
         pwSubmit.setBounds(110, 220, 160, 30);
@@ -294,11 +297,55 @@ public class Settings implements ActionListener {
         pwCancel.setFocusable(false);
         pwCancel.addActionListener(this);
         pwPanel.add(pwCancel);
-        
+
         pwFrame.add(pwPanel);
         pwFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pwFrame.setTitle("Goober - Account Settings");
         pwFrame.setVisible(true);
+
+    }
+
+    public void deleteAcc() {
+
+        deleteFrame = new JFrame();
+        deleteFrame.setBounds(600, 250, 350, 200);
+        deleteFrame.setLocationRelativeTo(null);
+        deletePanel = new JPanel();
+        deletePanel.setLayout(null);
+        deletePanel.setBackground(Color.decode("#36393f"));
+
+        deleteTitle = new JLabel("Delete Account");
+        deleteTitle.setBounds(80, 20, 300, 30);
+        deleteTitle.setFont(new Font(null, Font.CENTER_BASELINE, 25));
+        deleteTitle.setForeground(Color.decode("#dcddde"));
+        deletePanel.add(deleteTitle);
+
+        deleteLabel = new JLabel("Are you sure you want to delete your account?");
+        deleteLabel.setBounds(40, 60, 350, 30);
+        deleteLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        deleteLabel.setForeground(Color.decode("#dcddde"));
+        deletePanel.add(deleteLabel);
+
+        deleteYes = new JButton("Yes");
+        deleteYes.setBounds(60, 100, 80, 30);
+        deleteYes.setBackground(Color.decode("#7289da"));
+        deleteYes.setForeground(Color.decode("#dcddde"));
+        deleteYes.setFocusable(false);
+        deleteYes.addActionListener(this);
+        deletePanel.add(deleteYes);
+
+        deleteNo = new JButton("No");
+        deleteNo.setBounds(190, 100, 80, 30);
+        deleteNo.setBackground(Color.decode("#7289da"));
+        deleteNo.setForeground(Color.decode("#dcddde"));
+        deleteNo.setFocusable(false);
+        deleteNo.addActionListener(this);
+        deletePanel.add(deleteNo);
+
+        deleteFrame.add(deletePanel);
+        deleteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        deleteFrame.setTitle("Goober - Account Settings");
+        deleteFrame.setVisible(true);
 
     }
 
@@ -329,34 +376,91 @@ public class Settings implements ActionListener {
 
         if (e.getSource() == emailSubmit) // Checks the validity of the entered email and saves it if it passes
         {
-            if (currentUser.getEmail().equals(newEmailText.getText())) {
+            if (currentUser.getEmail().equals(newEmailText.getText())) { // Denies the email change if the new email matches the current email
 
                 errorLabel.setText("Please enter a different email.");
+                newEmailText.setText("");
+            } else if (newEmailText.getText().isEmpty()) { // Denies the email change if there is no email entered
+
+                errorLabel.setText("Please enter a valid email.");
                 newEmailText.setText("");
             } else {
 
                 errorLabel.setText("Email has been successfully changed to " + newEmailText.getText()); //this is just hardcoded as a placeholder. supposed to change the currentUser email
+                System.out.println("Email has been successfully changed to " + newEmailText.getText()); // placeholder
                 emailLabel = new JLabel("Email Address: " + newEmailText.getText()); // this line does not work btw, emailLabel is not within the emailFrame :(
                 emailFrame.dispose();
             }
         }
 
-        if (e.getSource() == pwChangeBtn) 
+        if (e.getSource() == pwChangeBtn) // Brings up a prompt to change passwords
         {
             changePW();
         }
-        
-        if (e.getSource() == pwCancel)
-        {
+
+        if (e.getSource() == pwCancel) { // Closes the change password prompt
             pwFrame.dispose();
-        }   
-        
-        if (e.getSource() == pwSubmit)
+        }
+
+        if (e.getSource() == pwSubmit) { // Checks the validity of the password and saves it if it passes
+
+            if (!currentPWText.getText().equalsIgnoreCase(currentUser.getPassword())) {
+                
+                error3Label.setText("       Incorrect Password");
+                error3Label.setVisible(true);
+                error2Label.setVisible(false);
+                currentPWText.setText("");
+                newPWText.setText("");
+                newPW2Text.setText("");
+            }else if(newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
+
+                error2Label.setVisible(true);
+                error3Label.setVisible(false);
+                currentPWText.setText("");
+                newPWText.setText("");
+                newPW2Text.setText("");           
+            } else if (newPWText.getText().isEmpty() || newPW2Text.getText().isEmpty()) {
+                
+                error3Label.setText("Passwords cannot be blank");
+                error3Label.setVisible(true);
+                error2Label.setVisible(false);
+                currentPWText.setText("");
+                newPWText.setText("");
+                newPW2Text.setText("");
+            }else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
+
+                error3Label.setText("  Passwords do not match");
+                error3Label.setVisible(true);
+                error2Label.setVisible(false);
+                currentPWText.setText("");
+                newPWText.setText("");
+                newPW2Text.setText("");
+
+            } else {
+
+//                currentUser.getPassword() == newPWText.getText();  //this does not work :( sadge
+                System.out.println("Your password has successfully been changed."); // placeholder test
+                pwFrame.dispose();
+            }
+        }
+
+        if (e.getSource() == deleteBtn) // Brings up a prompt to confirm removal of an account
         {
-            
-            
+            deleteAcc();
+        }
+
+        if (e.getSource() == deleteYes) // Confirms the option to delete the account, closes the current prompt and brings the user back to the login page
+        {
+            LoginGui login = new LoginGui();
+            frame.dispose();
+            deleteFrame.dispose();
+            System.out.println("Your account has been deleted"); // placeholder test
+        }
+
+        if (e.getSource() == deleteNo) // Cancels the option to delete account
+        {
+            deleteFrame.dispose();
         }
     }
-    
 
 }
