@@ -2,7 +2,7 @@ package main;
 
 /**
  *
- * @author Bryan
+ * @author Bryan, Blake, Anthony
  */
 import java.awt.Color;
 import java.awt.Font;
@@ -172,8 +172,9 @@ public class HomePage implements ActionListener {
         
         if(e.getSource() == scheduleButton)
         {
-          //  Schedule sch = new Schedule();
             frame.dispose();
+            Schedule sch = new Schedule(currentUser);
+            
         }
     }
 }
