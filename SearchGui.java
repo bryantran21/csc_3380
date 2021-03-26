@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Arrays;
 import java.util.Comparator;
 import javax.swing.JButton;
@@ -22,6 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import static main.DOMreadXML.avgRating;
 import static main.DOMreadXML.listOfTutors;
@@ -29,7 +33,7 @@ import static main.DOMreadXML.tutorsInClass;
 import static main.DOMmodifyXML.schedule;
 //import static main.postMeetingReview;
 
-public class SearchGui implements ActionListener {
+public class SearchGui implements ActionListener, ListSelectionListener, ItemListener {
 
 	private JFrame frame;
 	private JList list;
@@ -45,16 +49,13 @@ public class SearchGui implements ActionListener {
 	private JButton homeBtn;
 	private JLabel titleLabel;
 	private JLabel tutorLabel;
-	private JLabel dayLabel;
 	private JComboBox dayBox;
-	private JLabel timeLabel;
-	private JComboBox Days;
-	private JComboBox Times;
 	private JButton scheduleBtn;
 	private JFrame confirmFrame;
 	private JPanel confirmPanel;
 	private JLabel confirmLabel1;
 	private JLabel confirmLabel2;
+	private JLabel formatLabel;
 	private JButton confirmBtn;
 	private JButton declineBtn;
 	private JFrame successFrame;
@@ -64,8 +65,17 @@ public class SearchGui implements ActionListener {
 	private User currentUser;
 	private JList newList;
 	private JLabel exampleLabel;
-	private String daySelect;
+	private String daySelect = "";
 	private String timeSelect;
+	private JRadioButton mondayRadio;
+	private JRadioButton tuesdayRadio;
+	private JRadioButton wednesdayRadio;
+	private JRadioButton thursdayRadio;
+	private JRadioButton fridayRadio;
+	private JRadioButton saturdayRadio;
+	private JRadioButton sundayRadio;
+
+	String dayArray[] = { "", "", "", "", "", "", "" };
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	String tutorNames[] = new String[100];
 
@@ -126,7 +136,7 @@ public class SearchGui implements ActionListener {
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setForeground(Color.decode("#23272a"));
 		list.setBackground(Color.decode("#99aab5"));
-		
+		list.addListSelectionListener(this);
 
 		searchLabel = new JLabel("Enter course: ");
 		searchLabel.setForeground(Color.decode("#dcddde"));
@@ -144,16 +154,23 @@ public class SearchGui implements ActionListener {
 		searchBtn.setFocusable(false);
 		searchBtn.addActionListener(this);
 		scrollPanel.add(searchBtn);
-		
+
 		exampleLabel = new JLabel("(Ex. CSC 3380)");
-		exampleLabel.setBounds(10,25,90,25);
-		exampleLabel.setFont(new Font(null,Font.PLAIN,10));
+		exampleLabel.setBounds(10, 25, 90, 25);
+		exampleLabel.setFont(new Font(null, Font.PLAIN, 10));
 		exampleLabel.setForeground(Color.decode("#dcddde"));
-        scrollPanel.add(exampleLabel);
+		scrollPanel.add(exampleLabel);
+
+		formatLabel = new JLabel("Last Name, First Name (Average Rating)");
+		formatLabel.setBounds(100, 55, 200, 25);
+		formatLabel.setFont(new Font(null, Font.PLAIN, 10));
+		formatLabel.setForeground(Color.decode("#dcddde"));
+		formatLabel.setHorizontalAlignment(JLabel.CENTER);
+		scrollPanel.add(formatLabel);
 
 		scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);
-		scrollPane.setBounds(100, 50, 200, 400);
+		scrollPane.setBounds(100, 75, 200, 375);
 		scrollPanel.add(scrollPane);
 
 		errorLabel = new JLabel("");
@@ -189,42 +206,75 @@ public class SearchGui implements ActionListener {
 		titleLabel.setText("");
 		tutorPanel.add(titleLabel);
 
+		mondayRadio = new JRadioButton();
+		mondayRadio.setText("Monday");
+		mondayRadio.setForeground(Color.decode("#dcddde"));
+		mondayRadio.setBounds(150, 200, 400, 30);
+		mondayRadio.setBackground(Color.decode("#36393f"));
+		tutorPanel.add(mondayRadio);
+		mondayRadio.setVisible(false);
+		mondayRadio.addItemListener(this);
+
+		tuesdayRadio = new JRadioButton();
+		tuesdayRadio.setText("Tuesday");
+		tuesdayRadio.setForeground(Color.decode("#dcddde"));
+		tuesdayRadio.setBackground(Color.decode("#36393f"));
+		tuesdayRadio.setBounds(150, 225, 400, 30);
+		tutorPanel.add(tuesdayRadio);
+		tuesdayRadio.setVisible(false);
+		tuesdayRadio.addItemListener(this);
+
+		wednesdayRadio = new JRadioButton();
+		wednesdayRadio.setText("Wednesday");
+		wednesdayRadio.setForeground(Color.decode("#dcddde"));
+		wednesdayRadio.setBackground(Color.decode("#36393f"));
+		wednesdayRadio.setBounds(150, 250, 400, 30);
+		tutorPanel.add(wednesdayRadio);
+		wednesdayRadio.setVisible(false);
+		wednesdayRadio.addItemListener(this);
+
+		thursdayRadio = new JRadioButton();
+		thursdayRadio.setText("Thursday");
+		thursdayRadio.setForeground(Color.decode("#dcddde"));
+		thursdayRadio.setBackground(Color.decode("#36393f"));
+		thursdayRadio.setBounds(150, 275, 400, 30);
+		tutorPanel.add(thursdayRadio);
+		thursdayRadio.setVisible(false);
+		thursdayRadio.addItemListener(this);
+
+		fridayRadio = new JRadioButton();
+		fridayRadio.setText("Friday");
+		fridayRadio.setForeground(Color.decode("#dcddde"));
+		fridayRadio.setBackground(Color.decode("#36393f"));
+		fridayRadio.setBounds(150, 300, 400, 30);
+		tutorPanel.add(fridayRadio);
+		fridayRadio.setVisible(false);
+		fridayRadio.addItemListener(this);
+
+		saturdayRadio = new JRadioButton();
+		saturdayRadio.setText("Saturday");
+		saturdayRadio.setForeground(Color.decode("#dcddde"));
+		saturdayRadio.setBackground(Color.decode("#36393f"));
+		saturdayRadio.setBounds(150, 325, 400, 30);
+		tutorPanel.add(saturdayRadio);
+		saturdayRadio.setVisible(false);
+		saturdayRadio.addItemListener(this);
+
+		sundayRadio = new JRadioButton();
+		sundayRadio.setText("Sunday");
+		sundayRadio.setForeground(Color.decode("#dcddde"));
+		sundayRadio.setBackground(Color.decode("#36393f"));
+		sundayRadio.setBounds(150, 350, 400, 30);
+		tutorPanel.add(sundayRadio);
+		sundayRadio.setVisible(false);
+		sundayRadio.addItemListener(this);
+
 		tutorLabel = new JLabel();
 		tutorLabel.setBounds(0, 150, 400, 30);
 		tutorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 25));
 		tutorLabel.setHorizontalAlignment(JLabel.CENTER);
 		tutorLabel.setForeground(Color.decode("#dcddde"));
 		tutorPanel.add(tutorLabel);
-
-		dayLabel = new JLabel("Select a day: ");
-		dayLabel.setBounds(75, 200, 150, 25);
-		dayLabel.setForeground(Color.decode("#dcddde"));
-		dayLabel.setVisible(false);
-		tutorPanel.add(dayLabel);
-
-		timeLabel = new JLabel("Select a time: ");
-		timeLabel.setBounds(75, 240, 150, 25);
-		timeLabel.setForeground(Color.decode("#dcddde"));
-		timeLabel.setVisible(false);
-		tutorPanel.add(timeLabel);
-
-		String[] dayOptions = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-		Days = new JComboBox(dayOptions);
-		Days.setBounds(175, 200, 150, 25);
-		Days.setForeground(Color.decode("#23272a"));
-		Days.setBackground(Color.decode("#99aab5"));
-		Days.setVisible(false);
-		tutorPanel.add(Days);
-
-		String[] timeOptions = { "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
-				"12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM" };
-
-		Times = new JComboBox(timeOptions);
-		Times.setBounds(175, 240, 150, 25);
-		Times.setForeground(Color.decode("#23272a"));
-		Times.setBackground(Color.decode("#99aab5"));
-		Times.setVisible(false);
-		tutorPanel.add(Times);
 
 		scheduleBtn = new JButton("Schedule Meeting");
 		scheduleBtn.setBounds(100, 500, 200, 30);
@@ -263,7 +313,7 @@ public class SearchGui implements ActionListener {
 	public void confirmPage(String text1, String text2) {
 
 		confirmFrame = new JFrame();
-		confirmFrame.setBounds(600, 250, 400, 150);
+		confirmFrame.setBounds(600, 250, 415, 150);
 		confirmFrame.setLocationRelativeTo(null);
 		confirmPanel = new JPanel();
 		confirmPanel.setBackground(Color.decode("#36393f"));
@@ -290,7 +340,7 @@ public class SearchGui implements ActionListener {
 		confirmBtn.setFocusable(false);
 		confirmBtn.addActionListener(this);
 		confirmPanel.add(confirmBtn);
-		
+
 		declineBtn = new JButton("Decline");
 		declineBtn.setBounds(210, 70, 80, 30);
 		declineBtn.setBackground(Color.decode("#7289da"));
@@ -310,7 +360,7 @@ public class SearchGui implements ActionListener {
 	public void successPage(String text1, String text2) {
 
 		successFrame = new JFrame();
-		successFrame.setBounds(600, 250, 400, 150);
+		successFrame.setBounds(600, 250, 415, 150);
 		successFrame.setLocationRelativeTo(null);
 		successPanel = new JPanel();
 		successPanel.setLayout(null);
@@ -341,63 +391,35 @@ public class SearchGui implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		int index = list.getSelectedIndex();
-		if (e.getSource() == searchBtn)
-		{
+		if (e.getSource() == searchBtn) {
 			String className = searchText.getText().toUpperCase();
 			tutors = tutorsInClass(className);
-			
-			if(className.equals(""))
-			{
+
+			if (className.equals("")) {
 				String nullList[] = new String[1];
 				nullList[0] = "";
 				list.setListData(nullList);
 				scrollPane.add(list);
 				errorLabel.setText("<html> Please type in a course and try again.</html>");
-			} else if(tutors[0] == null){
+			} else if (tutors[0] == null) {
 				String nullList[] = new String[1];
 				nullList[0] = "";
 				list.setListData(nullList);
 				scrollPane.add(list);
-				errorLabel.setText("<html> There are currently no tutors for this course.<br/>  Please enter a different course.</html>");
+				errorLabel.setText(
+						"<html> There are currently no tutors for this course.<br/>  Please enter a different course.</html>");
 			} else {
 				sortTutors();
 				list.setListData(tutorNames);
 				scrollPane.add(list);
 				errorLabel.setText("");
-			}	
-		}
-		if (e.getSource() == selectBtn) {
-
-			if (tutors[index] == null) { // If no tutor was selected from the list
-
-				errorLabel.setText("No tutor selected.  Please select a tutor.");
-				titleLabel.setText("");
-				tutorLabel.setText("");
-				scheduleBtn.setVisible(false);
-				Days.setVisible(false);
-				Times.setVisible(false);
-				dayLabel.setVisible(false);
-				timeLabel.setVisible(false);
-
-			} else {
-
-				tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
-				titleLabel.setText("You have selected");
-				errorLabel.setText("");
-				scheduleBtn.setVisible(true);
-				Days.setVisible(true);
-				Times.setVisible(true);
-				dayLabel.setVisible(true);
-				timeLabel.setVisible(true);
-
 			}
 		}
+
 		if (e.getSource() == scheduleBtn) {
-			timeSelect = Times.getSelectedItem().toString();
-			daySelect = Days.getSelectedItem().toString();
 			String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
-					+ tutors[index].getLastName();
-			String confirmText2 = "on " + daySelect + " at " + timeSelect + "?";
+					+ tutors[index].getLastName() + " on";
+			String confirmText2 = daySelect + "?";
 			confirmPage(confirmText, confirmText2);
 
 		}
@@ -405,24 +427,26 @@ public class SearchGui implements ActionListener {
 		if (e.getSource() == confirmBtn) {
 
 			String successText1 = "You have successfully scheduled to meet with " + tutors[index].getFirstName() + " "
-					+ tutors[index].getLastName();
-			String successText2 = " on " + daySelect + " at " + timeSelect + ".";
+					+ tutors[index].getLastName() + " on";
+			String successText2 = daySelect + ".";
 			HomePage homepage = new HomePage(currentUser);
 			successPage(successText1, successText2);
-			schedule(currentUser.getEmail(),tutors[index].getEmail(),daySelect,timeSelect);
+			schedule(currentUser.getEmail(), tutors[index].getEmail(), daySelect, timeSelect);
 			confirmFrame.dispose();
 			frame.dispose();
 		}
-		if(e.getSource() == declineBtn)
-		{
+		if (e.getSource() == declineBtn) {
 			confirmFrame.dispose();
-			titleLabel.setText("");
-			tutorLabel.setText("");
-			scheduleBtn.setVisible(false);
-			Days.setVisible(false);
-			Times.setVisible(false);
-			dayLabel.setVisible(false);
-			timeLabel.setVisible(false);
+//			titleLabel.setText("");
+//			tutorLabel.setText("");
+//			scheduleBtn.setVisible(false);
+//			mondayRadio.setVisible(false);
+//			tuesdayRadio.setVisible(false);
+//			wednesdayRadio.setVisible(false);
+//			thursdayRadio.setVisible(false);
+//			fridayRadio.setVisible(false);
+//			saturdayRadio.setVisible(false);
+//			sundayRadio.setVisible(false);
 		}
 		if (e.getSource() == logoutBtn) {
 
@@ -437,4 +461,99 @@ public class SearchGui implements ActionListener {
 		}
 	}
 
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		int index = list.getSelectedIndex();
+		if (!e.getValueIsAdjusting()) {
+
+			if (tutors[index] == null) { // If no tutor was selected from the list
+
+				errorLabel.setText("No tutor selected.  Please select a tutor.");
+				titleLabel.setText("");
+				tutorLabel.setText("");
+				scheduleBtn.setVisible(false);
+				mondayRadio.setVisible(false);
+				tuesdayRadio.setVisible(false);
+				wednesdayRadio.setVisible(false);
+				thursdayRadio.setVisible(false);
+				fridayRadio.setVisible(false);
+				saturdayRadio.setVisible(false);
+				sundayRadio.setVisible(false);
+			} else {
+
+				tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
+				titleLabel.setText("You have selected");
+				errorLabel.setText("");
+				scheduleBtn.setVisible(true);
+				mondayRadio.setVisible(true);
+				tuesdayRadio.setVisible(true);
+				wednesdayRadio.setVisible(true);
+				thursdayRadio.setVisible(true);
+				fridayRadio.setVisible(true);
+				saturdayRadio.setVisible(true);
+				sundayRadio.setVisible(true);
+			}
+		}
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			daySelect = "";
+			Object source = e.getSource();
+			if (source == mondayRadio) {
+				dayArray[0] = "Monday";
+			}
+			if (source == tuesdayRadio) {
+				dayArray[1] = "Tuesday";
+			}
+			if (source == wednesdayRadio) {
+				dayArray[2] = "Wednesday";
+			}
+			if (source == thursdayRadio) {
+				dayArray[3] = "Thursday";
+			}
+			if (source == fridayRadio) {
+				dayArray[4] = "Friday";
+			}
+			if (source == saturdayRadio) {
+				dayArray[5] = "Saturday";
+			}
+			if (source == sundayRadio) {
+				dayArray[6] = "Sunday";
+			}
+		}
+		if (e.getStateChange() == ItemEvent.DESELECTED) {
+			daySelect = "";
+			Object source = e.getSource();
+			if (source == mondayRadio) {
+				dayArray[0] = "";
+			}
+			if (source == tuesdayRadio) {
+				dayArray[1] = "";
+			}
+			if (source == wednesdayRadio) {
+				dayArray[2] = "";
+			}
+			if (source == thursdayRadio) {
+				dayArray[3] = "";
+			}
+			if (source == fridayRadio) {
+				dayArray[4] = "";
+			}
+			if (source == saturdayRadio) {
+				dayArray[5] = "";
+			}
+			if (source == sundayRadio) {
+				dayArray[6] = "";
+			}
+		}
+		for (int i = 0; i < 7; i++) {
+			daySelect = daySelect + dayArray[i];
+			if ((i + 1 < 7) && (dayArray[i + 1].compareTo("") != 0)) {
+				daySelect = daySelect + ", ";
+			}
+		}
+		System.out.print(daySelect);
+	}
 }

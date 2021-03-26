@@ -80,23 +80,28 @@ public class ClassGui implements ActionListener {
 //        scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
 //        scrollPane.setBounds(500, 30, 200, 430);
 //        list.setLayoutOrientation(JList.VERTICAL);
-//        errorLabel = new JLabel("");
-//        errorLabel.setBounds(0, 465, 400, 35);
-//        errorLabel.setHorizontalAlignment(JLabel.CENTER);
-//        errorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
-//        errorLabel.setForeground(Color.RED);
-//        scrollPanel.add(errorLabel);
+       
+        
+        errorLabel = new JLabel("");
+        errorLabel.setBounds(0, 350, 800, 35);
+        errorLabel.setHorizontalAlignment(JLabel.CENTER);
+        errorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        errorLabel.setHorizontalAlignment(JLabel.CENTER);
+        errorLabel.setForeground(Color.RED);
+        panel.add(errorLabel);
+      
+        
         String[] grades = {"A", "B", "C", "D", "F"};
         gradeBox = new JComboBox(grades);
-        gradeBox.setBounds(150, 150, 125, 30);
+        gradeBox.setBounds(416, 200, 125, 30);
         panel.add(gradeBox);
 
         addText = new JTextField();
-        addText.setBounds(150, 100, 125, 30);
+        addText.setBounds(416, 150, 125, 30);
         panel.add(addText);
 
         addButton = new JButton("Add Class");
-        addButton.setBounds(150, 200, 125, 30);
+        addButton.setBounds(416, 250, 125, 30);
         addButton.setBackground(Color.decode("#7289da"));
         addButton.setForeground(Color.decode("#dcddde"));
         addButton.addActionListener(this);
@@ -105,19 +110,19 @@ public class ClassGui implements ActionListener {
         courseLabel = new JLabel("Enter course: ");
         courseLabel.setForeground(Color.decode("#dcddde"));
         courseLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
-        courseLabel.setBounds(10, 100, 125, 25);
+        courseLabel.setBounds(258, 150, 125, 25);
         panel.add(courseLabel);
 
         gradeLabel = new JLabel("Enter grade: ");
         gradeLabel.setForeground(Color.decode("#dcddde"));
         gradeLabel.setFont(new Font(null, Font.CENTER_BASELINE, 18));
-        gradeLabel.setBounds(10, 150, 125, 25);
+        gradeLabel.setBounds(258, 200, 125, 25);
         panel.add(gradeLabel);
 
         exampleLabel = new JLabel("(Ex. CSC 3380)");
         exampleLabel.setForeground(Color.decode("#dcddde"));
         exampleLabel.setFont(new Font(null, Font.PLAIN, 10));
-        exampleLabel.setBounds(10, 120, 120, 25);
+        exampleLabel.setBounds(258, 170, 120, 25);
         panel.add(exampleLabel);
 //
 //        scrollPanel.setLayout(null);	// Entire panel that hosts list of tutors, scroll pane, and button
@@ -140,6 +145,7 @@ public class ClassGui implements ActionListener {
         panel.add(logoutButton);
 
         frame.setVisible(true);
+        frame.setResizable(false);
         frame.add(panel);
         panel.setLayout(null);
         frame.setTitle("Manage Classes");
@@ -149,8 +155,13 @@ public class ClassGui implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-        	System.out.print("Test");
-            addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
+        	if (gradeBox.getSelectedIndex() != 0 || gradeBox.getSelectedIndex() != 1)
+        		errorLabel.setText("You do not have an appropriate grade to tutor this class.");
+        	else
+        	{
+        		addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
+    			errorLabel.setText("");
+        	}
         }
         if (e.getSource() == homeButton) {
             HomePage home = new HomePage(currentUser);

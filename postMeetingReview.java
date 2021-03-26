@@ -24,6 +24,9 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,10 +37,10 @@ import main.HomePage;
 import static main.DOMmodifyXML.ratings;
 import static main.DOMreadXML.avgRating;;
 
-public class postMeetingReview implements ActionListener
+public class postMeetingReview implements ActionListener, ListSelectionListener
 {
 	private JFrame frame;
-	private JButton selectButton;
+	private JLabel staticTitleLabel;
 	private JLabel titleLabel;
 	private JLabel tutorLabel;
 	private JLabel submittedLabel;
@@ -122,6 +125,7 @@ public class postMeetingReview implements ActionListener
 		titleLabel = new JLabel();		// Static text label
 		tutorLabel = new JLabel();		// Label that is updated with the selected tutor
 		submittedLabel = new JLabel(); 	// Label that shows up after rating is submitted
+		staticTitleLabel = new JLabel();
 		
 		
 		
@@ -130,34 +134,36 @@ public class postMeetingReview implements ActionListener
 			list = new JList(tutorNames);	// List of all available tutors
 			list.setForeground(Color.decode("#23272a"));
 	        list.setBackground(Color.decode("#99aab5"));
+	        list.addListSelectionListener(this);
+	        
+			staticTitleLabel.setText("Select A Tutor");
+			staticTitleLabel.setBounds(00,0,400,50);		// Static text label
+			staticTitleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 20));
+			staticTitleLabel.setHorizontalAlignment(JLabel.CENTER);
+			staticTitleLabel.setForeground(Color.decode("#dcddde"));
 			
+	        
 			scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
-			scrollPane.setBounds(100,30,200,430);
+			scrollPane.setBounds(100,50,200,450);
 			list.setLayoutOrientation(JList.VERTICAL);
 			
-			selectButton = new JButton("Select Tutor");	// Button that enables a review for selected tutor
-			selectButton.setBounds(100,500,200,30);
-			selectButton.setBackground(Color.decode("#7289da"));
-	        selectButton.setForeground(Color.decode("#dcddde"));
-			selectButton.addActionListener(this);
-			
 			errorLabel = new JLabel("");
-	        errorLabel.setBounds(0,465,400,35);
+	        errorLabel.setBounds(0,515,400,35);
 	        errorLabel.setHorizontalAlignment(JLabel.CENTER);
 	        errorLabel.setFont(new Font(null,Font.CENTER_BASELINE,12));
 	        errorLabel.setForeground(Color.RED);
 	        scrollPanel.add(errorLabel);
 	        
 	        nanLabel = new JLabel("*NaN = No Rating");
-	        nanLabel.setBounds(10,25,90,25);
+	        nanLabel.setBounds(10,45,90,25);
 	        nanLabel.setFont(new Font(null,Font.PLAIN,10));
 	        nanLabel.setForeground(Color.decode("#dcddde"));
 	        scrollPanel.add(nanLabel);
 
 			
 			scrollPanel.setLayout(null);	// Entire panel that hosts list of tutors, scroll pane, and button
+			scrollPanel.add(staticTitleLabel);
 			scrollPanel.add(scrollPane);
-			scrollPanel.add(selectButton);
 			scrollPanel.setBackground(Color.decode("#36393f"));
 			
 			
@@ -276,32 +282,6 @@ public class postMeetingReview implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		int index = list.getSelectedIndex();
-		 if(e.getSource() == selectButton)
-		 {
-			 if(tutors[index] == null)			// If no tutor was selected from the list
-			 {
-				 errorLabel.setText("No tutor selected.  Please select a tutor.");
-				 titleLabel.setText("");
-				 tutorLabel.setText("");
-				 ratingSlider.setVisible(false);
-				 submitButton.setVisible(false);
-				 averageRating.setVisible(false);
-			 }
-			 else								// If an appropriate tutor was selected
-			 {
-				 titleLabel.setText("LEAVE A RATING FOR");
-				 tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
-				 String avg = String.valueOf(avgRating(tutors[index].getEmail()));
-				 int maxLength = (avg.length() < 4)?avg.length():4;
-				 avg = avg.substring(0,maxLength);
-				 averageRating.setText("Average rating is: " + avg);
-				 errorLabel.setText("");
-				 averageRating.setVisible(true);
-				 ratingSlider.setVisible(true);
-				 submitButton.setVisible(true);
-			 }
-			 
-		 }
 		 if(e.getSource() == submitButton)		// Closes the current window and opens up the home page as well as a notification window
 		 {
 			 String labelText = "You have given " + tutors[index].getFirstName() + " " + tutors[index].getLastName() + " a rating of " + ratingSlider.getValue();
@@ -325,5 +305,35 @@ public class postMeetingReview implements ActionListener
 			 HomePage homepage = new HomePage(currentUser);
 			 frame.dispose();
 		 }
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		int index = list.getSelectedIndex();
+		if(!e.getValueIsAdjusting())
+		{
+			if(tutors[index] == null)			// If no tutor was selected from the list
+			 {
+				 errorLabel.setText("No tutor selected.  Please select a tutor.");
+				 titleLabel.setText("");
+				 tutorLabel.setText("");
+				 ratingSlider.setVisible(false);
+				 submitButton.setVisible(false);
+				 averageRating.setVisible(false);
+			 }
+			 else								// If an appropriate tutor was selected
+			 {
+				 titleLabel.setText("LEAVE A RATING FOR");
+				 tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
+				 String avg = String.valueOf(avgRating(tutors[index].getEmail()));
+				 int maxLength = (avg.length() < 4)?avg.length():4;
+				 avg = avg.substring(0,maxLength);
+				 averageRating.setText("Average rating is: " + avg);
+				 errorLabel.setText("");
+				 averageRating.setVisible(true);
+				 ratingSlider.setVisible(true);
+				 submitButton.setVisible(true);
+			 }
+		}
 	}
 }
