@@ -54,9 +54,6 @@ public class Goober implements ActionListener{
         title.setFont(new Font(null, Font.CENTER_BASELINE, 45));
         title.setForeground(Color.decode("#dcddde"));
         panel.add(title);
-        
-        imageLabel = new  JLabel(new ImageIcon(GooberLogo));
-        panel.add(imageLabel);
 
         loginButton = new JButton("Log In");
         loginButton.setBounds(200,250,400,30); 
