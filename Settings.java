@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import static main.DOMmodifyXML.deleteAccount;
+import static main.DOMmodifyXML.updateEmail;
+import static main.DOMmodifyXML.updatePassword;
 
 public class Settings implements ActionListener {
 
@@ -138,9 +141,10 @@ public class Settings implements ActionListener {
         logoutBtn.setFocusable(false);
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
-
+        
         ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
         frame.setIconImage(image.getImage());
+
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setTitle("Goober - Account Settings");
@@ -394,7 +398,7 @@ public class Settings implements ActionListener {
                 errorLabel.setText("Please enter a valid email.");
                 newEmailText.setText("");
             } else {
-
+            	updateEmail(currentUser.getEmail(), newEmailText.getText());
                 errorLabel.setText("Email has been successfully changed to " + newEmailText.getText()); //this is just hardcoded as a placeholder. supposed to change the currentUser email
                 System.out.println("Email has been successfully changed to " + newEmailText.getText()); // placeholder
                 emailLabel = new JLabel("Email Address: " + newEmailText.getText()); // this line does not work btw, emailLabel is not within the emailFrame :(
@@ -414,29 +418,29 @@ public class Settings implements ActionListener {
         if (e.getSource() == pwSubmit) { // Checks the validity of the password and saves it if it passes
 
             if (!currentPWText.getText().equalsIgnoreCase(currentUser.getPassword())) {
-
+                
                 error3Label.setText("       Incorrect Password");
                 error3Label.setVisible(true);
                 error2Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPW2Text.setText("");
-            } else if (newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
+            }else if(newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
 
                 error2Label.setVisible(true);
                 error3Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
-                newPW2Text.setText("");
+                newPW2Text.setText("");           
             } else if (newPWText.getText().isEmpty() || newPW2Text.getText().isEmpty()) {
-
+                
                 error3Label.setText("Passwords cannot be blank");
                 error3Label.setVisible(true);
                 error2Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPW2Text.setText("");
-            } else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
+            }else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
 
                 error3Label.setText("  Passwords do not match");
                 error3Label.setVisible(true);
@@ -448,6 +452,7 @@ public class Settings implements ActionListener {
             } else {
 
 //                currentUser.getPassword() == newPWText.getText();  //this does not work :( sadge
+            	updatePassword(currentUser.getEmail(), newPWText.getText());
                 System.out.println("Your password has successfully been changed."); // placeholder test
                 pwFrame.dispose();
             }
@@ -460,6 +465,7 @@ public class Settings implements ActionListener {
 
         if (e.getSource() == deleteYes) // Confirms the option to delete the account, closes the current prompt and brings the user back to the login page
         {
+        	deleteAccount(currentUser.getEmail());
             LoginGui login = new LoginGui();
             frame.dispose();
             deleteFrame.dispose();
