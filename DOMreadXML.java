@@ -4,6 +4,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+
+import main.Classes.classClass;
+import main.UserSchedule.Day;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -81,10 +85,75 @@ public static User returnUser(String email) {
 		            	String lastName = eElement.getElementsByTagName("lastName").item(0).getTextContent();
 		            	String password = eElement.getElementsByTagName("password").item(0).getTextContent();
 		            	String role = eElement.getElementsByTagName("role").item(0).getTextContent();
+		            	
 		            	Ratings ratings = new Ratings();
 		            	ratings.numOfRatings = Integer.valueOf(eElement.getElementsByTagName("ratings").item(0).getAttributes().getNamedItem("numOf").getTextContent());
-		            	//User user1 = new User.userBuilder(email, firstName, lastName, password, role, ratings);
-		            	User user1 = new User.userBuilder(email, firstName, lastName, password, role, ratings).build();
+		            	
+		            	Classes classes = new Classes();
+		            	classClass newClass = new classClass();
+		            	NodeList classNodeList = doc.getElementsByTagName("class");
+		            	for (int temp2 = 0; temp2 < classNodeList.getLength(); temp2++) {
+		            		Node classNode = classNodeList.item(temp2);
+		            		
+		            		if (classNode.getNodeType() == Node.ELEMENT_NODE) {
+		            			
+		            			Element classElement = (Element) classNode;
+		            			
+		            			newClass.className = classElement.getTextContent();
+		            			classes.classList.add(newClass);
+		            		}
+		            	}
+		            	
+		            	Integer newRating;
+		            	NodeList ratingNodeList = doc.getElementsByTagName("rating");
+		            	for (int temp3 = 0; temp3 < ratingNodeList.getLength(); temp3++) {
+		            		Node ratingNode = ratingNodeList.item(temp3);
+		            		
+		            		if (ratingNode.getNodeType() == Node.ELEMENT_NODE) {
+		            			
+		            			Element ratingElement = (Element) ratingNode;
+		            			
+		            			newRating = Integer.valueOf(ratingElement.getTextContent());
+		            			ratings.ratingList.add(newRating);
+		            		}
+		            	}
+		            	
+		            	UserSchedule schedule = new UserSchedule();
+		            	Day newDay = new Day();
+		            	NodeList dayNodeList = doc.getElementsByTagName("schedule").item(0).getChildNodes();
+		            	for (int temp4 = 0; temp4 < 7; temp4++) {
+		            		Node dayNode = dayNodeList.item(temp4);
+		            		
+		            		if (dayNode.getNodeType() == Node.ELEMENT_NODE) {
+		            			
+		            			NamedNodeMap attr = dayNode.getAttributes();
+				                Node dayAttr = attr.getNamedItem("availability");
+				                dayAttr.setTextContent("available");
+				                newDay.availability = dayAttr.getTextContent();
+		            			
+				                NodeList meetingNodeList = doc.getElementsByTagName("meetingWith");
+				                for (int temp5 = 0; temp5 < meetingNodeList.getLength(); temp5++) {
+				                	Node meetingNode = meetingNodeList.item(temp5);
+				                	
+				                	if (meetingNode.getNodeType() == Node.ELEMENT_NODE) {
+				                		Element meetingElement = (Element) meetingNode;
+				                		newDay.meetingList.add(meetingElement.getTextContent());
+				                	}
+				                }
+				                
+		            		}
+		            		schedule.week[temp4] = newDay;
+		            	}
+		            	
+		            	schedule.week[0].dayName = "Monday";
+		            	schedule.week[1].dayName = "Tuesday";
+		            	schedule.week[2].dayName = "Wednesday";
+		            	schedule.week[3].dayName = "Thursday";
+		            	schedule.week[4].dayName = "Friday";
+		            	schedule.week[5].dayName = "Saturday";
+		            	schedule.week[6].dayName = "Sunday";
+		            	
+		            	User user1 = new User.userBuilder(email, firstName, lastName, password, role, ratings, classes, schedule).build();
 		            	return user1;
 		            }
 		        }
@@ -127,9 +196,11 @@ public static User[] tutorsInClass(String classCode) {
 	    	        for (int temp2 = 0; temp2 < nList2.getLength(); temp2++) {
 
 	    		        Node nNode2 = nList2.item(temp2);
+	    		        
 	    		        if (nNode2.getNodeType() == Node.ELEMENT_NODE) {
+
 	    		            Element eElement2 = (Element) nNode2;
-	    		            if (eElement2.getTextContent().equals(classCode)){
+	    		            if (eElement2.getTextContent().equals(classCode)) {
 	    		            	tutorList[listIndex] = returnUser(eElement.getElementsByTagName("email").item(0).getTextContent());
 	    		            	listIndex++;
 	    		            }
@@ -260,45 +331,4 @@ public static float avgRating(String email) {
 		//return round(retAvg,2);
 		return retAvg;
 	}
-	
-//	public static void main(String argv[]) {
-//
-//	    try {
-//
-//	    File fXmlFile = new File("C:/Users/huval/eclipse-workspace/Goober/src/main/gooberDatabase.xml");
-//	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-//	    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-//	    Document doc = dBuilder.parse(fXmlFile);
-//	            
-//	    //optional, but recommended
-//	    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-//	    doc.getDocumentElement().normalize();
-//
-//	    System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-//	            
-//	    NodeList nList = doc.getElementsByTagName("User");
-//	            
-//	    System.out.println("----------------------------");
-//
-//	    for (int temp = 0; temp < nList.getLength(); temp++) {
-//
-//	        Node nNode = nList.item(temp);
-//	                
-//	        System.out.println("\nCurrent Element :" + nNode.getNodeName());
-//	                
-//	        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-//
-//	            Element eElement = (Element) nNode;
-//
-//	            System.out.println("Email : " + eElement.getElementsByTagName("email").item(0).getTextContent());
-//	            System.out.println("Days available : " + eElement.getElementsByTagName("daysAvailable").item(0).getTextContent());
-//	            System.out.println("Courses : " + eElement.getElementsByTagName("courses").item(0).getTextContent());
-//
-//	        }
-//	    }
-//	    } catch (Exception e) {
-//	    e.printStackTrace();
-//	    }
-//	  }
-	
 }

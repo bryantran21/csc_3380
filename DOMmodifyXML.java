@@ -1,7 +1,10 @@
 package main;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,10 +33,10 @@ public class DOMmodifyXML {
 		try {
 	        String filepath = "src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-	        //docFactory.setValidating(true);
+	        docFactory.setValidating(false);
 	        //docFactory.setIgnoringElementContentWhitespace(true);
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-	        Document doc = docBuilder.parse(filepath);
+	        Document doc = docBuilder.parse(new FileInputStream(new File(filepath)));
 	        
 	        // Get the staff element by tag name directly
 	        Node Users = doc.getElementsByTagName("Users").item(0);
@@ -63,21 +66,30 @@ public class DOMmodifyXML {
 	        classes.setAttribute("numOf", "0");
 	        
 	        Element schedule = doc.createElement("schedule");
-	        Element sunday = doc.createElement("Sunday");
-	        Element monday = doc.createElement("Monday");
-	        Element tuesday = doc.createElement("Tuesday");
-	        Element wednesday = doc.createElement("Wednesday");
-	        Element thursday = doc.createElement("Thursday");
-	        Element friday = doc.createElement("Friday");
-	        Element saturday = doc.createElement("Saturday");
 	        
-	        schedule.appendChild(sunday);
+
+	        Element monday = doc.createElement("Monday");
+	        monday.setAttribute("availability", "");
+	        Element tuesday = doc.createElement("Tuesday");
+	        tuesday.setAttribute("availability", "");
+	        Element wednesday = doc.createElement("Wednesday");
+	        wednesday.setAttribute("availability", "");
+	        Element thursday = doc.createElement("Thursday");
+	        thursday.setAttribute("availability", "");
+	        Element friday = doc.createElement("Friday");
+	        friday.setAttribute("availability", "");
+	        Element saturday = doc.createElement("Saturday");
+	        saturday.setAttribute("availability", "");
+	        Element sunday = doc.createElement("Sunday");
+	        sunday.setAttribute("availability", "");
+	        
 	        schedule.appendChild(monday);
 	        schedule.appendChild(tuesday);
 	        schedule.appendChild(wednesday);
 	        schedule.appendChild(thursday);
 	        schedule.appendChild(friday);
 	        schedule.appendChild(saturday);
+	        schedule.appendChild(sunday);
 	        
 	        
 	        newUser.appendChild(emailElement);
@@ -91,14 +103,23 @@ public class DOMmodifyXML {
 	        
 	        Users.appendChild(newUser);
 
-	        // write the content into xml file
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-	        DOMSource source = new DOMSource(doc);
-	        StreamResult result = new StreamResult(new File(filepath));
-	        transformer.transform(source, result);
+	     // write the content into xml file
+	        //TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        //Transformer transformer = transformerFactory.newTransformer();
+	        //transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        //transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        //DOMSource source = new DOMSource(doc);
+	        //StreamResult result = new StreamResult(new File(filepath));
+	        //transformer.transform(source, result);
+	        
+	        doc.normalize();
+	        
+	        Transformer tf = TransformerFactory.newInstance().newTransformer();
+	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
+	        Writer out = new StringWriter();
+	        tf.transform(new DOMSource(doc), new StreamResult(filepath));
+	        //System.out.println(out.toString());
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
@@ -132,24 +153,36 @@ public class DOMmodifyXML {
 		            Element eElement = (Element) nNode;
 		            if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	
-		            	Element timeScheduled = doc.createElement("meetingTime");
-		            	timeScheduled.appendChild(doc.createTextNode(meetingTime));
+		            	Element meetingWith = doc.createElement("meetingWith");
+		    	        meetingWith.appendChild(doc.createTextNode(studentEmail));
 		            	
-		            	timeScheduled.setAttribute("meetingWith", studentEmail);
+		    	        Node day = eElement.getElementsByTagName(meetingDay).item(0);
+		            	day.appendChild(meetingWith);
 		            	
-		    	        Node schedule = eElement.getElementsByTagName(meetingDay).item(0);
-		    	        schedule.appendChild(timeScheduled);
+		            	NamedNodeMap attr = day.getAttributes();
+		                Node dayAttr = attr.getNamedItem("availability");
+		                dayAttr.setTextContent("available");
 		            }
 		            
 		            if (studentEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	
-		            	Element timeScheduled = doc.createElement("meetingTime");
-		            	timeScheduled.appendChild(doc.createTextNode(meetingTime));
+		            	Element meetingWith = doc.createElement("meetingWith");
+		    	        meetingWith.appendChild(doc.createTextNode(tutorEmail));
 		            	
-		            	timeScheduled.setAttribute("meetingWith", tutorEmail);
+		            	Node day = eElement.getElementsByTagName(meetingDay).item(0);
+		            	day.appendChild(doc.createTextNode(tutorEmail));
 		            	
-		    	        Node schedule = eElement.getElementsByTagName(meetingDay).item(0);
-		    	        schedule.appendChild(timeScheduled);
+		            	NamedNodeMap attr = day.getAttributes();
+		                Node dayAttr = attr.getNamedItem("availability");
+		                dayAttr.setTextContent("available");
+		                
+		            	//Element timeScheduled = doc.createElement("meetingTime");
+		            	//timeScheduled.appendChild(doc.createTextNode(meetingTime));		legacy
+		            	//
+		            	//timeScheduled.setAttribute("meetingWith", tutorEmail);
+		            	//
+		    	        //Node schedule = eElement.getElementsByTagName(meetingDay).item(0);
+		    	        //schedule.appendChild(timeScheduled);
 		            }
 		            
 		            
@@ -157,13 +190,19 @@ public class DOMmodifyXML {
 		    }
 		    
 	        // write the content into xml file
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-	        DOMSource source = new DOMSource(doc);
-	        StreamResult result = new StreamResult(new File(filepath));
-	        transformer.transform(source, result);
+	        //TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        //Transformer transformer = transformerFactory.newTransformer();
+	        //transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        //transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        //DOMSource source = new DOMSource(doc);
+	        //StreamResult result = new StreamResult(new File(filepath));
+	        //transformer.transform(source, result);
+	        
+	        Transformer tf = TransformerFactory.newInstance().newTransformer();
+	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
+	        Writer out = new StringWriter();
+	        tf.transform(new DOMSource(doc), new StreamResult(out));
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
@@ -210,14 +249,20 @@ public class DOMmodifyXML {
 		        }
 		    }
 		    
-	        // write the content into xml file
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-	        DOMSource source = new DOMSource(doc);
-	        StreamResult result = new StreamResult(new File(filepath));
-	        transformer.transform(source, result);
+		 // write the content into xml file
+	        //TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        //Transformer transformer = transformerFactory.newTransformer();
+	        //transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        //transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        //DOMSource source = new DOMSource(doc);
+	        //StreamResult result = new StreamResult(new File(filepath));
+	        //transformer.transform(source, result);
+	        
+	        Transformer tf = TransformerFactory.newInstance().newTransformer();
+	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
+	        Writer out = new StringWriter();
+	        tf.transform(new DOMSource(doc), new StreamResult(out));
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
@@ -263,14 +308,20 @@ public class DOMmodifyXML {
 		        }
 		    }
 		    
-	        // write the content into xml file
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-	        DOMSource source = new DOMSource(doc);
-	        StreamResult result = new StreamResult(new File(filepath));
-	        transformer.transform(source, result);
+		 // write the content into xml file
+	        //TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        //Transformer transformer = transformerFactory.newTransformer();
+	        //transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        //transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        //DOMSource source = new DOMSource(doc);
+	        //StreamResult result = new StreamResult(new File(filepath));
+	        //transformer.transform(source, result);
+	        
+	        Transformer tf = TransformerFactory.newInstance().newTransformer();
+	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
+	        Writer out = new StringWriter();
+	        tf.transform(new DOMSource(doc), new StreamResult(out));
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
