@@ -189,7 +189,7 @@ public class DOMmodifyXML {
 		        }
 		    }
 		    
-	        // write the content into xml file
+		 // write the content into xml file
 	        //TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        //Transformer transformer = transformerFactory.newTransformer();
 	        //transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -198,11 +198,14 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+	        doc.normalize();
+	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
 	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
 	        Writer out = new StringWriter();
-	        tf.transform(new DOMSource(doc), new StreamResult(out));
+	        tf.transform(new DOMSource(doc), new StreamResult(filepath));
+	        //System.out.println(out.toString());
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
@@ -258,11 +261,14 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+	        doc.normalize();
+	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
 	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
 	        Writer out = new StringWriter();
-	        tf.transform(new DOMSource(doc), new StreamResult(out));
+	        tf.transform(new DOMSource(doc), new StreamResult(filepath));
+	        //System.out.println(out.toString());
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
@@ -317,11 +323,14 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+	        doc.normalize();
+	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
 	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
 	        Writer out = new StringWriter();
-	        tf.transform(new DOMSource(doc), new StreamResult(out));
+	        tf.transform(new DOMSource(doc), new StreamResult(filepath));
+	        //System.out.println(out.toString());
 
 	       } catch (ParserConfigurationException pce) {
 	        pce.printStackTrace();
