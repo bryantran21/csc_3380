@@ -80,8 +80,6 @@ public class ClassGui implements ActionListener {
 //        scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
 //        scrollPane.setBounds(500, 30, 200, 430);
 //        list.setLayoutOrientation(JList.VERTICAL);
-       
-        
         errorLabel = new JLabel("");
         errorLabel.setBounds(0, 350, 800, 35);
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -89,8 +87,7 @@ public class ClassGui implements ActionListener {
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
         errorLabel.setForeground(Color.RED);
         panel.add(errorLabel);
-      
-        
+
         String[] grades = {"A", "B", "C", "D", "F"};
         gradeBox = new JComboBox(grades);
         gradeBox.setBounds(416, 200, 125, 30);
@@ -104,6 +101,7 @@ public class ClassGui implements ActionListener {
         addButton.setBounds(416, 250, 125, 30);
         addButton.setBackground(Color.decode("#7289da"));
         addButton.setForeground(Color.decode("#dcddde"));
+        addButton.setFocusable(false);
         addButton.addActionListener(this);
         panel.add(addButton);
 
@@ -155,13 +153,15 @@ public class ClassGui implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-        	if (gradeBox.getSelectedIndex() != 0 || gradeBox.getSelectedIndex() != 1)
-        		errorLabel.setText("You do not have an appropriate grade to tutor this class.");
-        	else
-        	{
-        		addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
-    			errorLabel.setText("");
-        	}
+            if (addText.getText().isEmpty()) {
+                errorLabel.setText("Please enter a course number");
+            } else if (gradeBox.getSelectedIndex() != 0 || gradeBox.getSelectedIndex() != 1) {
+
+                errorLabel.setText("You do not have an appropriate grade to tutor this class.");
+            } else {
+                addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
+                errorLabel.setText("");
+            }
         }
         if (e.getSource() == homeButton) {
             HomePage home = new HomePage(currentUser);

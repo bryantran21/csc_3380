@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-model href="gooberDatabase.xsd"?><Users>
-                                          
-
-
-
-
-
-
-
-
-
+                                                      
   
   
   
@@ -21,9 +12,34 @@
   
   
   
-  <User>
-                                                
+  
+  
+                        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
     
+    <User>
+                                                                                                        
     
     
     
@@ -33,8 +49,6 @@
     
     
     
-    <email>blalon3@lsu.edu</email>
-                                                
     
     
     
@@ -45,10 +59,11 @@
     
     
     
-    <firstName>Blake</firstName>
-                                                
     
     
+        
+        <email>mconrad@lsu.edu</email>
+                                                                                                        
     
     
     
@@ -57,8 +72,6 @@
     
     
     
-    <lastName>Lalonde</lastName>
-                                                
     
     
     
@@ -69,11 +82,12 @@
     
     
     
-    <password>1</password>
-                                                
     
     
     
+        
+        <firstName>Max</firstName>
+                                                                                                        
     
     
     
@@ -81,8 +95,6 @@
     
     
     
-    <role>Student</role>
-                                                
     
     
     
@@ -93,20 +105,19 @@
     
     
     
-    <ratings numOf="0"/>
-                                                
     
     
     
     
+        
+        <lastName>Conrad</lastName>
+                                                                                                        
     
     
     
     
     
     
-    <classes numOf="0"/>
-                                                
     
     
     
@@ -117,20 +128,292 @@
     
     
     
-    <schedule>
-                                                                        
+    
+    
+    
+    
+    
+        
+        <password>mconrad</password>
+                                                                                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <role>Tutor</role>
+                                                                                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <ratings numOf="1">
+                                                                                          
+      
+      
+      
       
       
       
       
+      
+      
+      
+            
+            <rating>4</rating>
+                                                                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        </ratings>
+                                                                                                      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    </User>
+                                                  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <User>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <email>mtom@lsu.edu</email>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <firstName>Michael</firstName>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <lastName>Tom</lastName>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <password>mtom</password>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <role>Tutor</role>
+                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <ratings numOf="5">
+                                                                                                                                    
       
       
       
       
       
       
-      <Sunday/>
-                                                                        
       
       
       
@@ -141,9 +424,10 @@
       
       
       
-      <Monday/>
-                                                                        
       
+            
+            <rating>1</rating>
+                                                                                                                                  
       
       
       
@@ -153,8 +437,6 @@
       
       
       
-      <Tuesday/>
-                                                                        
       
       
       
@@ -163,10 +445,12 @@
       
       
       
+            
+            <rating>6</rating>
+                                                                                                                            
+    
       
       
-      <Wednesday/>
-                                                                        
       
       
       
@@ -177,11 +461,17 @@
       
       
       
-      <Thursday/>
-                                                                        
       
       
       
+            
+            <rating>10</rating>
+                                                                                                                
+    
+    
+    
+    
+    
       
       
       
@@ -189,12 +479,11 @@
       
       
       
-      <Friday>
-        <meetingTime meetingWith="mtom@lsu.edu">2:30 PM</meetingTime>
-      </Friday>
-                                                                        
       
       
+            
+            <rating>8</rating>
+                                                                            
       
       
       
@@ -203,7 +492,8 @@
       
       
       
-      <Saturday/>
+            
+            <rating>10</rating>
                                                                       
     
     
@@ -212,10 +502,401 @@
     
     
     
+        
+        </ratings>
+                                                                                                          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    </User>
+                            
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <User>
+                                                                                                    
     
     
     
-    </schedule>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <email>paymond@lsu.edu</email>
+                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <firstName>Patti</firstName>
+                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <lastName>Aymond</lastName>
+                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <password>paymond</password>
+                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <role>Tutor</role>
+                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <ratings numOf="1">
+                                                                  
+      
+      
+      
+      
+      
+      
+            
+            <rating>6</rating>
+                                                                
+    
+    
+    
+    
+    
+    
+        
+        </ratings>
+                                                                                                  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    </User>
+                                                
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <User>
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <email>wduncan@lsu.edu</email>
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <firstName>William</firstName>
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <lastName>Duncan</lastName>
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <password>wduncan</password>
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <role>Tutor</role>
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <ratings numOf="0"/>
+                                                                                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    </User>
                                               
   
   
@@ -227,10 +908,6 @@
   
   
   
-  </User>
-                    
-
-
   
   
   
@@ -238,296 +915,584 @@
   
   
   
-  <User>
-                                
+  
+  
+    
+    <User>
+                                                                                            
     
     
     
     
     
     
-    <email>mtom@lsu.edu</email>
-                                
     
     
     
     
     
     
-    <firstName>Micheal</firstName>
-                                
     
     
     
     
     
     
-    <lastName>Tom</lastName>
-                                
+        
+        <email>jnotell@lsu.edu</email>
+                                                                                            
     
     
     
     
     
     
-    <password>mtom</password>
-                                
     
     
     
     
     
     
-    <role>Tutor</role>
-                                
     
     
     
     
     
     
-    <ratings numOf="1">
+        
+        <firstName>Joe</firstName>
+                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <lastName>Notell</lastName>
+                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <password>jnotell</password>
+                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <role>Tutor</role>
+                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <ratings numOf="4">
+                                                                                                                        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
             
-      <rating>10</rating>
-          
-    </ratings>
+            <rating>10</rating>
+                                                                                                                      
+    
+    
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+            
+            <rating>10</rating>
+                                                                                  
+    
+    
+    
+    
+    
+      
+      
+      
+      
+            
+            <rating>7</rating>
+                                              
+    
+    
+      
+            
+            <rating>5</rating>
+                            
+        
+        </ratings>
+                                                                                          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    </User>
                                 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <User>
+                                                                
     
     
     
     
     
     
-    <classes numOf="2">
-                                          
-      
-      
-      
-      
-      
-      <class grade="A">CSC 3380</class>
+    
+    
+    
+    
+    
+        
+        <email>blalon3@lsu.edu</email>
+                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <firstName>Blake</firstName>
+                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <lastName>Lalonde</lastName>
+                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <password>blalon3</password>
+                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <role>Student</role>
+                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <ratings numOf="0"/>
+                                                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    </User>
+                              
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+    
+    <User>
                                         
     
     
-      
-      
-      
-      <class grade="A">MATH 1552</class>
-                      
     
     
-    </classes>
-                                
+    
+        
+        <email>aduong2@lsu.edu</email>
+                                        
     
     
     
     
     
-    
-    <schedule>
-                                                
-      
-      
-      
-      
-      
-      
-      <Sunday/>
-                                                
-      
-      
-      
-      
-      
-      
-      <Monday/>
-                                                
-      
-      
-      
-      
-      
-      
-      <Tuesday/>
-                                                
-      
-      
-      
-      
-      
-      
-      <Wednesday/>
-                                                
-      
-      
-      
-      
-      
-      
-      <Thursday/>
-                                                
-      
-      
-      
-      
-      
-      
-      <Friday>
-        <meetingTime meetingWith="blalon3@lsu.edu">2:30 PM</meetingTime>
-      </Friday>
-                                                
-      
-      
-      
-      
-      
-      
-      <Saturday/>
-                                              
+        
+        <firstName>Anthony</firstName>
+                                        
     
     
     
     
     
+        
+        <lastName>Duong</lastName>
+                                        
     
-    </schedule>
-                              
+    
+    
+    
+    
+        
+        <password>123</password>
+                                        
+    
+    
+    
+    
+    
+        
+        <role>Student</role>
+                                        
+    
+    
+    
+    
+    
+        
+        <ratings numOf="0"/>
+                                      
   
   
   
   
   
+    
+    </User>
+                  
   
-  </User>
-              
+  
+  
+  
+  
+    
+    <User>
+                                    
+    
+    
+    
+    
+        
+        <email>tbui26@lsu.edu</email>
+                                    
+    
+    
+    
+    
+        
+        <firstName>Tuong</firstName>
+                                    
+    
+    
+    
+    
+        
+        <lastName>Bui</lastName>
+                                    
+    
+    
+    
+    
+        
+        <password>123</password>
+                                    
+    
+    
+    
+    
+        
+        <role>Student</role>
+                                    
+    
+    
+    
+    
+        
+        <ratings numOf="0"/>
+                                  
+  
+  
+  
+  
+    
+    </User>
+                
 
   
   
   
-  
-  
-  <User>
-                        
     
-    
-    
-    
-    <email>paymond@lsu.edu</email>
-                        
-    
-    
-    
-    
-    <firstName>Patti</firstName>
-                        
-    
-    
-    
-    
-    <lastName>Aymond</lastName>
-                        
-    
-    
-    
-    
-    <password>paymond</password>
-                        
-    
-    
-    
-    
-    <role>Tutor</role>
-                        
-    
-    
-    
-    
-    <ratings numOf="1">
-                  
-      
-      <rating>7</rating>
-                
-    
-    </ratings>
-                        
-    
-    
-    
-    
-    <classes numOf="1">
-                              
-      
-      
-      
-      <class grade="A">CSC 3380</class>
+    <User>
                             
     
     
+        
+        <email>a</email>
+                            
     
-    </classes>
+    
+        
+        <firstName>Ant</firstName>
+                            
+    
+    
+        
+        <lastName>Duong</lastName>
+                            
+    
+    
+        
+        <password>a</password>
+                            
+    
+    
+        
+        <role>Student</role>
+                            
+    
+    
+        
+        <ratings numOf="0"/>
+                          
+  
+  
+    
+    </User>
+            
+  
+  
+    
+    <User>
                         
     
+        
+        <email>aduong@lsu.edu</email>
+                        
     
+        
+        <firstName>1</firstName>
+                        
     
+        
+        <lastName>1</lastName>
+                        
     
-    <schedule>
-                                    
-      
-      
-      
-      
-      <Sunday/>
-                                    
-      
-      
-      
-      
-      <Monday/>
-                                    
-      
-      
-      
-      
-      <Tuesday/>
-                                    
-      
-      
-      
-      
-      <Wednesday/>
-                                    
-      
-      
-      
-      
-      <Thursday/>
-                                    
-      
-      
-      
-      
-      <Friday/>
-                                    
-      
-      
-      
-      
-      <Saturday/>
-                                  
+        
+        <password>1</password>
+                        
     
+        
+        <role>Student</role>
+                        
     
-    
-    
-    </schedule>
+        
+        <ratings numOf="0"/>
                       
   
-  
-  
-  
-  </User>
+    
+    </User>
           
 
-
-
-
+    
+    <User>
+                
+        <email>a</email>
+                
+        <firstName>Anthony</firstName>
+                
+        <lastName>Duong</lastName>
+                
+        <password>a</password>
+                
+        <role>Student</role>
+                
+        <ratings numOf="0"/>
+                
+        <classes numOf="0"/>
+                
+        <schedule>
+                        
+            <Monday availability=""/>
+                        
+            <Tuesday availability=""/>
+                        
+            <Wednesday availability=""/>
+                        
+            <Thursday availability=""/>
+                        
+            <Friday availability=""/>
+                        
+            <Saturday availability=""/>
+                        
+            <Sunday availability=""/>
+                    
+        </schedule>
+            
+    </User>
+    
+    <User>
+        <email>z</email>
+        <firstName>Mike</firstName>
+        <lastName>TheTiger</lastName>
+        <password>z</password>
+        <role>Tutor</role>
+        <ratings numOf="0"/>
+        <classes numOf="0"/>
+        <schedule>
+            <Monday availability=""/>
+            <Tuesday availability=""/>
+            <Wednesday availability=""/>
+            <Thursday availability=""/>
+            <Friday availability=""/>
+            <Saturday availability=""/>
+            <Sunday availability=""/>
+        </schedule>
+    </User>
 </Users>
