@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -138,6 +139,8 @@ public class Settings implements ActionListener {
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
 
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        frame.setIconImage(image.getImage());
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setTitle("Goober - Account Settings");
@@ -205,6 +208,8 @@ public class Settings implements ActionListener {
         emailCancel.addActionListener(this);
         emailPanel.add(emailCancel);
 
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        emailFrame.setIconImage(image.getImage());
         emailFrame.add(emailPanel);
         emailFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         emailFrame.setTitle("Goober - Account Settings");
@@ -298,6 +303,8 @@ public class Settings implements ActionListener {
         pwCancel.addActionListener(this);
         pwPanel.add(pwCancel);
 
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        pwFrame.setIconImage(image.getImage());
         pwFrame.add(pwPanel);
         pwFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pwFrame.setTitle("Goober - Account Settings");
@@ -342,6 +349,8 @@ public class Settings implements ActionListener {
         deleteNo.addActionListener(this);
         deletePanel.add(deleteNo);
 
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        deleteFrame.setIconImage(image.getImage());
         deleteFrame.add(deletePanel);
         deleteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         deleteFrame.setTitle("Goober - Account Settings");
@@ -405,29 +414,29 @@ public class Settings implements ActionListener {
         if (e.getSource() == pwSubmit) { // Checks the validity of the password and saves it if it passes
 
             if (!currentPWText.getText().equalsIgnoreCase(currentUser.getPassword())) {
-                
+
                 error3Label.setText("       Incorrect Password");
                 error3Label.setVisible(true);
                 error2Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPW2Text.setText("");
-            }else if(newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
+            } else if (newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
 
                 error2Label.setVisible(true);
                 error3Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
-                newPW2Text.setText("");           
+                newPW2Text.setText("");
             } else if (newPWText.getText().isEmpty() || newPW2Text.getText().isEmpty()) {
-                
+
                 error3Label.setText("Passwords cannot be blank");
                 error3Label.setVisible(true);
                 error2Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPW2Text.setText("");
-            }else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
+            } else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
 
                 error3Label.setText("  Passwords do not match");
                 error3Label.setVisible(true);

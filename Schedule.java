@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -68,6 +69,8 @@ public class Schedule implements ActionListener {
         frame.setVisible(true);
         frame.add(panel);
         panel.setLayout(null);
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        frame.setIconImage(image.getImage());
 
         homeButton = new JButton("Home");
         homeButton.setBounds(600, 10, 80, 30);

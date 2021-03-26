@@ -27,6 +27,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 import java.util.stream.Stream;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import main.DOMmodifyXML;
 import main.DOMreadXML;
@@ -80,7 +81,6 @@ public class ClassGui implements ActionListener {
 //        scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
 //        scrollPane.setBounds(500, 30, 200, 430);
 //        list.setLayoutOrientation(JList.VERTICAL);
-        
         errorLabel = new JLabel("");
         errorLabel.setBounds(0, 350, 800, 35);
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -88,7 +88,7 @@ public class ClassGui implements ActionListener {
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
         errorLabel.setForeground(Color.RED);
         panel.add(errorLabel);
-        
+
         String[] grades = {"A", "B", "C", "D", "F"};
         gradeBox = new JComboBox(grades);
         gradeBox.setBounds(416, 200, 125, 30);
@@ -143,6 +143,8 @@ public class ClassGui implements ActionListener {
         logoutButton.addActionListener(this);
         panel.add(logoutButton);
 
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        frame.setIconImage(image.getImage());
         frame.setVisible(true);
         frame.setResizable(false);
         frame.add(panel);
@@ -154,17 +156,14 @@ public class ClassGui implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-        	if (addText.getText().isEmpty()) {
-        		errorLabel.setText("Please enter a course number");
-        	}
-        	else if (gradeBox.getSelectedIndex() >= 2) {
-        		errorLabel.setText("You do not have an appropriate grade to tutor this class.");
-        	}
-        	else
-        	{
-        		addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
-    			errorLabel.setText("");
-        	}
+            if (addText.getText().isEmpty()) {
+                errorLabel.setText("Please enter a course number");
+            } else if (gradeBox.getSelectedIndex() >= 2) {
+                errorLabel.setText("You do not have an appropriate grade to tutor this class.");
+            } else {
+                addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
+                errorLabel.setText("");
+            }
         }
         if (e.getSource() == homeButton) {
             HomePage home = new HomePage(currentUser);

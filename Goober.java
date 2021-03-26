@@ -10,18 +10,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.border.Border;
 
 
 public class Goober implements ActionListener{
@@ -31,7 +26,6 @@ public class Goober implements ActionListener{
     private static JLabel title;
     private static JButton loginButton;
     private static JButton newButton;
-    private static JLabel imageLabel;
 
     public static void main(String[] args) throws IOException {
         
@@ -71,6 +65,8 @@ public class Goober implements ActionListener{
         newButton.addActionListener(new Goober());
         panel.add(newButton);
         
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        frame.setIconImage(image.getImage());
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setTitle("Goober");

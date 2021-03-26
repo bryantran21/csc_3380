@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -80,9 +81,9 @@ public class HomePage implements ActionListener {
         upcomingLabel.setFont(new Font(null, Font.PLAIN, 10));
         upcomingLabel.setForeground(Color.decode("#dcddde"));
         panel.add(upcomingLabel);
-        
+
         settingsBtn = new JButton("Settings");
-        settingsBtn.setBounds(590,10,90,30);
+        settingsBtn.setBounds(590, 10, 90, 30);
         settingsBtn.setBackground(Color.decode("#7289da"));
         settingsBtn.setForeground(Color.decode("#dcddde"));
         settingsBtn.setFocusable(false);
@@ -97,6 +98,8 @@ public class HomePage implements ActionListener {
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
 
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        frame.setIconImage(image.getImage());
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setTitle("Goober - Homepage");
@@ -145,36 +148,33 @@ public class HomePage implements ActionListener {
             SearchGui search = new SearchGui(currentUser);
             frame.dispose();
         }
-        
+
         if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor
         {
             postMeetingReview pmr = new postMeetingReview(currentUser);
             frame.dispose();
         }
-        
-        if (e.getSource() == settingsBtn)
-        {
+
+        if (e.getSource() == settingsBtn) {
             Settings settings = new Settings(currentUser);
             frame.dispose();
         }
-        
+
         if (e.getSource() == logoutBtn) // Logs the user out of the application
         {
             LoginGui login = new LoginGui();
             frame.dispose();
         }
-        
-        if (e.getSource() == classButton)
-        {
+
+        if (e.getSource() == classButton) {
             ClassGui clgui = new ClassGui(currentUser);
             frame.dispose();
         }
-        
-        if(e.getSource() == scheduleButton)
-        {
+
+        if (e.getSource() == scheduleButton) {
             frame.dispose();
             Schedule sch = new Schedule(currentUser);
-            
+
         }
     }
 }
