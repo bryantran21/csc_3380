@@ -55,7 +55,6 @@ public class Goober implements ActionListener{
         title.setForeground(Color.decode("#dcddde"));
         panel.add(title);
         
-        BufferedImage GooberLogo = ImageIO.read(new File("src/main/pngaaa.com-2341836.png"));
         imageLabel = new  JLabel(new ImageIcon(GooberLogo));
         panel.add(imageLabel);
 
