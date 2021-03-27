@@ -56,9 +56,10 @@ public class NewAccount implements ActionListener {
         panel.setLayout(null);
 
         titleLabel = new JLabel("Create a Goober Account");
-        titleLabel.setBounds(125, 50, 550, 50);
+        titleLabel.setBounds(0, 50, 800, 50);
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 45));
         titleLabel.setForeground(Color.decode("#dcddde"));
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(titleLabel);
 
         userType = new JLabel("Are you a Student or Tutor?");
