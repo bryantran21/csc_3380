@@ -435,7 +435,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
             String successText2 = daySelect + ".";
             HomePage homepage = new HomePage(currentUser);
             successPage(successText1, successText2);
-            schedule(currentUser.getEmail(), tutors[index].getEmail(), daySelect, timeSelect);
+            schedule(currentUser.getEmail(), tutors[index].getEmail(), daySelect);
             confirmFrame.dispose();
             frame.dispose();
         }
