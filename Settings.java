@@ -62,10 +62,14 @@ public class Settings implements ActionListener {
     private static JLabel deleteLabel;
     private static JButton deleteYes;
     private static JButton deleteNo;
+    private static JFrame delete2Frame;
+    private static JPanel delete2Panel;
+    private static JLabel delete2Label;
+    private static JButton deleteOK;
 
     private User currentUser;
 
-    Settings(User passedUser) {
+    Settings(User passedUser) { // A prompt that shows the user their account information and allows them to change certain login credentials
         currentUser = passedUser;
 
         panel = new JPanel();
@@ -141,7 +145,7 @@ public class Settings implements ActionListener {
         logoutBtn.setFocusable(false);
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
-        
+
         ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
         frame.setIconImage(image.getImage());
 
@@ -151,7 +155,7 @@ public class Settings implements ActionListener {
 
     }
 
-    public void changeEmail() {
+    public void changeEmail() { // A prompt that lets the user change their email
 
         emailFrame = new JFrame();
         emailFrame.setBounds(600, 250, 400, 300);
@@ -220,7 +224,7 @@ public class Settings implements ActionListener {
         emailFrame.setVisible(true);
     }
 
-    public void changePW() {
+    public void changePW() { // A prompt that allows the user to change their password
 
         pwFrame = new JFrame();
         pwFrame.setBounds(600, 250, 400, 350);
@@ -316,7 +320,7 @@ public class Settings implements ActionListener {
 
     }
 
-    public void deleteAcc() {
+    public void deleteAcc() { // A prompt that asks for the user to confirm to delete an account
 
         deleteFrame = new JFrame();
         deleteFrame.setBounds(600, 250, 350, 200);
@@ -362,6 +366,38 @@ public class Settings implements ActionListener {
 
     }
 
+    public void deleteMsg() { // Notifies the user that the account has successfully been deleted
+
+        delete2Frame = new JFrame();
+        delete2Frame.setBounds(600, 250, 350, 200);
+        delete2Frame.setLocationRelativeTo(null);
+        delete2Panel = new JPanel();
+        delete2Panel.setLayout(null);
+        delete2Panel.setBackground(Color.decode("#36393f"));
+
+        delete2Label = new JLabel("Your account has successfully been deleted.");
+        delete2Label.setBounds(35, 30, 350, 30);
+        delete2Label.setFont(new Font(null, Font.CENTER_BASELINE, 13));
+        delete2Label.setForeground(Color.decode("#dcddde"));
+        delete2Panel.add(delete2Label);
+
+        deleteOK = new JButton("Okay");
+        deleteOK.setBounds(130, 100, 80, 30);
+        deleteOK.setBackground(Color.decode("#7289da"));
+        deleteOK.setForeground(Color.decode("#dcddde"));
+        deleteOK.setFocusable(false);
+        deleteOK.addActionListener(this);
+        delete2Panel.add(deleteOK);
+
+        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        delete2Frame.setIconImage(image.getImage());
+        delete2Frame.add(delete2Panel);
+        delete2Frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        delete2Frame.setTitle("Goober - Account Settings");
+        delete2Frame.setVisible(true);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -397,11 +433,11 @@ public class Settings implements ActionListener {
 
                 errorLabel.setText("Please enter a valid email.");
                 newEmailText.setText("");
-            } else {
-            	updateEmail(currentUser.getEmail(), newEmailText.getText());
+            } else { // Successfully saves the email change
+
+                updateEmail(currentUser.getEmail(), newEmailText.getText());
                 errorLabel.setText("Email has been successfully changed to " + newEmailText.getText()); //this is just hardcoded as a placeholder. supposed to change the currentUser email
                 System.out.println("Email has been successfully changed to " + newEmailText.getText()); // placeholder
-                emailLabel = new JLabel("Email Address: " + newEmailText.getText()); // this line does not work btw, emailLabel is not within the emailFrame :(
                 emailFrame.dispose();
             }
         }
@@ -418,29 +454,29 @@ public class Settings implements ActionListener {
         if (e.getSource() == pwSubmit) { // Checks the validity of the password and saves it if it passes
 
             if (!currentPWText.getText().equalsIgnoreCase(currentUser.getPassword())) {
-                
+
                 error3Label.setText("       Incorrect Password");
                 error3Label.setVisible(true);
                 error2Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPW2Text.setText("");
-            }else if(newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
+            } else if (newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
 
                 error2Label.setVisible(true);
                 error3Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
-                newPW2Text.setText("");           
+                newPW2Text.setText("");
             } else if (newPWText.getText().isEmpty() || newPW2Text.getText().isEmpty()) {
-                
+
                 error3Label.setText("Passwords cannot be blank");
                 error3Label.setVisible(true);
                 error2Label.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPW2Text.setText("");
-            }else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
+            } else if (!newPWText.getText().equals(newPW2Text.getText())) { // Denies the password change if confirm password does not match the new password
 
                 error3Label.setText("  Passwords do not match");
                 error3Label.setVisible(true);
@@ -449,10 +485,9 @@ public class Settings implements ActionListener {
                 newPWText.setText("");
                 newPW2Text.setText("");
 
-            } else {
+            } else { // Successfully saves the password change
 
-//                currentUser.getPassword() == newPWText.getText();  //this does not work :( sadge
-            	updatePassword(currentUser.getEmail(), newPWText.getText());
+                updatePassword(currentUser.getEmail(), newPWText.getText());
                 System.out.println("Your password has successfully been changed."); // placeholder test
                 pwFrame.dispose();
             }
@@ -465,8 +500,9 @@ public class Settings implements ActionListener {
 
         if (e.getSource() == deleteYes) // Confirms the option to delete the account, closes the current prompt and brings the user back to the login page
         {
-        	deleteAccount(currentUser.getEmail());
+            deleteAccount(currentUser.getEmail());
             LoginGui login = new LoginGui();
+            deleteMsg();
             frame.dispose();
             deleteFrame.dispose();
             System.out.println("Your account has been deleted"); // placeholder test
@@ -475,6 +511,12 @@ public class Settings implements ActionListener {
         if (e.getSource() == deleteNo) // Cancels the option to delete account
         {
             deleteFrame.dispose();
+        }
+        
+        if (e.getSource() == deleteOK) // Notifies the user that their account has been deleted
+        {
+            
+            delete2Frame.dispose();
         }
     }
 
