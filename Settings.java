@@ -102,8 +102,8 @@ public class Settings implements ActionListener {
         emailLabel.setForeground(Color.decode("#dcddde"));
         panel.add(emailLabel);
 
-        emailChangeBtn = new JButton("Change");
-        emailChangeBtn.setBounds(300, 150, 90, 30);
+        emailChangeBtn = new JButton("Change Email");
+        emailChangeBtn.setBounds(400, 150, 170, 30);
         emailChangeBtn.setBackground(Color.decode("#7289da"));
         emailChangeBtn.setForeground(Color.decode("#dcddde"));
         emailChangeBtn.setFocusable(false);
@@ -116,8 +116,8 @@ public class Settings implements ActionListener {
         pwLabel.setForeground(Color.decode("#dcddde"));
         panel.add(pwLabel);
 
-        pwChangeBtn = new JButton("Change");
-        pwChangeBtn.setBounds(300, 190, 90, 30);
+        pwChangeBtn = new JButton("Change Password");
+        pwChangeBtn.setBounds(400, 190, 170, 30);
         pwChangeBtn.setBackground(Color.decode("#7289da"));
         pwChangeBtn.setForeground(Color.decode("#dcddde"));
         pwChangeBtn.setFocusable(false);
