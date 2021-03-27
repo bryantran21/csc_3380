@@ -73,7 +73,7 @@ public class Settings implements ActionListener {
 
     Settings(User passedUser) { // A prompt that shows the user their account information and allows them to change certain login credentials
         currentUser = passedUser;
-
+        
         panel = new JPanel();
         frame = new JFrame();
         frame.setBounds(600, 250, 600, 400);
@@ -150,7 +150,7 @@ public class Settings implements ActionListener {
 
         ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
-        frame.setResizable(false);
+
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setTitle("Goober - Account Settings");
@@ -223,7 +223,6 @@ public class Settings implements ActionListener {
         emailFrame.add(emailPanel);
         emailFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         emailFrame.setTitle("Goober - Account Settings");
-        emailFrame.setResizable(false);
         emailFrame.setVisible(true);
     }
 
@@ -319,7 +318,6 @@ public class Settings implements ActionListener {
         pwFrame.add(pwPanel);
         pwFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pwFrame.setTitle("Goober - Account Settings");
-        pwFrame.setResizable(false);
         pwFrame.setVisible(true);
 
     }
@@ -366,7 +364,6 @@ public class Settings implements ActionListener {
         deleteFrame.add(deletePanel);
         deleteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         deleteFrame.setTitle("Goober - Account Settings");
-        deleteFrame.setResizable(false);
         deleteFrame.setVisible(true);
 
     }
@@ -399,7 +396,6 @@ public class Settings implements ActionListener {
         delete2Frame.add(delete2Panel);
         delete2Frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         delete2Frame.setTitle("Goober - Account Settings");
-        delete2Frame.setResizable(false);
         delete2Frame.setVisible(true);
 
     }

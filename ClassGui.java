@@ -22,6 +22,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -29,8 +31,12 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+
+import main.Classes.classClass;
 import main.DOMmodifyXML;
 import main.DOMreadXML;
+import main.UserSchedule.Meeting;
+
 import static main.DOMmodifyXML.addClass;
 import static main.DOMmodifyXML.schedule;
 
@@ -70,12 +76,14 @@ public class ClassGui implements ActionListener {
     private JButton confirmBtn;
     private JButton declineBtn;
     private JFrame successFrame;
+    private JLabel scrollPaneLabel;
     private JPanel successPanel;
     private JLabel successLabel1;
     private JLabel successLabel2;
 
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     private User currentUser;
+    private JList courseList;
 
     public ClassGui(User passedUser) {
 
@@ -85,17 +93,54 @@ public class ClassGui implements ActionListener {
         frame.setBounds(0, 0, 800, 600);
         frame.setLocationRelativeTo(null);
 //        scrollPanel = new JPanel();		// Right panel that hosts objects
-//        scrollPane = new JScrollPane();	// Allows scrolling through list of tutors
+       
 //        submittedLabel = new JLabel(); 	// Label that shows up after rating is submitted
         panel = new JPanel();
         panel.setBackground(Color.decode("#36393f"));
+        
+        String emptyArray[] = {""};
+        
+        courseList = new JList(emptyArray);
+        courseList.setForeground(Color.decode("#23272a"));
+        courseList.setBackground(Color.decode("#99aab5"));
+        ArrayList<classClass> courseArrayList = new ArrayList<classClass>();
+        courseArrayList = currentUser.getclassList();
+        String courses[] = new String[courseArrayList.size()];
+//       System.out.print("  108 = " + courseArrayList.get(0).className + "\n");
+//       System.out.print("  109 = " + courseArrayList.get(1).className + "\n");
+//       System.out.print("courseArrayList.getsize() = " +  courseArrayList.size() + "\n");
+        for (int increment = 0; increment < courseArrayList.size(); increment++)
+        {
+        	//System.out.print(courseArrayList.get(increment).className);
+        	courses[increment] = courseArrayList.get(increment).className;
+//        	System.out.print(increment + ") " +courses[increment] + "\n");
+        	
+        }
+        courseList.setListData(courses);
+        courseList.setLayoutOrientation(JList.VERTICAL);
 
-        // LEFT PANEL (panel that holds the list of available tutors and the selection button)
-//        scrollPane.setViewportView(list);	// Pane that allows scrolling through the tutors
-//        scrollPane.setBounds(500, 30, 200, 430);
-//        list.setLayoutOrientation(JList.VERTICAL);
+        scrollPane = new JScrollPane();			// Allows scrolling through list of tutors
+        scrollPane.setViewportView(courseList);	
+        scrollPane.setBounds(258, 375, 283, 150);
+        panel.add(scrollPane);
+        
+        titleLabel = new JLabel("Manage Classes");
+        titleLabel.setBounds(0, 65, 800, 60);
+        titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 40));
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
+        titleLabel.setForeground(Color.decode("#dcddde"));
+        panel.add(titleLabel);
+        
+        scrollPaneLabel = new JLabel("Enrolled Courses To Tutor:");
+        scrollPaneLabel.setForeground(Color.decode("#dcddde"));
+        scrollPaneLabel.setFont(new Font(null, Font.PLAIN, 10));
+        scrollPaneLabel.setBounds(258, 350, 200, 25);
+        panel.add(scrollPaneLabel);
+      
+        
+        
         errorLabel = new JLabel("");
-        errorLabel.setBounds(0, 350, 800, 35);
+        errorLabel.setBounds(0, 300, 800, 35);
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
         errorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
