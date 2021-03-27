@@ -324,7 +324,7 @@ public class DOMmodifyXML {
 		    	        meetingWith.setAttribute("classCode", classCode);
 		            	
 		            	Node day = eElement.getElementsByTagName(meetingDay).item(0);
-		            	day.appendChild(doc.createTextNode(tutorEmail));
+		            	day.appendChild(meetingWith);
 		            	
 		            	NamedNodeMap attr = day.getAttributes();
 		                Node dayAttr = attr.getNamedItem("availability");

@@ -1,7 +1,10 @@
 package main;
 
+import java.util.ArrayList;
+
 import main.Classes.classClass;
-//import main.UserSchedule.Day;
+import main.UserSchedule.Day;
+import main.UserSchedule.Meeting;
 
 public class User {
 	
@@ -57,6 +60,39 @@ public class User {
 		return schedule;
 	}
 	
+	public ArrayList<classClass> getclassList() {
+		return classes.classList;
+	}
+	
+	public ArrayList<Meeting> getMeetingList(String day) {
+		int index = 0;
+		
+		switch (day) {
+		case "Monday":
+			index = 0;
+			break;
+		case "Tuesday":
+			index = 1;
+			break;
+		case "Wednesday":
+			index = 2;
+			break;
+		case "Thursday":
+			index = 3;
+			break;
+		case "Friday":
+			index = 4;
+			break;
+		case "Saturday":
+			index = 5;
+			break;
+		case "Sunday":
+			index = 6;
+			break;
+		}
+		
+		return schedule.week[index].meetingList;
+	}
 	
 	
 	public static class userBuilder {
@@ -68,9 +104,6 @@ public class User {
 		private Ratings ratings;
 		private Classes classes;
 		private UserSchedule schedule;
-		//String daysAvailable[];
-		//String courses[];
-		//String enrolledUsers[];
 		
 		public userBuilder(String email, String firstName, String lastName, String password, String role, Ratings ratings, Classes classes, UserSchedule schedule) {
 			this.email = email;
@@ -100,7 +133,6 @@ public class User {
 		}
 		
 		public userBuilder addSchedule(UserSchedule schedule) {
-			//Day newDay = new Day();
 			this.schedule = schedule;
 			return this;
 		}

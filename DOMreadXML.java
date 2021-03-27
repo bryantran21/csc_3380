@@ -7,6 +7,7 @@ import org.w3c.dom.NodeList;
 
 import main.Classes.classClass;
 import main.UserSchedule.Day;
+import main.UserSchedule.Meeting;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
@@ -60,7 +61,7 @@ public class DOMreadXML {
 public static User returnUser(String email) {
 		
 		try {
-
+			
 		    File fXmlFile = new File("src/main/gooberDatabase.xml");
 		    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -73,12 +74,12 @@ public static User returnUser(String email) {
 		    NodeList nList = doc.getElementsByTagName("User");
 		    
 		    for (int temp = 0; temp < nList.getLength(); temp++) {
-
+		    	
 		        Node nNode = nList.item(temp);
 		                
 		                
 		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
+		        	
 		            Element eElement = (Element) nNode;
 		            if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	String firstName = eElement.getElementsByTagName("firstName").item(0).getTextContent();
@@ -120,6 +121,7 @@ public static User returnUser(String email) {
 		            	
 		            	UserSchedule schedule = new UserSchedule();
 		            	Day newDay = new Day();
+		            	Meeting newMeeting = new Meeting();
 		            	NodeList dayNodeList = doc.getElementsByTagName("schedule").item(0).getChildNodes();
 		            	for (int temp4 = 0; temp4 < 7; temp4++) {
 		            		Node dayNode = dayNodeList.item(temp4);
@@ -137,7 +139,9 @@ public static User returnUser(String email) {
 				                	
 				                	if (meetingNode.getNodeType() == Node.ELEMENT_NODE) {
 				                		Element meetingElement = (Element) meetingNode;
-				                		newDay.meetingList.add(meetingElement.getTextContent());
+				                		newMeeting.meetingWith = meetingElement.getTextContent();
+				                		newMeeting.classCode = meetingElement.getAttribute("meetingWith");
+				                		newDay.meetingList.add(newMeeting);
 				                	}
 				                }
 				                
