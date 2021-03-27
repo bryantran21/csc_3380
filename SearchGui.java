@@ -43,7 +43,6 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	private JTextField searchText;
 	private JButton searchBtn;
 	private JLabel errorLabel;
-	private JButton selectBtn;
 	private JPanel tutorPanel;
 	private JButton logoutBtn;
 	private JButton homeBtn;
@@ -74,7 +73,8 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	private JRadioButton fridayRadio;
 	private JRadioButton saturdayRadio;
 	private JRadioButton sundayRadio;
-
+	
+	String className;
 	String dayArray[] = { "", "", "", "", "", "", "" };
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	String tutorNames[] = new String[100];
@@ -178,14 +178,6 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		errorLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 		errorLabel.setForeground(Color.RED);
 		scrollPanel.add(errorLabel);
-
-		selectBtn = new JButton("Select Tutor");
-		selectBtn.setBounds(100, 500, 200, 30);
-		selectBtn.setBackground(Color.decode("#7289da"));
-		selectBtn.setForeground(Color.decode("#dcddde"));
-		selectBtn.setFocusable(false);
-		selectBtn.addActionListener(this);
-		scrollPanel.add(selectBtn);
 
 		scrollPanel.setBackground(Color.decode("#36393f"));
 		scrollPanel.setLayout(null);
@@ -396,7 +388,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 		int index = list.getSelectedIndex();
 		if (e.getSource() == searchBtn) {
-			String className = searchText.getText().toUpperCase();
+			className = searchText.getText().toUpperCase();
 			tutors = tutorsInClass(className);
 
 			if (className.equals("")) {
@@ -421,10 +413,15 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		}
 
 		if (e.getSource() == scheduleBtn) {
-			for (int i = 0; i < 7; i++) {
-				daySelect = daySelect + dayArray[i];
-				if ((i + 1 < 7) && (dayArray[i + 1].compareTo("") != 0)) {
-					daySelect = daySelect + ", ";
+			int counter = 0;
+			while (dayArray[counter].equals(""))
+			{
+				counter++;
+			}
+			daySelect = dayArray[counter];
+			for (int i = counter + 1; i < 7; i++) {
+				if ((dayArray[i].compareTo("") != 0)) {
+					daySelect = daySelect + ", " + dayArray[i];
 				}
 			}
 			String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
@@ -443,7 +440,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 			successPage(successText1, successText2);
 			for (int i = 0; i < 7; i++) {
 				if (dayArray[i].compareTo("") != 0) {
-					schedule(currentUser.getEmail(), tutors[index].getEmail(), dayArray[i]);
+					schedule(currentUser.getEmail(), tutors[index].getEmail(), dayArray[i], className);
 				}
 			}
 			confirmFrame.dispose();
@@ -451,16 +448,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		}
 		if (e.getSource() == declineBtn) {
 			confirmFrame.dispose();
-//			titleLabel.setText("");
-//			tutorLabel.setText("");
-//			scheduleBtn.setVisible(false);
-//			mondayRadio.setVisible(false);
-//			tuesdayRadio.setVisible(false);
-//			wednesdayRadio.setVisible(false);
-//			thursdayRadio.setVisible(false);
-//			fridayRadio.setVisible(false);
-//			saturdayRadio.setVisible(false);
-//			sundayRadio.setVisible(false);
+
 		}
 		if (e.getSource() == logoutBtn) {
 
