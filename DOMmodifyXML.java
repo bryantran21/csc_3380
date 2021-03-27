@@ -286,7 +286,7 @@ public class DOMmodifyXML {
 	       }
 	}
 	
-	public static void schedule(String studentEmail, String tutorEmail, String meetingDay) {
+	public static void schedule(String studentEmail, String tutorEmail, String meetingDay, String classCode) {
 		try {
 	        String filepath = "src/main/gooberDatabase.xml";
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -307,6 +307,7 @@ public class DOMmodifyXML {
 		            	
 		            	Element meetingWith = doc.createElement("meetingWith");
 		    	        meetingWith.appendChild(doc.createTextNode(studentEmail));
+		    	        meetingWith.setAttribute("classCode", classCode);
 		            	
 		    	        Node day = eElement.getElementsByTagName(meetingDay).item(0);
 		            	day.appendChild(meetingWith);
@@ -320,6 +321,7 @@ public class DOMmodifyXML {
 		            	
 		            	Element meetingWith = doc.createElement("meetingWith");
 		    	        meetingWith.appendChild(doc.createTextNode(tutorEmail));
+		    	        meetingWith.setAttribute("classCode", classCode);
 		            	
 		            	Node day = eElement.getElementsByTagName(meetingDay).item(0);
 		            	day.appendChild(doc.createTextNode(tutorEmail));
