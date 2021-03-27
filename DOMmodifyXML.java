@@ -134,6 +134,70 @@ public class DOMmodifyXML {
 	       }
 		}
 	
+	public static void deleteCourse(String userEmail, String course) {
+		try {
+	        String filepath = "src/main/gooberDatabase.xml";
+	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	        Document doc = docBuilder.parse(filepath);
+	        
+	        NodeList nList = doc.getElementsByTagName("User");
+
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	NodeList courseList = eElement.getElementsByTagName("class");
+		            	for (int iCourse = 0; iCourse < courseList.getLength(); iCourse++) {
+		            		Node courseNode = courseList.item(iCourse);
+		            		if (courseNode.getNodeType() == Node.ELEMENT_NODE) {
+		            			Element courseElement = (Element) courseNode;
+		            			if (course.equals(courseElement.getTextContent())) {
+		            				Node parentNode = courseElement.getParentNode();
+		            				parentNode.removeChild(courseElement);
+		            			}
+		            		}
+		            	}
+		            }
+		        }
+		    }
+		    
+		 // write the content into xml file
+	        //TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        //Transformer transformer = transformerFactory.newTransformer();
+	        //transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	        //transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+	        //DOMSource source = new DOMSource(doc);
+	        //StreamResult result = new StreamResult(new File(filepath));
+	        //transformer.transform(source, result);
+	        
+	        doc.normalize();
+	        
+	        Transformer tf = TransformerFactory.newInstance().newTransformer();
+	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
+	        Writer out = new StringWriter();
+	        tf.transform(new DOMSource(doc), new StreamResult(filepath));
+	        //System.out.println(out.toString());
+
+	       } catch (ParserConfigurationException pce) {
+	        pce.printStackTrace();
+	       } catch (TransformerException tfe) {
+	        tfe.printStackTrace();
+	       } catch (IOException ioe) {
+	        ioe.printStackTrace();
+	       } catch (SAXException sae) {
+	        sae.printStackTrace();
+	       } catch (Exception ex) {
+	    	   ex.printStackTrace();
+	       }
+	}
+	
 	public static void deleteAccount(String userEmail) {
 		try {
 	        String filepath = "src/main/gooberDatabase.xml";
