@@ -116,8 +116,13 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		for (int i = 0; tutors[i] != null; i++) // Creates a string array of tutors with the first and last name, sorted
 		{
 			String avg = String.valueOf(avgRating(tutors[i].getEmail()));
-			int maxLength = (avg.length() < 4) ? avg.length() : 4;
-			avg = avg.substring(0, maxLength);
+			if (avg.equals("NaN")) {
+				avg = "NR";
+			} else {
+				int maxLength = (avg.length() < 4) ? avg.length() : 4;
+				avg = avg.substring(0, maxLength);
+			}
+
 			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName() + " (" + avg + ")";
 		}
 
@@ -165,11 +170,10 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		exampleLabel.setForeground(Color.decode("#dcddde"));
 		scrollPanel.add(exampleLabel);
 
-		formatLabel = new JLabel("Last Name, First Name (Average Rating)");
-		formatLabel.setBounds(100, 55, 200, 25);
+		formatLabel = new JLabel("<html>Last Name, First Name (Average Rating)<br/>*NR = No Rating</html>");
+		formatLabel.setBounds(100, 45, 200, 25);
 		formatLabel.setFont(new Font(null, Font.PLAIN, 10));
 		formatLabel.setForeground(Color.decode("#dcddde"));
-		formatLabel.setHorizontalAlignment(JLabel.CENTER);
 		scrollPanel.add(formatLabel);
 
 		scrollPane = new JScrollPane();

@@ -124,11 +124,10 @@ public static User returnUser(String email) {
 		            	
 		            	UserSchedule schedule = new UserSchedule();
 		            	Day newDay = new Day();
-
+		            	Meeting newMeeting = new Meeting();
 		            	NodeList dayNodeList = eElement.getElementsByTagName("schedule").item(0).getChildNodes();
 		            	for (int temp4 = 0; temp4 < 7; temp4++) {
 		            		Node dayNode = dayNodeList.item(temp4);
-			            	Meeting newMeeting = new Meeting();
 		            		
 		            		if (dayNode.getNodeType() == Node.ELEMENT_NODE) {
 		            			
