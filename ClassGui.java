@@ -32,6 +32,7 @@ import javax.swing.JTextField;
 import main.DOMmodifyXML;
 import main.DOMreadXML;
 import static main.DOMmodifyXML.addClass;
+import static main.DOMmodifyXML.schedule;
 
 public class ClassGui implements ActionListener {
 
@@ -60,6 +61,18 @@ public class ClassGui implements ActionListener {
     private JLabel courseLabel;
     private JLabel gradeLabel;
     private JLabel exampleLabel;
+    private JLabel successLabel;
+    private JButton successButton;
+    private JFrame confirmFrame;
+    private JPanel confirmPanel;
+    private JLabel confirmLabel1;
+    private JLabel confirmLabel2;
+    private JButton confirmBtn;
+    private JButton declineBtn;
+    private JFrame successFrame;
+    private JPanel successPanel;
+    private JLabel successLabel1;
+    private JLabel successLabel2;
 
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     private User currentUser;
@@ -152,6 +165,73 @@ public class ClassGui implements ActionListener {
         frame.setTitle("Manage Classes");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    
+    public void confirmPage(String text1) {
+
+        confirmFrame = new JFrame();
+        confirmFrame.setBounds(600, 250, 415, 150);
+        confirmFrame.setLocationRelativeTo(null);
+        confirmPanel = new JPanel();
+        confirmPanel.setBackground(Color.decode("#36393f"));
+        confirmPanel.setLayout(null);
+
+        confirmLabel1 = new JLabel(text1);
+        confirmLabel1.setBounds(0, 10, 400, 30);
+        confirmLabel1.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        confirmLabel1.setHorizontalAlignment(JLabel.CENTER);
+        confirmLabel1.setForeground(Color.decode("#dcddde"));
+        confirmPanel.add(confirmLabel1);
+
+        confirmBtn = new JButton("Confirm");
+        confirmBtn.setBounds(110, 70, 80, 30);
+        confirmBtn.setBackground(Color.decode("#7289da"));
+        confirmBtn.setForeground(Color.decode("#dcddde"));
+        confirmBtn.setFocusable(false);
+        confirmBtn.addActionListener(this);
+        confirmPanel.add(confirmBtn);
+
+        declineBtn = new JButton("Decline");
+        declineBtn.setBounds(210, 70, 80, 30);
+        declineBtn.setBackground(Color.decode("#7289da"));
+        declineBtn.setForeground(Color.decode("#dcddde"));
+        declineBtn.setFocusable(false);
+        declineBtn.addActionListener(this);
+        confirmPanel.add(declineBtn);
+
+                ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        confirmFrame.setIconImage(image.getImage());
+        confirmFrame.add(confirmPanel);
+        confirmFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        confirmFrame.setTitle("Goober - Tutor Confirmation");
+        confirmFrame.setVisible(true);
+        confirmFrame.setResizable(false);
+
+    }
+
+    public void successPage(String text1) {
+
+        successFrame = new JFrame();
+        successFrame.setBounds(600, 250, 415, 150);
+        successFrame.setLocationRelativeTo(null);
+        successPanel = new JPanel();
+        successPanel.setLayout(null);
+        successPanel.setBackground(Color.decode("#36393f"));
+
+        successLabel1 = new JLabel(text1);
+        successLabel1.setBounds(0, 20, 400, 30);
+        successLabel1.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        successLabel1.setHorizontalAlignment(JLabel.CENTER);
+        successLabel1.setForeground(Color.decode("#dcddde"));
+        successPanel.add(successLabel1);
+
+                ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        successFrame.setIconImage(image.getImage());
+        successFrame.add(successPanel);
+        successFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        successFrame.setTitle("Goober - Tutor Confirmation");
+        successFrame.setVisible(true);
+        successFrame.setResizable(false);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -161,7 +241,8 @@ public class ClassGui implements ActionListener {
             } else if (gradeBox.getSelectedIndex() >= 2) {
                 errorLabel.setText("You do not have an appropriate grade to tutor this class.");
             } else {
-                addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
+            	String confirmText1 = "Do you want to add " + addText.getText().toUpperCase() + " as one of your classes to tutor?";
+            	confirmPage(confirmText1);
                 errorLabel.setText("");
             }
         }
@@ -172,6 +253,18 @@ public class ClassGui implements ActionListener {
         if (e.getSource() == logoutButton) {
             LoginGui login = new LoginGui();
             frame.dispose();
+        }
+        if (e.getSource() == confirmBtn) {
+
+            String successText1 = "You have successfully add " + addText.getText().toUpperCase();
+            HomePage homepage = new HomePage(currentUser);
+            successPage(successText1);
+            addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
+            confirmFrame.dispose();
+            frame.dispose();
+        }
+        if (e.getSource() == declineBtn) {
+            confirmFrame.dispose();
         }
     }
 }
