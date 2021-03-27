@@ -98,7 +98,7 @@ public class HomePage implements ActionListener {
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
         frame.setVisible(true);
         frame.setResizable(false);
@@ -122,7 +122,7 @@ public class HomePage implements ActionListener {
             panel.add(scheduleButton);
 
         } else {
-            searchButton = new JButton("Search For Tutors");
+            searchButton = new JButton("Schedule A Meeting With A Tutor");
             searchButton.setBounds(250, 225, 300, 40);
             searchButton.setBackground(Color.decode("#7289da"));
             searchButton.setForeground(Color.decode("#dcddde"));

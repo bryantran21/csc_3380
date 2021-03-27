@@ -147,7 +147,7 @@ public class Settings implements ActionListener {
         logoutBtn.addActionListener(this);
         panel.add(logoutBtn);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
 
         frame.setVisible(true);
@@ -217,7 +217,7 @@ public class Settings implements ActionListener {
         emailCancel.addActionListener(this);
         emailPanel.add(emailCancel);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         emailFrame.setIconImage(image.getImage());
         emailFrame.add(emailPanel);
         emailFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -312,7 +312,7 @@ public class Settings implements ActionListener {
         pwCancel.addActionListener(this);
         pwPanel.add(pwCancel);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         pwFrame.setIconImage(image.getImage());
         pwFrame.add(pwPanel);
         pwFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -358,7 +358,7 @@ public class Settings implements ActionListener {
         deleteNo.addActionListener(this);
         deletePanel.add(deleteNo);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         deleteFrame.setIconImage(image.getImage());
         deleteFrame.add(deletePanel);
         deleteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -390,7 +390,7 @@ public class Settings implements ActionListener {
         deleteOK.addActionListener(this);
         delete2Panel.add(deleteOK);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         delete2Frame.setIconImage(image.getImage());
         delete2Frame.add(delete2Panel);
         delete2Frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

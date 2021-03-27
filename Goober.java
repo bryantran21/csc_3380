@@ -66,7 +66,7 @@ public class Goober implements ActionListener{
         newButton.addActionListener(new Goober());
         panel.add(newButton);
         
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
         frame.setResizable(false);
         frame.setVisible(true);

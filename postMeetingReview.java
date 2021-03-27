@@ -228,7 +228,7 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
             tutorPanel.setBackground(Color.decode("#36393f"));
         }
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
         frame.setLayout(new GridLayout(1, 2));
         frame.add(scrollPanel);
@@ -256,7 +256,7 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
         smallPanel.setLayout(null);
         smallPanel.add(newLabel);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         smallFrame.setIconImage(image.getImage());
         smallFrame.add(smallPanel);
         smallFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -156,7 +156,7 @@ public class ClassGui implements ActionListener {
         logoutButton.addActionListener(this);
         panel.add(logoutButton);
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
         frame.setVisible(true);
         frame.setResizable(false);
@@ -198,7 +198,7 @@ public class ClassGui implements ActionListener {
         declineBtn.addActionListener(this);
         confirmPanel.add(declineBtn);
 
-                ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+                ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         confirmFrame.setIconImage(image.getImage());
         confirmFrame.add(confirmPanel);
         confirmFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -257,11 +257,11 @@ public class ClassGui implements ActionListener {
         if (e.getSource() == confirmBtn) {
 
             String successText1 = "You have successfully add " + addText.getText().toUpperCase();
-            HomePage homepage = new HomePage(currentUser);
             successPage(successText1);
             addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
             confirmFrame.dispose();
-            frame.dispose();
+            addText.setText("");
+            gradeBox.setSelectedIndex(0);
         }
         if (e.getSource() == declineBtn) {
             confirmFrame.dispose();

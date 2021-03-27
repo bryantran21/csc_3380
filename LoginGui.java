@@ -110,7 +110,7 @@ public class LoginGui implements ActionListener {
         panel.add(newAccButton);
         panel.setBackground(Color.decode("#36393f"));
 
-        ImageIcon image = new ImageIcon("src/main/Frosty_POG-min.png");
+        ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         frame.setIconImage(image.getImage());
         frame.setVisible(true);
         frame.setResizable(false);
