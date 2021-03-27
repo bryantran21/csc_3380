@@ -91,9 +91,11 @@ public static User returnUser(String email) {
 		            	ratings.numOfRatings = Integer.valueOf(eElement.getElementsByTagName("ratings").item(0).getAttributes().getNamedItem("numOf").getTextContent());
 		            	
 		            	Classes classes = new Classes();
-		            	classClass newClass = new classClass();
-		            	NodeList classNodeList = doc.getElementsByTagName("class");
+
+		            	NodeList classNodeList = eElement.getElementsByTagName("class");
+		            	int testCounter = 0;
 		            	for (int temp2 = 0; temp2 < classNodeList.getLength(); temp2++) {
+			            	classClass newClass = new classClass();
 		            		Node classNode = classNodeList.item(temp2);
 		            		
 		            		if (classNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -101,12 +103,13 @@ public static User returnUser(String email) {
 		            			Element classElement = (Element) classNode;
 		            			
 		            			newClass.className = classElement.getTextContent();
+		            			newClass.grade = classElement.getAttribute("grade");
 		            			classes.classList.add(newClass);
 		            		}
 		            	}
 		            	
 		            	Integer newRating;
-		            	NodeList ratingNodeList = doc.getElementsByTagName("rating");
+		            	NodeList ratingNodeList = eElement.getElementsByTagName("rating");
 		            	for (int temp3 = 0; temp3 < ratingNodeList.getLength(); temp3++) {
 		            		Node ratingNode = ratingNodeList.item(temp3);
 		            		
@@ -122,7 +125,7 @@ public static User returnUser(String email) {
 		            	UserSchedule schedule = new UserSchedule();
 		            	Day newDay = new Day();
 		            	Meeting newMeeting = new Meeting();
-		            	NodeList dayNodeList = doc.getElementsByTagName("schedule").item(0).getChildNodes();
+		            	NodeList dayNodeList = eElement.getElementsByTagName("schedule").item(0).getChildNodes();
 		            	for (int temp4 = 0; temp4 < 7; temp4++) {
 		            		Node dayNode = dayNodeList.item(temp4);
 		            		
@@ -133,7 +136,7 @@ public static User returnUser(String email) {
 				                dayAttr.setTextContent("available");
 				                newDay.availability = dayAttr.getTextContent();
 		            			
-				                NodeList meetingNodeList = doc.getElementsByTagName("meetingWith");
+				                NodeList meetingNodeList = eElement.getElementsByTagName("meetingWith");
 				                for (int temp5 = 0; temp5 < meetingNodeList.getLength(); temp5++) {
 				                	Node meetingNode = meetingNodeList.item(temp5);
 				                	
