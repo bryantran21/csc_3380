@@ -160,7 +160,7 @@ public class Schedule implements ActionListener, ItemListener {
         saturdayRadio.setText("Saturday");
         saturdayRadio.setForeground(Color.decode("#dcddde"));
         saturdayRadio.setBackground(Color.decode("#36393f"));
-        saturdayRadio.setBounds(130, 175, 75, 30);
+        saturdayRadio.setBounds(130, 175, 80, 30);
         saturdayRadio.setFocusable(false);
         saturdayRadio.addItemListener(this);
         panel.add(saturdayRadio);
