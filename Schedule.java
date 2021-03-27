@@ -72,6 +72,7 @@ public class Schedule implements ActionListener, ItemListener {
         panel.setBackground(Color.decode("#36393f"));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setResizable(false);
         frame.add(panel);
         frame.setTitle("Goober - Manage Schedule");
         ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
@@ -193,6 +194,7 @@ public class Schedule implements ActionListener, ItemListener {
         confirmPanel.setLayout(null);
         confirmPanel.setBackground(Color.decode("#36393f"));
         confirmFrame.setVisible(true);
+        confirmFrame.setResizable(false);
         confirmFrame.add(confirmPanel);
         confirmFrame.setTitle("Goober - Manage Schedule");
         ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
