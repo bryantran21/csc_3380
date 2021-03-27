@@ -24,6 +24,8 @@ import javax.swing.JSlider;
 import static main.DOMmodifyXML.addClass;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+import static main.DOMmodifyXML.setAvailability;
+import static main.DOMreadXML.returnUser;
 
 public class Schedule implements ActionListener, ItemListener {
 
@@ -298,6 +300,44 @@ public class Schedule implements ActionListener, ItemListener {
 
         if (e.getSource() == confirmBtn) { // ***THIS NEEDS TO WORK WITH BACKEND***
             
+        	String availability = "";
+        	for (int i = 0; i < 7; i++) {
+                if ((dayArray[i].compareTo("") != 0)) {
+                	availability = "available";
+                }
+                else {
+                	availability = "unavailabile";
+                }
+
+                String dayParameter = "";
+        		
+        		switch (i) {
+        		case 0:
+        			dayParameter = "Monday";
+        			break;
+        		case 1:
+        			dayParameter = "Tuesday";
+        			break;
+        		case 2:
+        			dayParameter = "Wednesday";
+        			break;
+        		case 3:
+        			dayParameter = "Thursday";
+        			break;
+        		case 4:
+        			dayParameter = "Friday";
+        			break;
+        		case 5:
+        			dayParameter = "Saturday";
+        			break;
+        		case 6:
+        			dayParameter = "Sunday";
+        			break;
+        		}
+                setAvailability(currentUser.getEmail(), dayParameter, availability);
+            }
+        	currentUser = returnUser(currentUser.getEmail());
+        	
             String text1 = daySelect + ".";
             successPage(text1);
             confirmFrame.dispose();

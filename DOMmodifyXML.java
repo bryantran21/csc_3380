@@ -350,6 +350,55 @@ public class DOMmodifyXML {
 	       }
 	}
 	
+	public static void setAvailability(String tutorEmail, String meetingDay, String availability) {
+		try {
+	        String filepath = "src/main/gooberDatabase.xml";
+	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	        Document doc = docBuilder.parse(filepath);
+	        
+	        NodeList nList = doc.getElementsByTagName("User");
+		    
+		    for (int temp = 0; temp < nList.getLength(); temp++) {
+
+		        Node nNode = nList.item(temp);
+		                
+		        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+		            Element eElement = (Element) nNode;
+		            if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+		            	
+		    	        Node day = eElement.getElementsByTagName(meetingDay).item(0);
+		            	NamedNodeMap attr = day.getAttributes();
+		                Node dayAttr = attr.getNamedItem("availability");
+		                dayAttr.setTextContent(availability);
+		            }
+		        }
+		    }
+		    
+	        
+	        doc.normalize();
+	        
+	        Transformer tf = TransformerFactory.newInstance().newTransformer();
+	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	        tf.setOutputProperty(OutputKeys.INDENT, "yes");
+	        Writer out = new StringWriter();
+	        tf.transform(new DOMSource(doc), new StreamResult(filepath));
+	        //System.out.println(out.toString());
+
+	       } catch (ParserConfigurationException pce) {
+	        pce.printStackTrace();
+	       } catch (TransformerException tfe) {
+	        tfe.printStackTrace();
+	       } catch (IOException ioe) {
+	        ioe.printStackTrace();
+	       } catch (SAXException sae) {
+	        sae.printStackTrace();
+	       } catch (Exception ex) {
+	    	   ex.printStackTrace();
+	       }
+		}
+	
 	public static void schedule(String studentEmail, String tutorEmail, String meetingDay, String classCode) {
 		try {
 	        String filepath = "src/main/gooberDatabase.xml";
