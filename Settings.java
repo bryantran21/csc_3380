@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import static main.DOMmodifyXML.deleteAccount;
 import static main.DOMmodifyXML.updateEmail;
 import static main.DOMmodifyXML.updatePassword;
+import static main.DOMreadXML.returnUser;
 
 public class Settings implements ActionListener {
 
@@ -210,7 +211,7 @@ public class Settings implements ActionListener {
         emailPanel.add(emailSubmit);
 
         emailCancel = new JButton("Cancel");
-        emailCancel.setBounds(155, 220, 80, 30);
+        emailCancel.setBounds(135, 220, 120, 30);
         emailCancel.setBackground(Color.decode("#7289da"));
         emailCancel.setForeground(Color.decode("#dcddde"));
         emailCancel.setFocusable(false);
@@ -305,7 +306,7 @@ public class Settings implements ActionListener {
         pwPanel.add(pwSubmit);
 
         pwCancel = new JButton("Cancel");
-        pwCancel.setBounds(150, 260, 80, 30);
+        pwCancel.setBounds(110, 260, 160, 30);
         pwCancel.setBackground(Color.decode("#7289da"));
         pwCancel.setForeground(Color.decode("#dcddde"));
         pwCancel.setFocusable(false);
@@ -437,8 +438,10 @@ public class Settings implements ActionListener {
             } else { // Successfully saves the email change
 
                 updateEmail(currentUser.getEmail(), newEmailText.getText());
-                errorLabel.setText("Email has been successfully changed to " + newEmailText.getText()); //this is just hardcoded as a placeholder. supposed to change the currentUser email
-                System.out.println("Email has been successfully changed to " + newEmailText.getText()); // placeholder
+                currentUser = returnUser(newEmailText.getText());
+                errorLabel.setText("Email has been successfully changed to " + currentUser.getEmail());
+                emailLabel.setText("Email Address: " + currentUser.getEmail());
+                currentEmail.setText("Current Email: " + currentUser.getEmail());
                 emailFrame.dispose();
             }
         }
@@ -489,7 +492,7 @@ public class Settings implements ActionListener {
             } else { // Successfully saves the password change
 
                 updatePassword(currentUser.getEmail(), newPWText.getText());
-                System.out.println("Your password has successfully been changed."); // placeholder test
+                currentUser = returnUser(emailLabel.getText());
                 pwFrame.dispose();
             }
         }

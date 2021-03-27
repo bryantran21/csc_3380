@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-model href="gooberDatabase.xsd"?><Users>
-                                    
+                                                                                                
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -10,7 +25,22 @@
     
     
     <User>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -19,7 +49,22 @@
         
         
         <email>blalon3@lsu.edu</email>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -28,7 +73,22 @@
         
         
         <firstName>Blake</firstName>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -37,7 +97,22 @@
         
         
         <lastName>Lalonde</lastName>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -46,7 +121,22 @@
         
         
         <password>1</password>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -55,7 +145,22 @@
         
         
         <role>Student</role>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -64,7 +169,22 @@
         
         
         <ratings numOf="0"/>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -73,7 +193,22 @@
         
         
         <classes numOf="0"/>
-                                                                        
+                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -82,7 +217,7 @@
         
         
         <schedule>
-                                                                                                            
+                                                                                                                                                                                                                                                                                                
             
             
             
@@ -90,8 +225,6 @@
             
             
             
-            <Monday availability="available">mtom@lsu.edu</Monday>
-                                                                                                            
             
             
             
@@ -99,8 +232,55 @@
             
             
             
-            <Tuesday availability="available">mtom@lsu.edu</Tuesday>
-                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            <Monday availability="available">mtom@lsu.edumtom@lsu.edu</Monday>
+                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <Tuesday availability="available">mtom@lsu.edumtom@lsu.edumtom@lsu.edumtom@lsu.edumtom@lsu.edu</Tuesday>
+                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -109,7 +289,22 @@
             
             
             <Wednesday availability=""/>
-                                                                                                            
+                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -118,7 +313,7 @@
             
             
             <Thursday availability=""/>
-                                                                                                            
+                                                                                                                                                                                                                                                                                                
             
             
             
@@ -126,8 +321,6 @@
             
             
             
-            <Friday availability="available">mtom@lsu.edu</Friday>
-                                                                                                            
             
             
             
@@ -135,8 +328,55 @@
             
             
             
-            <Saturday availability=""/>
-                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            <Friday availability="available">mtom@lsu.edumtom@lsu.edumtom@lsu.edumtom@lsu.edumtom@lsu.edu</Friday>
+                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <Saturday availability="available">mtom@lsu.edumtom@lsu.edu</Saturday>
+                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -145,7 +385,22 @@
             
             
             <Sunday availability=""/>
-                                                                                                        
+                                                                                                                                                                                                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -154,7 +409,22 @@
         
         
         </schedule>
-                                                                    
+                                                                                                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -163,7 +433,22 @@
     
     
     </User>
-                                
+                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -172,7 +457,22 @@
     
     
     <User>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -180,7 +480,22 @@
         
         
         <email>mtom@lsu.edu</email>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -188,7 +503,22 @@
         
         
         <firstName>Michael</firstName>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -196,7 +526,22 @@
         
         
         <lastName>Tom</lastName>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -204,7 +549,22 @@
         
         
         <password>mtom</password>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -212,7 +572,22 @@
         
         
         <role>Tutor</role>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -220,7 +595,22 @@
         
         
         <ratings numOf="0"/>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -228,24 +618,84 @@
         
         
         <classes numOf="2">
-                                                                        
+                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             <class grade="A">CSC 3380</class>
-                                                                    
+                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             <class grade="A">MATH 1551</class>
-                                                        
+                                                                                                                                                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         </classes>
-                                                                
+                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -253,7 +703,22 @@
         
         
         <schedule>
-                                                                                                
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -261,15 +726,62 @@
             
             
             <Monday availability="available">
-                                                                
+                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 <meetingWith>blalon3@lsu.edu</meetingWith>
-                                                            
+                                                                                                                                                                                                                                                                                                            
             
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                            
             </Monday>
-                                                                                                
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -277,13 +789,89 @@
             
             
             <Tuesday availability="available">
-                                                
+                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 <meetingWith>blalon3@lsu.edu</meetingWith>
-                                            
+                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">balalonde01@gmail.com</meetingWith>
+                                                                                                                                                                                            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                                                            
+            
+            
+                
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                            
+            
+                
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                            
+            
             
             </Tuesday>
-                                                                                                
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -291,7 +879,22 @@
             
             
             <Wednesday availability=""/>
-                                                                                                
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -299,7 +902,22 @@
             
             
             <Thursday availability=""/>
-                                                                                                
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -307,19 +925,121 @@
             
             
             <Friday availability="available">
-                                
+                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 <meetingWith>blalon3@lsu.edu</meetingWith>
-                            
+                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">balalonde01@gmail.com</meetingWith>
+                                                                                                                                                                            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                                            
+            
+            
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                            
+            
+            
+            
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
             </Friday>
-                                                                                                
+                                                                                                                                                                                                                                                                                    
             
             
             
             
             
             
-            <Saturday availability=""/>
-                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <Saturday availability="available">
+                                                                                                                
+                
+                
+                
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                            
+            
+            
+            
+                
+                
+                <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                            
+            
+            </Saturday>
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -327,7 +1047,22 @@
             
             
             <Sunday availability=""/>
-                                                                                            
+                                                                                                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -335,7 +1070,22 @@
         
         
         </schedule>
-                                                            
+                                                                                                                                                                                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -343,7 +1093,22 @@
     
     
     </User>
-                            
+                                                                                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -351,128 +1116,428 @@
     
     
     <User>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <email>paymond@lsu.edu</email>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <firstName>Patti</firstName>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <lastName>Aymond</lastName>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <password>paymond</password>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <role>Tutor</role>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <ratings numOf="1">
+                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <rating>7</rating>
+                                                                                                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         </ratings>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <classes numOf="0"/>
-                                                        
+                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         <schedule>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Monday availability=""/>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Tuesday availability=""/>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Wednesday availability=""/>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Thursday availability=""/>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Friday availability=""/>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Saturday availability=""/>
-                                                                                    
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
             
             
             <Sunday availability=""/>
-                                                                                
+                                                                                                                                                                                                                                                                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         </schedule>
-                                                    
+                                                                                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
     
     
     </User>
-                        
+                                                                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

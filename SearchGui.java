@@ -14,6 +14,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Arrays;
 import java.util.Comparator;
+
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -70,8 +72,11 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	private JRadioButton tuesdayRadio;
 	private JRadioButton wednesdayRadio;
 	private JRadioButton thursdayRadio;
+	private JLabel contactLabel;
+	private JLabel contactInfo;
 	private JRadioButton fridayRadio;
 	private JRadioButton saturdayRadio;
+	private JLabel line;
 	private JRadioButton sundayRadio;
 	
 	String className;
@@ -351,29 +356,48 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 	}
 
-	public void successPage(String text1, String text2) {
+	public void successPage(String text1, String text2, String emailText) {
 
 		successFrame = new JFrame();
-		successFrame.setBounds(600, 250, 415, 150);
+		successFrame.setBounds(600, 250, 415, 200);
 		successFrame.setLocationRelativeTo(null);
 		successPanel = new JPanel();
 		successPanel.setLayout(null);
 		successPanel.setBackground(Color.decode("#36393f"));
 
 		successLabel1 = new JLabel(text1);
-		successLabel1.setBounds(0, 20, 400, 30);
+		successLabel1.setBounds(0, 10, 400, 30);
 		successLabel1.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 		successLabel1.setHorizontalAlignment(JLabel.CENTER);
 		successLabel1.setForeground(Color.decode("#dcddde"));
 		successPanel.add(successLabel1);
 
 		successLabel2 = new JLabel(text2);
-		successLabel2.setBounds(0, 40, 400, 30);
+		successLabel2.setBounds(0, 30, 400, 30);
 		successLabel2.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 		successLabel2.setHorizontalAlignment(JLabel.CENTER);
 		successLabel2.setForeground(Color.decode("#dcddde"));
 		successPanel.add(successLabel2);
 
+		contactLabel = new JLabel("Please contact your tutor to discuss meeting times.");
+		contactLabel.setBounds(0, 90, 400, 30);
+		contactLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+		contactLabel.setHorizontalAlignment(JLabel.CENTER);
+		contactLabel.setForeground(Color.decode("#dcddde"));
+		successPanel.add(contactLabel);
+		
+		line = new JLabel();
+		line.setBounds(0,75, 415,1);
+		line.setBorder(BorderFactory.createLineBorder(Color.decode("#dcddde")));
+		successPanel.add(line);
+		
+		contactInfo = new JLabel(emailText);
+		contactInfo.setBounds(0, 110, 400, 30);
+		contactInfo.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+		contactInfo.setHorizontalAlignment(JLabel.CENTER);
+		contactInfo.setForeground(Color.decode("#dcddde"));
+		successPanel.add(contactInfo);
+		
 		ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
 		successFrame.setIconImage(image.getImage());
 		successFrame.add(successPanel);
@@ -436,8 +460,9 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 			String successText1 = "You have successfully scheduled to meet with " + tutors[index].getFirstName() + " "
 					+ tutors[index].getLastName() + " on";
 			String successText2 = daySelect + ".";
+			String emailMessage = "(" + tutors[index].getEmail() + ")";
 			HomePage homepage = new HomePage(currentUser);
-			successPage(successText1, successText2);
+			successPage(successText1, successText2, emailMessage);
 			for (int i = 0; i < 7; i++) {
 				if (dayArray[i].compareTo("") != 0) {
 					schedule(currentUser.getEmail(), tutors[index].getEmail(), dayArray[i], className);
