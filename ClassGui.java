@@ -315,7 +315,8 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == addButton) {
+		
+                if (e.getSource() == addButton) {
 			if (addText.getText().isEmpty()) {
 				errorLabel.setText("Please enter a course number");
 			} else if (gradeBox.getSelectedIndex() >= 2) {
@@ -329,6 +330,21 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 				errorLabel.setText("");
 			}
 		}
+                if (e.getSource() == deleteClassButton) {
+			if (courseList.getSelectedIndex() == -1) {
+				errorLabel.setText("Please select a class you would like to delete.");
+			} else {
+				String confirmText1 = "Do you want to delete " + courses[courseList.getSelectedIndex()]
+						+ " from your classes to tutor?";
+				
+				confirmPage(confirmText1);
+				confirmBtnAdd.setVisible(false);
+				confirmBtnDel.setVisible(true);
+				
+				errorLabel.setText("");
+			}
+		}
+	
 		if (e.getSource() == homeButton) {
 			HomePage home = new HomePage(currentUser);
 			frame.dispose();
@@ -339,7 +355,7 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 		}
 		if (e.getSource() == confirmBtnAdd) {
 
-			String successText1 = "You have successfully add " + addText.getText().toUpperCase();
+			String successText1 = "You have successfully addded " + addText.getText().toUpperCase() + ".";
 			successPage(successText1);
 			addClass(currentUser.getEmail(), addText.getText().toUpperCase(), gradeBox.getSelectedItem().toString());
 			currentUser = returnUser(currentUser.getEmail()); // Updates current user
@@ -360,12 +376,16 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 		if(e.getSource() == confirmBtnDel)
 		{
 			int index = courseList.getSelectedIndex();
+                        String successText1 = "You have successfully deleted " + courses[courseList.getSelectedIndex()] + ".";
+			successPage(successText1);
 			deleteCourse(currentUser.getEmail(), coursesSorted[index]);
 			currentUser = returnUser(currentUser.getEmail()); // Updates current user
 			courseArrayList = currentUser.getclassList();
 			courseArrayListSize = courseArrayList.size();
 			courses = new String[courseArrayListSize];
 			coursesSorted = new String[courseArrayListSize];
+                        
+                        
 
 			for (int increment = 0; increment < courseArrayListSize; increment++) {
 				courses[increment] = courseArrayList.get(increment).className;
@@ -376,23 +396,10 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 		}
 		if (e.getSource() == declineBtn) {
 			confirmFrame.dispose();
+                        addText.setText("");
 		}
-		if (e.getSource() == deleteClassButton) {
-			if (courseList.getSelectedIndex() == -1) {
-				errorLabel.setText("Please select a class you would like to delete.");
-			} else {
-				String confirmText1 = "Do you want to delete " + courses[courseList.getSelectedIndex()]
-						+ " as one of your classes to tutor?";
-				
-				confirmPage(confirmText1);
-				confirmBtnAdd.setVisible(false);
-				confirmBtnDel.setVisible(true);
-				
-				errorLabel.setText("");
-			}
-		}
-	}
-
+		
+        }
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub
