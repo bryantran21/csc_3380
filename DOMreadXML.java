@@ -166,28 +166,29 @@ public static User returnUser(String email) {
 		            			newDay.dayName = dayElement.getElementsByTagName("dayText").item(0).getTextContent();
 //		            			newDay.dayName = dayNode.getFirstChild().getNodeValue();
 //		            			System.out.println("OLD WAY " + newDay.dayName);
-		            			System.out.println("NEW WAY " + dayElement.getElementsByTagName("dayText").item(0).getTextContent());
 		            			
 		            			NamedNodeMap attr = dayNode.getAttributes();
 				                Node dayAttr = attr.getNamedItem("availability");
 				                newDay.availability = dayAttr.getTextContent();
 //				                System.out.println("137 " + dayAttr.getTextContent());
 		            			
-				                NodeList meetingNodeList = eElement.getElementsByTagName("meetingWith");
+				                NodeList meetingNodeList = dayElement.getElementsByTagName("meetingWith");
 				                for (int temp5 = 0; temp5 < meetingNodeList.getLength(); temp5++) {
 					            	Meeting newMeeting = new Meeting();
 				                	Node meetingNode = meetingNodeList.item(temp5);
 				                	
 				                	if (meetingNode.getNodeType() == Node.ELEMENT_NODE) {
 				                		Element meetingElement = (Element) meetingNode;
+//				                		NamedNodeMap meetingWithAttrs = meetingNode.getAttributes();
+//				                		Node meetingWithAttr = meetingWithAttrs.getNamedItem("meetingWith");
+//				                		newMeeting.classCode = meetingWithAttr.getTextContent();
 				                		newMeeting.meetingWith = meetingElement.getTextContent();
-				                		newMeeting.classCode = meetingElement.getAttribute("meetingWith");
+				                		newMeeting.classCode = meetingElement.getAttribute("classCode");
 				                		newDay.meetingList.add(newMeeting);
 				                	}
 				                }
-				                
+			            		schedule.week[temp4] = newDay;
 		            		}
-		            		schedule.week[temp4] = newDay;
 		            	}
 		            	
 //		            	schedule.week[0].dayName = "Monday";

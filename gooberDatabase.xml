@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <rss version="2.0">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -373,7 +383,7 @@
     
     
     <Users>
-                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                            
     
     
     
@@ -396,6 +406,16 @@
     
     
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -409,7 +429,17 @@
         
         
         <User>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -422,7 +452,17 @@
             
             
             <email>s</email>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -435,7 +475,17 @@
             
             
             <firstName>s</firstName>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -448,7 +498,17 @@
             
             
             <lastName>s</lastName>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -461,7 +521,17 @@
             
             
             <password>s</password>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -474,7 +544,17 @@
             
             
             <role>Student</role>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -487,7 +567,17 @@
             
             
             <ratings numOf="0"/>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -500,7 +590,17 @@
             
             
             <classes numOf="0"/>
-                                                                                                                                                            
+                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -513,7 +613,17 @@
             
             
             <schedule>
-                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -526,7 +636,17 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -539,7 +659,7 @@
                     
                     
                     <dayText>Monday</dayText>
-                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 
                 
                 
@@ -551,9 +671,42 @@
                 
                 
                 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <meetingWith classCode="CSC 3380">t</meetingWith>
+                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    <meetingWith classCode="CSC 3380">t</meetingWith>
+                                                        
+                
                 </day>
-                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -566,7 +719,17 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -579,7 +742,167 @@
                     
                     
                     <dayText>Tuesday</dayText>
-                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">t</meetingWith>
+                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="unavailable">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Wednesday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="unavailable">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Thursday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -594,7 +917,7 @@
                     <meetingWith classCode="CSC 3380">t</meetingWith>
                                     
                 </day>
-                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -605,35 +928,6 @@
                 
                 
                 
-                
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <dayText>Wednesday</dayText>
-                                                                                                                                                                                                                                                                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </day>
-                                                                                                                                                                                                                
                 
                 
                 
@@ -646,7 +940,7 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                     
                     
                     
@@ -657,35 +951,6 @@
                     
                     
                     
-                    
-                    <dayText>Thursday</dayText>
-                                                                                                                                                                                                                                                                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </day>
-                                                                                                                                                                                                                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
                     
                     
                     
@@ -698,7 +963,17 @@
                     
                     
                     <dayText>Friday</dayText>
-                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -711,7 +986,17 @@
                 
                 
                 </day>
-                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -724,7 +1009,17 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -737,7 +1032,7 @@
                     
                     
                     <dayText>Saturday</dayText>
-                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 
                 
                 
@@ -749,8 +1044,29 @@
                 
                 
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <meetingWith classCode="CSC 3380">t</meetingWith>
                 </day>
-                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -763,7 +1079,17 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -776,7 +1102,17 @@
                     
                     
                     <dayText>Sunday</dayText>
-                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -789,7 +1125,17 @@
                 
                 
                 </day>
-                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -802,7 +1148,17 @@
             
             
             </schedule>
-                                                                                                                                                        
+                                                                                                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -815,7 +1171,17 @@
         
         
         </User>
-                                                                                                    
+                                                                                                                                                                                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -828,7 +1194,17 @@
         
         
         <User>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -840,7 +1216,17 @@
             
             
             <email>t</email>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -852,7 +1238,17 @@
             
             
             <firstName>t</firstName>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -864,7 +1260,17 @@
             
             
             <lastName>t</lastName>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -876,7 +1282,17 @@
             
             
             <password>t</password>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -888,7 +1304,17 @@
             
             
             <role>Tutor</role>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -900,13 +1326,43 @@
             
             
             <ratings numOf="1">
-                                                
+                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 <rating>5</rating>
-                                            
+                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             </ratings>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -918,7 +1374,17 @@
             
             
             <classes numOf="1">
-                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -929,7 +1395,17 @@
                 
                 
                 <class grade="A">CSC 3380</class>
-                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -940,7 +1416,17 @@
             
             
             </classes>
-                                                                                                                                                
+                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -952,7 +1438,17 @@
             
             
             <schedule>
-                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -964,7 +1460,17 @@
                 
                 
                 <day availability="available">
-                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -976,7 +1482,7 @@
                     
                     
                     <dayText>Monday</dayText>
-                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 
                 
@@ -987,9 +1493,32 @@
                 
                 
                 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <meetingWith classCode="CSC 3380">s</meetingWith>
+                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    <meetingWith classCode="CSC 3380">s</meetingWith>
+                                                        
+                
                 </day>
-                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1000,8 +1529,28 @@
                 
                 
                 
-                <day availability="available">
-                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="unavailable">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1013,7 +1562,161 @@
                     
                     
                     <dayText>Tuesday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">s</meetingWith>
                                                                                                                                                                                                                                             
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="unavailable">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Wednesday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Thursday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1027,7 +1730,7 @@
                     <meetingWith classCode="CSC 3380">s</meetingWith>
                                     
                 </day>
-                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1038,32 +1741,6 @@
                 
                 
                 
-                <day availability="available">
-                                                                                                                                                                                                                                                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <dayText>Wednesday</dayText>
-                                                                                                                                                                                                                                            
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </day>
-                                                                                                                                                                                                
                 
                 
                 
@@ -1075,7 +1752,7 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                     
                     
                     
@@ -1086,32 +1763,6 @@
                     
                     
                     
-                    <dayText>Thursday</dayText>
-                                                                                                                                                                                                                                            
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </day>
-                                                                                                                                                                                                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                
                     
                     
                     
@@ -1123,7 +1774,17 @@
                     
                     
                     <dayText>Friday</dayText>
-                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1135,7 +1796,7 @@
                 
                 
                 </day>
-                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1146,8 +1807,28 @@
                 
                 
                 
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1159,7 +1840,7 @@
                     
                     
                     <dayText>Saturday</dayText>
-                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 
                 
@@ -1170,8 +1851,29 @@
                 
                 
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <meetingWith classCode="CSC 3380">s</meetingWith>
                 </day>
-                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1183,7 +1885,17 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1195,7 +1907,17 @@
                     
                     
                     <dayText>Sunday</dayText>
-                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1207,7 +1929,17 @@
                 
                 
                 </day>
-                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1219,7 +1951,17 @@
             
             
             </schedule>
-                                                                                                                                            
+                                                                                                                                                                                                                                                                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1231,7 +1973,17 @@
         
         
         </User>
-                                                                                            
+                                                                                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1243,7 +1995,17 @@
     
     
     </Users>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+
+
+
+
+
+
+
+
+
+
 
 
 

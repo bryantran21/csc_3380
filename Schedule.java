@@ -2,7 +2,7 @@ package main;
 
 /**
  *
- * @author Bryan Tran, Anthony Duong
+ * @author Bryan Tran, Anthony Duong, Blake Lalonde
  */
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,7 +1,7 @@
 package main;
 
 /**
- * @author Bryan Tran
+ * @author Bryan, Blake
  * @since 3/22/21
  * @about adding/viewing classes for each student
  */
