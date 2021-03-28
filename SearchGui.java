@@ -442,20 +442,28 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 		if (e.getSource() == scheduleBtn) {
 			int counter = 0;
-			while (dayArray[counter].equals(""))
-			{
-				counter++;
-			}
-			daySelect = dayArray[counter];
-			for (int i = counter + 1; i < 7; i++) {
-				if ((dayArray[i].compareTo("") != 0)) {
-					daySelect = daySelect + ", " + dayArray[i];
-				}
-			}
-			String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
-					+ tutors[index].getLastName() + " on";
-			String confirmText2 = daySelect + "?";
-			confirmPage(confirmText, confirmText2);
+            while (dayArray[counter].equals("") && counter < 6) {
+                if (counter < 6) {
+                    counter++;
+                }
+            }
+            daySelect = dayArray[counter];
+            for (int i = counter + 1; i < 7; i++) {
+                if ((dayArray[i].compareTo("") != 0)) {
+                    daySelect = daySelect + ", " + dayArray[i];
+                }
+            }
+            if (daySelect.equals("")) {
+            	errorLabel.setText("You have not selected any days to meet");
+            }
+            else {
+            	errorLabel.setText("");
+            	String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
+    					+ tutors[index].getLastName() + " on";
+    			String confirmText2 = daySelect + "?";
+    			confirmPage(confirmText, confirmText2);
+            }
+			
 
 		}
 
