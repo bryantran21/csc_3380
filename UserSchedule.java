@@ -11,7 +11,7 @@ public class UserSchedule {
 	
 	public static class Day {
 		String dayName = "";
-		String availability = "";
+		String availability = "unavailable";
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
 	}
 	

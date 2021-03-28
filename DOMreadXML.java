@@ -123,22 +123,22 @@ public static User returnUser(String email) {
 		            	}
 		            	
 		            	UserSchedule schedule = new UserSchedule();
-		            	Day newDay = new Day();
 
 		            	NodeList dayNodeList = eElement.getElementsByTagName("schedule").item(0).getChildNodes();
 		            	for (int temp4 = 0; temp4 < 7; temp4++) {
+			            	Day newDay = new Day();
 		            		Node dayNode = dayNodeList.item(temp4);
-			            	Meeting newMeeting = new Meeting();
+
 		            		
 		            		if (dayNode.getNodeType() == Node.ELEMENT_NODE) {
 		            			
 		            			NamedNodeMap attr = dayNode.getAttributes();
 				                Node dayAttr = attr.getNamedItem("availability");
-				                dayAttr.setTextContent("available");
 				                newDay.availability = dayAttr.getTextContent();
 		            			
 				                NodeList meetingNodeList = eElement.getElementsByTagName("meetingWith");
 				                for (int temp5 = 0; temp5 < meetingNodeList.getLength(); temp5++) {
+					            	Meeting newMeeting = new Meeting();
 				                	Node meetingNode = meetingNodeList.item(temp5);
 				                	
 				                	if (meetingNode.getNodeType() == Node.ELEMENT_NODE) {

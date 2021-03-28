@@ -58,7 +58,9 @@ public class Schedule implements ActionListener, ItemListener {
 
     private String daySelect = "";
     private User currentUser;
+    private String dayAvailable = "";
 
+    String dayParameter = "";
     String dayArray[] = {"", "", "", "", "", "", ""};
 
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -102,15 +104,15 @@ public class Schedule implements ActionListener, ItemListener {
         scheduleTitle.setForeground(Color.decode("#dcddde"));
         panel.add(scheduleTitle);
 
-        scheduleLabel = new JLabel("Current Availibility: ");
+        scheduleLabel = new JLabel("Current Availability: ");
         scheduleLabel.setBounds(23, 60, 400, 40);
         scheduleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 13));
         scheduleLabel.setForeground(Color.decode("#dcddde"));
         panel.add(scheduleLabel);
 
-        scheduleLabel2 = new JLabel(currentUser.getEmail());
+        scheduleLabel2 = new JLabel("You have not selected any days for availability");
         scheduleLabel2.setBounds(23, 80, 600, 40);
-        scheduleLabel2.setFont(new Font(null, Font.CENTER_BASELINE, 13));
+        scheduleLabel2.setFont(new Font(null, Font.PLAIN, 10));
         scheduleLabel2.setForeground(Color.decode("#dcddde"));
         panel.add(scheduleLabel2);
 
@@ -183,14 +185,67 @@ public class Schedule implements ActionListener, ItemListener {
         sundayRadio.addItemListener(this);
         panel.add(sundayRadio);
 
-        updateBtn = new JButton("Update Availibility");
+        updateBtn = new JButton("Update Availability");
         updateBtn.setBounds(70, 250, 200, 30);
         updateBtn.setBackground(Color.decode("#7289da"));
         updateBtn.setForeground(Color.decode("#dcddde"));
         updateBtn.setFocusable(false);
         updateBtn.addActionListener(this);
         panel.add(updateBtn);
-
+        
+        System.out.println(currentUser.getEmail());
+        currentUser = returnUser(currentUser.getEmail());
+        System.out.println("----------------------------");
+        for(int i = 0; i < 7; i++)
+        {
+        	System.out.println("Index " + i + " = " + currentUser.getSchedule().week[i].availability);
+        	if (currentUser.getSchedule().week[i].availability.equals("available"))
+        	{
+        		switch (i) {
+                case 0:
+                    mondayRadio.setSelected(true);
+                    break;
+                case 1:
+                	tuesdayRadio.setSelected(true);
+                    break;
+                case 2:
+                	wednesdayRadio.setSelected(true);
+                    break;
+                case 3:
+                	thursdayRadio.setSelected(true);
+                    break;
+                case 4:
+                	fridayRadio.setSelected(true);
+                    break;
+                case 5:
+                	saturdayRadio.setSelected(true);
+                    break;
+                case 6:
+                	sundayRadio.setSelected(true);
+                    break;
+        		}
+        	}
+        }
+        int counter = 0;
+        while (currentUser.getSchedule().week[counter].availability.equals("unavailable") && counter < 6) {			// increase counter function to obtain first day that tutor is available
+            if (counter < 6) {
+                counter++;
+            }
+        }
+        if (counter == 6 && currentUser.getSchedule().week[counter].availability.equals("unavailable"))
+        	dayAvailable = "";
+        else {
+            dayAvailable = currentUser.getSchedule().week[counter].dayName;
+        }
+        for (int i = counter + 1; i < 7; i++) {
+            if ((currentUser.getSchedule().week[counter].availability.equals("available"))) {
+                dayAvailable = dayAvailable + ", " + currentUser.getSchedule().week[i].dayName;
+            }
+        }
+        if (dayAvailable.equals("")) {
+        	dayAvailable = "You have not selected any days for availability";
+        }
+        
     }
 
     public void updateSchedule(String text1) {
@@ -207,7 +262,7 @@ public class Schedule implements ActionListener, ItemListener {
         ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
         confirmFrame.setIconImage(image.getImage());
 
-        confirmLabel = new JLabel("Are you sure you want to update your availibilty to");
+        confirmLabel = new JLabel("Are you sure you want to update your availabilty to");
         confirmLabel.setBounds(0, 10, 400, 30);
         confirmLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
         confirmLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -247,7 +302,7 @@ public class Schedule implements ActionListener, ItemListener {
         successPanel.setLayout(null);
         successPanel.setBackground(Color.decode("#36393f"));
 
-        successLabel = new JLabel("You have successfully updated your availibility to");
+        successLabel = new JLabel("You have successfully updated your availability to");
         successLabel.setBounds(0, 30, 400, 30);
         successLabel.setFont(new Font(null, Font.CENTER_BASELINE, 12));
         successLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -284,7 +339,7 @@ public class Schedule implements ActionListener, ItemListener {
         }
 
         if (e.getSource() == updateBtn) {
-
+        	
             int counter = 0;
             while (dayArray[counter].equals("") && counter < 6) {
                 if (counter < 6) {
@@ -306,13 +361,13 @@ public class Schedule implements ActionListener, ItemListener {
         }
 
         if (e.getSource() == confirmBtn) { // ***THIS NEEDS TO WORK WITH BACKEND***
-
+            System.out.println("----------------------------");
             String availability = "";
             for (int i = 0; i < 7; i++) {
                 if ((dayArray[i].compareTo("") != 0)) {
                     availability = "available";
                 } else {
-                    availability = "unavailabile";
+                    availability = "unavailable";
                 }
 
                 String dayParameter = "";
@@ -345,7 +400,7 @@ public class Schedule implements ActionListener, ItemListener {
             currentUser = returnUser(currentUser.getEmail());
 
             String text1 = daySelect + ".";
-            scheduleLabel2.setText(daySelect + ".");
+            scheduleLabel2.setText(daySelect);
             successPage(text1);
             confirmFrame.dispose();
         }

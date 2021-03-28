@@ -69,19 +69,19 @@ public class DOMmodifyXML {
 	        
 
 	        Element monday = doc.createElement("Monday");
-	        monday.setAttribute("availability", "");
+	        monday.setAttribute("availability", "unavailable");
 	        Element tuesday = doc.createElement("Tuesday");
-	        tuesday.setAttribute("availability", "");
+	        tuesday.setAttribute("availability", "unavailable");
 	        Element wednesday = doc.createElement("Wednesday");
-	        wednesday.setAttribute("availability", "");
+	        wednesday.setAttribute("availability", "unavailable");
 	        Element thursday = doc.createElement("Thursday");
-	        thursday.setAttribute("availability", "");
+	        thursday.setAttribute("availability", "unavailable");
 	        Element friday = doc.createElement("Friday");
-	        friday.setAttribute("availability", "");
+	        friday.setAttribute("availability", "unavailable");
 	        Element saturday = doc.createElement("Saturday");
-	        saturday.setAttribute("availability", "");
+	        saturday.setAttribute("availability", "unavailable");
 	        Element sunday = doc.createElement("Sunday");
-	        sunday.setAttribute("availability", "");
+	        sunday.setAttribute("availability", "unavailable");
 	        
 	        schedule.appendChild(monday);
 	        schedule.appendChild(tuesday);
