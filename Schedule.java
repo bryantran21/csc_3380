@@ -35,6 +35,7 @@ public class Schedule implements ActionListener, ItemListener {
     private JButton homeButton;
     private JLabel scheduleTitle;
     private JLabel scheduleLabel;
+    private JLabel scheduleLabel2;
     private JLabel updateLabel;
     private JRadioButton mondayRadio;
     private JRadioButton tuesdayRadio;
@@ -101,11 +102,17 @@ public class Schedule implements ActionListener, ItemListener {
         scheduleTitle.setForeground(Color.decode("#dcddde"));
         panel.add(scheduleTitle);
 
-        scheduleLabel = new JLabel("Students can currently meet with you on (days)");
+        scheduleLabel = new JLabel("Current Availibility: ");
         scheduleLabel.setBounds(23, 60, 400, 40);
         scheduleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 13));
         scheduleLabel.setForeground(Color.decode("#dcddde"));
         panel.add(scheduleLabel);
+
+        scheduleLabel2 = new JLabel(currentUser.getEmail());
+        scheduleLabel2.setBounds(23, 80, 600, 40);
+        scheduleLabel2.setFont(new Font(null, Font.CENTER_BASELINE, 13));
+        scheduleLabel2.setForeground(Color.decode("#dcddde"));
+        panel.add(scheduleLabel2);
 
         updateLabel = new JLabel("Change your availibilty to: ");
         updateLabel.setBounds(23, 120, 400, 40);
@@ -299,52 +306,52 @@ public class Schedule implements ActionListener, ItemListener {
         }
 
         if (e.getSource() == confirmBtn) { // ***THIS NEEDS TO WORK WITH BACKEND***
-            
-        	String availability = "";
-        	for (int i = 0; i < 7; i++) {
+
+            String availability = "";
+            for (int i = 0; i < 7; i++) {
                 if ((dayArray[i].compareTo("") != 0)) {
-                	availability = "available";
-                }
-                else {
-                	availability = "unavailabile";
+                    availability = "available";
+                } else {
+                    availability = "unavailabile";
                 }
 
                 String dayParameter = "";
-        		
-        		switch (i) {
-        		case 0:
-        			dayParameter = "Monday";
-        			break;
-        		case 1:
-        			dayParameter = "Tuesday";
-        			break;
-        		case 2:
-        			dayParameter = "Wednesday";
-        			break;
-        		case 3:
-        			dayParameter = "Thursday";
-        			break;
-        		case 4:
-        			dayParameter = "Friday";
-        			break;
-        		case 5:
-        			dayParameter = "Saturday";
-        			break;
-        		case 6:
-        			dayParameter = "Sunday";
-        			break;
-        		}
+
+                switch (i) {
+                    case 0:
+                        dayParameter = "Monday";
+                        break;
+                    case 1:
+                        dayParameter = "Tuesday";
+                        break;
+                    case 2:
+                        dayParameter = "Wednesday";
+                        break;
+                    case 3:
+                        dayParameter = "Thursday";
+                        break;
+                    case 4:
+                        dayParameter = "Friday";
+                        break;
+                    case 5:
+                        dayParameter = "Saturday";
+                        break;
+                    case 6:
+                        dayParameter = "Sunday";
+                        break;
+                }
                 setAvailability(currentUser.getEmail(), dayParameter, availability);
             }
-        	currentUser = returnUser(currentUser.getEmail());
-        	
+            currentUser = returnUser(currentUser.getEmail());
+
             String text1 = daySelect + ".";
+            scheduleLabel2.setText(daySelect + ".");
             successPage(text1);
             confirmFrame.dispose();
         }
-        
-        if (e.getSource() == declineBtn){
-            
+
+        if (e.getSource() == declineBtn) {
+
             confirmFrame.dispose();
         }
     }
