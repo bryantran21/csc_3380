@@ -523,6 +523,36 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 				fridayRadio.setVisible(true);
 				saturdayRadio.setVisible(true);
 				sundayRadio.setVisible(true);
+				
+				for(int i = 0; i < 7; i++)
+		        {
+		        	if (tutors[index].getSchedule().week[i].availability.equals("unavailable"))
+		        	{
+		        		switch (i) {
+		                case 0:
+		                    mondayRadio.setEnabled(false);
+		                    break;
+		                case 1:
+		                	tuesdayRadio.setEnabled(false);
+		                    break;
+		                case 2:
+		                	wednesdayRadio.setEnabled(false);
+		                    break;
+		                case 3:
+		                	thursdayRadio.setEnabled(false);
+		                    break;
+		                case 4:
+		                	fridayRadio.setEnabled(false);
+		                    break;
+		                case 5:
+		                	saturdayRadio.setEnabled(false);
+		                    break;
+		                case 6:
+		                	sundayRadio.setEnabled(false);
+		                    break;
+		        		}
+		        	}
+		        }
 			}
 		}
 	}

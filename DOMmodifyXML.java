@@ -38,6 +38,8 @@ public class DOMmodifyXML {
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(new FileInputStream(new File(filepath)));
 	        
+	        doc.getDocumentElement().normalize();
+	        
 	        // Get the staff element by tag name directly
 	        Node Users = doc.getElementsByTagName("Users").item(0);
 
@@ -67,21 +69,64 @@ public class DOMmodifyXML {
 	        
 	        Element schedule = doc.createElement("schedule");
 	        
-
-	        Element monday = doc.createElement("Monday");
+	        Element monday = doc.createElement("day");
+	        Element mondayText = doc.createElement("dayText");
+	        mondayText.appendChild(doc.createTextNode("Monday"));
+	        monday.appendChild(mondayText);
 	        monday.setAttribute("availability", "unavailable");
-	        Element tuesday = doc.createElement("Tuesday");
+	        
+	        Element tuesday = doc.createElement("day");
+	        Element tuesdayText = doc.createElement("dayText");
+	        tuesdayText.appendChild(doc.createTextNode("Tuesday"));
+	        tuesday.appendChild(tuesdayText);
 	        tuesday.setAttribute("availability", "unavailable");
-	        Element wednesday = doc.createElement("Wednesday");
+	        
+	        Element wednesday = doc.createElement("day");
+	        Element wednesdayText = doc.createElement("dayText");
+	        wednesdayText.appendChild(doc.createTextNode("Wednesday"));
+	        wednesday.appendChild(wednesdayText);
 	        wednesday.setAttribute("availability", "unavailable");
-	        Element thursday = doc.createElement("Thursday");
+	        
+	        Element thursday = doc.createElement("day");
+	        Element thursdayText = doc.createElement("dayText");
+	        thursdayText.appendChild(doc.createTextNode("Thursday"));
+	        thursday.appendChild(thursdayText);
 	        thursday.setAttribute("availability", "unavailable");
-	        Element friday = doc.createElement("Friday");
+	        
+	        Element friday = doc.createElement("day");
+	        Element fridayText = doc.createElement("dayText");
+	        fridayText.appendChild(doc.createTextNode("Friday"));
+	        friday.appendChild(fridayText);
 	        friday.setAttribute("availability", "unavailable");
-	        Element saturday = doc.createElement("Saturday");
+	        
+	        Element saturday = doc.createElement("day");
+	        Element saturdayText = doc.createElement("dayText");
+	        saturdayText.appendChild(doc.createTextNode("Saturday"));
+	        saturday.appendChild(saturdayText);
 	        saturday.setAttribute("availability", "unavailable");
-	        Element sunday = doc.createElement("Sunday");
+	        
+	        Element sunday = doc.createElement("day");
+	        Element sundayText = doc.createElement("dayText");
+	        sundayText.appendChild(doc.createTextNode("Sunday"));
+	        sunday.appendChild(sundayText);
 	        sunday.setAttribute("availability", "unavailable");
+	        
+	        
+
+	        //Element monday = doc.createElement("Monday");
+	        //monday.setAttribute("availability", "unavailable");
+	        //Element tuesday = doc.createElement("Tuesday");
+	        //tuesday.setAttribute("availability", "unavailable");
+	        //Element wednesday = doc.createElement("Wednesday");
+	        //wednesday.setAttribute("availability", "unavailable");
+	        //Element thursday = doc.createElement("Thursday");
+	        //thursday.setAttribute("availability", "unavailable");
+	        //Element friday = doc.createElement("Friday");
+	        //friday.setAttribute("availability", "unavailable");
+	        //Element saturday = doc.createElement("Saturday");
+	        //saturday.setAttribute("availability", "unavailable");
+	        //Element sunday = doc.createElement("Sunday");
+	        //sunday.setAttribute("availability", "unavailable");
 	        
 	        schedule.appendChild(monday);
 	        schedule.appendChild(tuesday);
@@ -112,6 +157,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+	        doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -140,6 +186,8 @@ public class DOMmodifyXML {
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
+	        
+	        doc.getDocumentElement().normalize();
 	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
@@ -176,6 +224,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -205,6 +254,8 @@ public class DOMmodifyXML {
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
 	        
+	        doc.getDocumentElement().normalize();
+	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
 		    
@@ -231,6 +282,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -260,6 +312,8 @@ public class DOMmodifyXML {
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
 	        
+	        doc.getDocumentElement().normalize();
+	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
 		    
@@ -276,6 +330,7 @@ public class DOMmodifyXML {
 		        }
 		    }
 		    
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
 	        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
@@ -303,6 +358,8 @@ public class DOMmodifyXML {
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
 	        
+	        doc.getDocumentElement().normalize();
+	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
 		    
@@ -328,6 +385,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -357,6 +415,8 @@ public class DOMmodifyXML {
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
 	        
+	        doc.getDocumentElement().normalize();
+	        
 	        NodeList nList = doc.getElementsByTagName("User");
 		    
 		    for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -368,15 +428,27 @@ public class DOMmodifyXML {
 		            Element eElement = (Element) nNode;
 		            if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
 		            	
-		    	        Node day = eElement.getElementsByTagName(meetingDay).item(0);
-		            	NamedNodeMap attr = day.getAttributes();
-		                Node dayAttr = attr.getNamedItem("availability");
-		                dayAttr.setTextContent(availability);
+		            	
+		            	
+		            	NodeList week = eElement.getElementsByTagName("day");
+		            	for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {
+		            		Node day = week.item(iWeek);
+		            		
+		            		if (day.getNodeType() == Node.ELEMENT_NODE) {
+		            			
+		            			Element dayElement = (Element) day;
+		            			if (meetingDay.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {
+			            			NamedNodeMap attr = day.getAttributes();
+					                Node dayAttr = attr.getNamedItem("availability");
+					                dayAttr.setTextContent(availability);
+		            			}
+		            		}
+		            	}
 		            }
 		        }
 		    }
 		    
-	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -406,6 +478,8 @@ public class DOMmodifyXML {
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
 	        
+	        doc.getDocumentElement().normalize();
+	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
 		    
@@ -421,13 +495,19 @@ public class DOMmodifyXML {
 		            	Element meetingWith = doc.createElement("meetingWith");
 		    	        meetingWith.appendChild(doc.createTextNode(studentEmail));
 		    	        meetingWith.setAttribute("classCode", classCode);
-		            	
-		    	        Node day = eElement.getElementsByTagName(meetingDay).item(0);
-		            	day.appendChild(meetingWith);
-		            	
-		            	NamedNodeMap attr = day.getAttributes();
-		                Node dayAttr = attr.getNamedItem("availability");
-		                dayAttr.setTextContent("available");
+		    	        NodeList week = eElement.getElementsByTagName("day");
+		            	for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {
+		            		Node day = week.item(iWeek);
+		            		
+		            		if (day.getNodeType() == Node.ELEMENT_NODE) {
+		            			
+		            			Element dayElement = (Element) day;
+		            			if (meetingDay.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {
+					                day.appendChild(meetingWith);
+					            	
+		            			}
+		            		}
+		            	}
 		            }
 		            
 		            if (studentEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
@@ -436,20 +516,20 @@ public class DOMmodifyXML {
 		    	        meetingWith.appendChild(doc.createTextNode(tutorEmail));
 		    	        meetingWith.setAttribute("classCode", classCode);
 		            	
-		            	Node day = eElement.getElementsByTagName(meetingDay).item(0);
-		            	day.appendChild(meetingWith);
-		            	
-		            	NamedNodeMap attr = day.getAttributes();
-		                Node dayAttr = attr.getNamedItem("availability");
-		                dayAttr.setTextContent("available");
-		                
-		            	//Element timeScheduled = doc.createElement("meetingTime");
-		            	//timeScheduled.appendChild(doc.createTextNode(meetingTime));		legacy
-		            	//
-		            	//timeScheduled.setAttribute("meetingWith", tutorEmail);
-		            	//
-		    	        //Node schedule = eElement.getElementsByTagName(meetingDay).item(0);
-		    	        //schedule.appendChild(timeScheduled);
+		    	        NodeList week = eElement.getElementsByTagName("day");
+		            	for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {
+		            		Node day = week.item(iWeek);
+		            		
+		            		if (day.getNodeType() == Node.ELEMENT_NODE) {
+		            			
+		            			Element dayElement = (Element) day;
+		            			if (meetingDay.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {
+					                day.appendChild(meetingWith);
+					            	
+		            			}
+		            		}
+		            	}
+		    	        
 		            }
 		            
 		            
@@ -465,6 +545,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -493,6 +574,8 @@ public class DOMmodifyXML {
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
+	        
+	        doc.getDocumentElement().normalize();
 	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
@@ -528,6 +611,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -556,6 +640,7 @@ public class DOMmodifyXML {
 	        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	        Document doc = docBuilder.parse(filepath);
+	        doc.getDocumentElement().normalize();
 	        
 	        NodeList nList = doc.getElementsByTagName("User");
 
@@ -590,6 +675,7 @@ public class DOMmodifyXML {
 	        //StreamResult result = new StreamResult(new File(filepath));
 	        //transformer.transform(source, result);
 	        
+		    doc.getDocumentElement().normalize();
 	        doc.normalize();
 	        
 	        Transformer tf = TransformerFactory.newInstance().newTransformer();

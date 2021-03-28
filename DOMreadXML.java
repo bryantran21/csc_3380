@@ -15,8 +15,31 @@ import org.w3c.dom.NamedNodeMap;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.regex.Pattern;
 
 public class DOMreadXML {
+	
+	private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s*", Pattern.DOTALL);
+
+    private static void removeWhitespace(Document doc) {
+        LinkedList<NodeList> stack = new LinkedList<>();
+        stack.add(doc.getDocumentElement().getChildNodes());
+        while (!stack.isEmpty()) {
+            NodeList nodeList = stack.removeFirst();
+            for (int i = nodeList.getLength() - 1; i >= 0; --i) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.TEXT_NODE) {
+                    if (WHITESPACE_PATTERN.matcher(node.getTextContent()).matches()) {
+                        node.getParentNode().removeChild(node);
+                    }
+                } else if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    stack.add(node.getChildNodes());
+                }
+            }
+        }
+    }
+    
 	
 	public static Boolean login(String email, String password) {
 		
@@ -69,7 +92,12 @@ public static User returnUser(String email) {
 		            
 		    //optional, but recommended
 		    //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+		    
+		    removeWhitespace(doc);
+		    
 		    doc.getDocumentElement().normalize();
+		    
+		    removeWhitespace(doc);
 		            
 		    NodeList nList = doc.getElementsByTagName("User");
 		    
@@ -91,7 +119,7 @@ public static User returnUser(String email) {
 		            	ratings.numOfRatings = Integer.valueOf(eElement.getElementsByTagName("ratings").item(0).getAttributes().getNamedItem("numOf").getTextContent());
 		            	
 		            	Classes classes = new Classes();
-
+		            	
 		            	NodeList classNodeList = eElement.getElementsByTagName("class");
 		            	int testCounter = 0;
 		            	for (int temp2 = 0; temp2 < classNodeList.getLength(); temp2++) {
@@ -124,17 +152,26 @@ public static User returnUser(String email) {
 		            	
 		            	UserSchedule schedule = new UserSchedule();
 
-		            	NodeList dayNodeList = eElement.getElementsByTagName("schedule").item(0).getChildNodes();
-		            	for (int temp4 = 0; temp4 < 7; temp4++) {
+		            	NodeList dayNodeList = eElement.getElementsByTagName("day");
+		            	for (int temp4 = 0; temp4 < dayNodeList.getLength(); temp4++) {
 			            	Day newDay = new Day();
 		            		Node dayNode = dayNodeList.item(temp4);
-
-		            		
+		            		//System.out.println(dayNodeList.item(temp4).getNodeName());
+		            		//System.out.println("131");
 		            		if (dayNode.getNodeType() == Node.ELEMENT_NODE) {
+		            			//System.out.println("133");
+		            			
+		            			Element dayElement = (Element) dayNode;
+		            			
+		            			newDay.dayName = dayElement.getElementsByTagName("dayText").item(0).getTextContent();
+//		            			newDay.dayName = dayNode.getFirstChild().getNodeValue();
+//		            			System.out.println("OLD WAY " + newDay.dayName);
+		            			System.out.println("NEW WAY " + dayElement.getElementsByTagName("dayText").item(0).getTextContent());
 		            			
 		            			NamedNodeMap attr = dayNode.getAttributes();
 				                Node dayAttr = attr.getNamedItem("availability");
 				                newDay.availability = dayAttr.getTextContent();
+//				                System.out.println("137 " + dayAttr.getTextContent());
 		            			
 				                NodeList meetingNodeList = eElement.getElementsByTagName("meetingWith");
 				                for (int temp5 = 0; temp5 < meetingNodeList.getLength(); temp5++) {
@@ -153,13 +190,13 @@ public static User returnUser(String email) {
 		            		schedule.week[temp4] = newDay;
 		            	}
 		            	
-		            	schedule.week[0].dayName = "Monday";
-		            	schedule.week[1].dayName = "Tuesday";
-		            	schedule.week[2].dayName = "Wednesday";
-		            	schedule.week[3].dayName = "Thursday";
-		            	schedule.week[4].dayName = "Friday";
-		            	schedule.week[5].dayName = "Saturday";
-		            	schedule.week[6].dayName = "Sunday";
+//		            	schedule.week[0].dayName = "Monday";
+//		            	schedule.week[1].dayName = "Tuesday";
+//		            	schedule.week[2].dayName = "Wednesday";
+//		            	schedule.week[3].dayName = "Thursday";
+//		            	schedule.week[4].dayName = "Friday";
+//		            	schedule.week[5].dayName = "Saturday";
+//		            	schedule.week[6].dayName = "Sunday";
 		            	
 		            	User user1 = new User.userBuilder(email, firstName, lastName, password, role, ratings, classes, schedule).build();
 		            	return user1;

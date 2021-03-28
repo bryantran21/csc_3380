@@ -193,12 +193,13 @@ public class Schedule implements ActionListener, ItemListener {
         updateBtn.addActionListener(this);
         panel.add(updateBtn);
         
-        System.out.println(currentUser.getEmail());
+        
         currentUser = returnUser(currentUser.getEmail());
         System.out.println("----------------------------");
         for(int i = 0; i < 7; i++)
         {
         	System.out.println("Index " + i + " = " + currentUser.getSchedule().week[i].availability);
+        	System.out.println("Index " + i + " = " + currentUser.getSchedule().week[i].dayName);
         	if (currentUser.getSchedule().week[i].availability.equals("available"))
         	{
         		switch (i) {
@@ -226,8 +227,28 @@ public class Schedule implements ActionListener, ItemListener {
         		}
         	}
         }
+//        int counter = 0;
+//        while (currentUser.getSchedule().week[counter].availability.equals("unavailable") && counter < 6) {			// increase counter function to obtain first day that tutor is available
+//            if (counter < 6) {
+//                counter++;
+//            }
+//        }
+//        if (counter == 6 && currentUser.getSchedule().week[counter].availability.equals("unavailable"))
+//        	dayAvailable = "";
+//        else {
+//            dayAvailable = currentUser.getSchedule().week[counter].dayName;
+//        }
+//        for (int i = counter + 1; i < 7; i++) {
+//            if ((currentUser.getSchedule().week[counter].availability.equals("available"))) {
+//                dayAvailable = dayAvailable + ", " + currentUser.getSchedule().week[i].dayName;
+//            }
+//        }
+//        if (dayAvailable.equals("")) {
+//        	dayAvailable = "You have not selected any days for availability";
+//        }
+        
         int counter = 0;
-        while (currentUser.getSchedule().week[counter].availability.equals("unavailable") && counter < 6) {			// increase counter function to obtain first day that tutor is available
+        while (currentUser.getSchedule().week[counter].availability.equals("unavailable") && counter < 6) {
             if (counter < 6) {
                 counter++;
             }
@@ -238,13 +259,15 @@ public class Schedule implements ActionListener, ItemListener {
             dayAvailable = currentUser.getSchedule().week[counter].dayName;
         }
         for (int i = counter + 1; i < 7; i++) {
-            if ((currentUser.getSchedule().week[counter].availability.equals("available"))) {
-                dayAvailable = dayAvailable + ", " + currentUser.getSchedule().week[i].dayName;
+            if ((currentUser.getSchedule().week[i].availability.equals("available"))) {
+            	dayAvailable = dayAvailable + ", " + currentUser.getSchedule().week[i].dayName;
             }
         }
         if (dayAvailable.equals("")) {
         	dayAvailable = "You have not selected any days for availability";
         }
+        
+        scheduleLabel2.setText(dayAvailable);
         
     }
 
