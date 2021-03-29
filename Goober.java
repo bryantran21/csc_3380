@@ -40,11 +40,7 @@ public class Goober implements ActionListener{
         panel.setLayout(null);
         
         title = new JLabel("Welcome to Goober!", JLabel.CENTER);
-//        title.setAlignmentX(0);
-//        title.setHorizontalAlignment(JLabel.CENTER);
-//        title.setVerticalAlignment(JLabel.CENTER);
         title.setBounds(0,120,800,150);
-//        title.setSize(200,30);
         title.setFont(new Font(null, Font.CENTER_BASELINE, 45));
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setForeground(Color.decode("#dcddde"));
