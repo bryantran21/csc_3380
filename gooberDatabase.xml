@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <rss version="2.0">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -383,7 +463,7 @@
     
     
     <Users>
-                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     
     
     
@@ -406,6 +486,36 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -429,7 +539,7 @@
         
         
         <User>
-                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                        
             
             
             
@@ -451,8 +561,6 @@
             
             
             
-            <email>s</email>
-                                                                                                                                                                                                                                                                                    
             
             
             
@@ -464,6 +572,8 @@
             
             
             
+            <email>blalon3@lsu.edu</email>
+                                                                                                                                                                                                                                                                                                                                                                                                                        
             
             
             
@@ -474,8 +584,6 @@
             
             
             
-            <firstName>s</firstName>
-                                                                                                                                                                                                                                                                                    
             
             
             
@@ -497,9 +605,9 @@
             
             
             
-            <lastName>s</lastName>
-                                                                                                                                                                                                                                                                                    
             
+            <firstName>Blake</firstName>
+                                                                                                                                                                                                                                                                                                                                                                                                                        
             
             
             
@@ -520,8 +628,65 @@
             
             
             
-            <password>s</password>
-                                                                                                                                                                                                                                                                                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <lastName>Lalonde</lastName>
+                                                                                                                                                                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <password>1</password>
+                                                                                                                                                                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -544,7 +709,18 @@
             
             
             <role>Student</role>
-                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -567,7 +743,18 @@
             
             
             <ratings numOf="0"/>
-                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -590,7 +777,18 @@
             
             
             <classes numOf="0"/>
-                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -613,7 +811,18 @@
             
             
             <schedule>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -636,7 +845,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -659,7 +879,15 @@
                     
                     
                     <dayText>Monday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -681,9 +909,25 @@
                     
                     
                     
-                    <meetingWith classCode="CSC 3380">t</meetingWith>
-                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">paymond@lsu.edu</meetingWith>
+                                                                                                                                                                                                                                                                                    
                 
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                                                                                                                                                    
                 
                 
                 
@@ -692,11 +936,22 @@
                 
                     
                     
-                    <meetingWith classCode="CSC 3380">t</meetingWith>
+                    <meetingWith classCode="MATH 1552">mtom@lsu.edu</meetingWith>
                                                         
                 
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -719,7 +974,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -742,7 +1008,21 @@
                     
                     
                     <dayText>Tuesday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -761,23 +1041,30 @@
                     
                     
                     
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
                     
-                    
-                    
-                    <meetingWith classCode="CSC 3380">t</meetingWith>
-                                                                                                                                                                                                                                            
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                    <meetingWith classCode="MATH 1552">mtom@lsu.edu</meetingWith>
+                                    
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -800,7 +1087,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -823,7 +1121,7 @@
                     
                     
                     <dayText>Wednesday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 
                 
@@ -844,9 +1142,53 @@
                 
                 
                 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">paymond@lsu.edu</meetingWith>
+                                                                                                                                                                                                                                                                
                 
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                    <meetingWith classCode="MATH 1552">mtom@lsu.edu</meetingWith>
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -869,7 +1211,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -892,7 +1245,9 @@
                     
                     
                     <dayText>Thursday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                
+                
                 
                 
                 
@@ -914,10 +1269,46 @@
                 
                 
                     
-                    <meetingWith classCode="CSC 3380">t</meetingWith>
-                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">paymond@lsu.edu</meetingWith>
+                                                                                                                                                                                                                        
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                                                                                        
+                
+                
+                
+                
+                
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -940,7 +1331,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -963,7 +1365,7 @@
                     
                     
                     <dayText>Friday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 
                 
@@ -981,12 +1383,52 @@
                 
                 
                 
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">paymond@lsu.edu</meetingWith>
+                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                                                                    
                 
                 
                 
                 
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1009,7 +1451,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1032,7 +1485,7 @@
                     
                     
                     <dayText>Saturday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 
                 
@@ -1054,9 +1507,35 @@
                 
                 
                 
-                    <meetingWith classCode="CSC 3380">t</meetingWith>
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                                                
+                
+                
+                
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1079,7 +1558,18 @@
                 
                 
                 <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1102,7 +1592,7 @@
                     
                     
                     <dayText>Sunday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 
                 
                 
@@ -1122,10 +1612,36 @@
                 
                 
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">mtom@lsu.edu</meetingWith>
+                                                                            
                 
                 
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1148,7 +1664,18 @@
             
             
             </schedule>
-                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1171,7 +1698,18 @@
         
         
         </User>
-                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1194,7 +1732,7 @@
         
         
         <User>
-                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                            
             
             
             
@@ -1215,8 +1753,6 @@
             
             
             
-            <email>t</email>
-                                                                                                                                                                                                                                                                        
             
             
             
@@ -1228,6 +1764,8 @@
             
             
             
+            <email>mtom@lsu.edu</email>
+                                                                                                                                                                                                                                                                                                                                                                                                            
             
             
             
@@ -1237,8 +1775,6 @@
             
             
             
-            <firstName>t</firstName>
-                                                                                                                                                                                                                                                                        
             
             
             
@@ -1259,10 +1795,10 @@
             
             
             
-            <lastName>t</lastName>
-                                                                                                                                                                                                                                                                        
             
             
+            <firstName>Michael</firstName>
+                                                                                                                                                                                                                                                                                                                                                                                                            
             
             
             
@@ -1281,8 +1817,65 @@
             
             
             
-            <password>t</password>
-                                                                                                                                                                                                                                                                        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <lastName>Tom</lastName>
+                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <password>1</password>
+                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1304,7 +1897,7 @@
             
             
             <role>Tutor</role>
-                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                            
             
             
             
@@ -1325,8 +1918,52 @@
             
             
             
-            <ratings numOf="1">
-                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <ratings numOf="0"/>
+                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <classes numOf="2">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1338,43 +1975,26 @@
                 
                 
                 
-                <rating>5</rating>
-                                                                                                                                                                                                            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            </ratings>
-                                                                                                                                                                                                                                                                        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <classes numOf="1">
-                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <class grade="A">MATH 1551</class>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                 
                 
                 
@@ -1394,8 +2014,27 @@
                 
                 
                 
-                <class grade="A">CSC 3380</class>
-                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <class grade="A">MATH 1552</class>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1416,7 +2055,18 @@
             
             
             </classes>
-                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1438,7 +2088,18 @@
             
             
             <schedule>
-                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1460,7 +2121,18 @@
                 
                 
                 <day availability="available">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1482,7 +2154,7 @@
                     
                     
                     <dayText>Monday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1493,18 +2165,11 @@
                 
                 
                 
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <meetingWith classCode="CSC 3380">s</meetingWith>
-                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1514,11 +2179,28 @@
                 
                     
                     
-                    <meetingWith classCode="CSC 3380">s</meetingWith>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    <meetingWith classCode="MATH 1552">blalon3@lsu.edu</meetingWith>
                                                         
                 
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1539,8 +2221,30 @@
                 
                 
                 
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1562,7 +2266,21 @@
                     
                     
                     <dayText>Tuesday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1580,23 +2298,19 @@
                     
                     
                     
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
                     
-                    
-                    
-                    <meetingWith classCode="CSC 3380">s</meetingWith>
-                                                                                                                                                                                                                                            
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                    <meetingWith classCode="MATH 1552">blalon3@lsu.edu</meetingWith>
+                                    
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1617,8 +2331,30 @@
                 
                 
                 
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1640,7 +2376,7 @@
                     
                     
                     <dayText>Wednesday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1661,8 +2397,39 @@
                 
                 
                 
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                    <meetingWith classCode="MATH 1552">blalon3@lsu.edu</meetingWith>
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1684,7 +2451,18 @@
                 
                 
                 <day availability="available">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1706,7 +2484,13 @@
                     
                     
                     <dayText>Thursday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1727,76 +2511,31 @@
                 
                 
                     
-                    <meetingWith classCode="CSC 3380">s</meetingWith>
-                                    
-                </day>
-                                                                                                                                                                                                                                                                                                                                                                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                     
                     
                     
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <dayText>Friday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                                                                                        
                 
                 
                 
                 
                 
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1818,7 +2557,123 @@
                 
                 
                 <day availability="available">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Friday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                                                                    
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1840,7 +2695,7 @@
                     
                     
                     <dayText>Saturday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1861,9 +2716,24 @@
                 
                 
                 
-                    <meetingWith classCode="CSC 3380">s</meetingWith>
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                                                
+                
+                
+                
                 </day>
-                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1884,8 +2754,30 @@
                 
                 
                 
-                <day availability="unavailable">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     
                     
@@ -1907,7 +2799,7 @@
                     
                     
                     <dayText>Sunday</dayText>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 
                 
                 
@@ -1926,10 +2818,36 @@
                 
                 
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    <meetingWith classCode="MATH 1551">blalon3@lsu.edu</meetingWith>
+                                                                            
                 
                 
                 </day>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -1951,7 +2869,18 @@
             
             
             </schedule>
-                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1973,7 +2902,1150 @@
         
         
         </User>
-                                                                                                                                                                            
+                                                                                                                                                                                                                                                                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <User>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <email>paymond@lsu.edu</email>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <firstName>Patti</firstName>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <lastName>Aymond</lastName>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <password>1</password>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <role>Tutor</role>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <ratings numOf="0"/>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <classes numOf="1">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <class grade="A">CSC 3380</class>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            </classes>
+                                                                                                                                                                                                                                                                                                                                                                                                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <schedule>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Monday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                                                                                                                                                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Tuesday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Wednesday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Thursday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                                                                                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Friday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <meetingWith classCode="CSC 3380">blalon3@lsu.edu</meetingWith>
+                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Saturday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <day availability="available">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <dayText>Sunday</dayText>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </day>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            </schedule>
+                                                                                                                                                                                                                                                                                                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </User>
+                                                                                                                                                                                                                                                            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1995,7 +4067,87 @@
     
     
     </Users>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

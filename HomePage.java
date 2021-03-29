@@ -46,6 +46,7 @@ public class HomePage implements ActionListener {
 	HomePage(User passedUser) {
 		currentUser = passedUser;
 		int sizeCounter = 0;
+		
 		for (int s = 0; s < 7; s++) {
 			sizeCounter = sizeCounter + currentUser.getSchedule().week[s].meetingList.size();
 		}
@@ -56,7 +57,7 @@ public class HomePage implements ActionListener {
 				for (int j = 0; j < currentUser.getSchedule().week[i].meetingList.size(); j++) {
 					User tutorUser = returnUser(currentUser.getSchedule().week[i].meetingList.get(j).meetingWith);
 					String newMeetingString = currentUser.getSchedule().week[i].dayName + " - "
-							+ currentUser.getSchedule().week[i].meetingList.get(j).classCode + " with "
+							+ currentUser.getSchedule().week[i].meetingList.get(j).classCode + " | "
 							+ tutorUser.getFirstName() + " " + tutorUser.getLastName() + " ("
 							+ currentUser.getSchedule().week[i].meetingList.get(j).meetingWith + ")";
 					upcomingString[stringCounter] = newMeetingString;
@@ -83,14 +84,14 @@ public class HomePage implements ActionListener {
 		panel.setLayout(null);
 
 		titleLabel = new JLabel("Welcome back, " + currentUser.getFirstName()); // Add user's name
-		titleLabel.setBounds(0, 100, 800, 100);
+		titleLabel.setBounds(0, 50, 800, 100);
 		titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 40));
 		titleLabel.setForeground(Color.decode("#dcddde"));
 		titleLabel.setHorizontalAlignment(JLabel.CENTER);
 		panel.add(titleLabel);
 
 		success = new JLabel("");
-		success.setBounds(10, 150, 300, 25);
+		success.setBounds(10, 100, 300, 25);
 		panel.add(success);
 
 		upcoming = new JList(upcomingString);
@@ -99,12 +100,12 @@ public class HomePage implements ActionListener {
 
 		scrollPane = new JScrollPane(upcoming);
 		scrollPane.setViewportView(upcoming);
-		scrollPane.setBounds(250, 375, 300, 150);
+		scrollPane.setBounds(150, 325, 500, 150);
 		upcoming.setLayoutOrientation(JList.VERTICAL);
 		panel.add(scrollPane);
 
 		upcomingLabel = new JLabel("Upcoming Meetings");
-		upcomingLabel.setBounds(250, 355, 300, 25);
+		upcomingLabel.setBounds(150, 305, 300, 25);
 		upcomingLabel.setFont(new Font(null, Font.PLAIN, 10));
 		upcomingLabel.setForeground(Color.decode("#dcddde"));
 		panel.add(upcomingLabel);
@@ -133,7 +134,7 @@ public class HomePage implements ActionListener {
 
 		if (currentUser.getRole().equals("Tutor")) {
 			classButton = new JButton("Add/View Classes");
-			classButton.setBounds(250, 225, 300, 40);
+			classButton.setBounds(250, 175, 300, 40);
 			classButton.setBackground(Color.decode("#7289da"));
 			classButton.setForeground(Color.decode("#dcddde"));
 			classButton.setFocusable(false);
@@ -141,7 +142,7 @@ public class HomePage implements ActionListener {
 			panel.add(classButton);
 
 			scheduleButton = new JButton("Manage Schedule");
-			scheduleButton.setBounds(250, 275, 300, 40);
+			scheduleButton.setBounds(250, 225, 300, 40);
 			scheduleButton.setBackground(Color.decode("#7289da"));
 			scheduleButton.setForeground(Color.decode("#dcddde"));
 			scheduleButton.setFocusable(false);
@@ -150,7 +151,7 @@ public class HomePage implements ActionListener {
 
 		} else {
 			searchButton = new JButton("Schedule A Meeting With A Tutor");
-			searchButton.setBounds(250, 225, 300, 40);
+			searchButton.setBounds(250, 175, 300, 40);
 			searchButton.setBackground(Color.decode("#7289da"));
 			searchButton.setForeground(Color.decode("#dcddde"));
 			searchButton.setFocusable(false);
@@ -158,7 +159,7 @@ public class HomePage implements ActionListener {
 			panel.add(searchButton);
 
 			reviewButton = new JButton("Post-Meeting Review");
-			reviewButton.setBounds(250, 275, 300, 40);
+			reviewButton.setBounds(250, 225, 300, 40);
 			reviewButton.setBackground(Color.decode("#7289da"));
 			reviewButton.setForeground(Color.decode("#dcddde"));
 			reviewButton.setFocusable(false);

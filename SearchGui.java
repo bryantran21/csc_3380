@@ -32,6 +32,7 @@ import javax.swing.event.ListSelectionListener;
 import static main.DOMreadXML.avgRating;
 import static main.DOMreadXML.listOfTutors;
 import static main.DOMreadXML.tutorsInClass;
+import static main.DOMreadXML.returnUser;
 import static main.DOMmodifyXML.schedule;
 //import static main.postMeetingReview;
 
@@ -78,11 +79,11 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	private JRadioButton saturdayRadio;
 	private JLabel line;
 	private JRadioButton sundayRadio;
-	
+
 	String className;
 	String dayArray[] = { "", "", "", "", "", "", "" };
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
-	String tutorNames[] = new String[100];
+	String tutorNames[] = new String[1];
 
 	public class ComparatorUser implements Comparator { // A comparator function used to alphabetically compare users
 
@@ -111,6 +112,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 			count++;
 		}
+		tutorNames = new String[count];
 		Arrays.sort(tutors, 0, count, comparator); // Sorts users alphabetically
 
 		for (int i = 0; tutors[i] != null; i++) // Creates a string array of tutors with the first and last name, sorted
@@ -389,19 +391,19 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		contactLabel.setHorizontalAlignment(JLabel.CENTER);
 		contactLabel.setForeground(Color.decode("#dcddde"));
 		successPanel.add(contactLabel);
-		
+
 		line = new JLabel();
-		line.setBounds(0,75, 415,1);
+		line.setBounds(0, 75, 415, 1);
 		line.setBorder(BorderFactory.createLineBorder(Color.decode("#dcddde")));
 		successPanel.add(line);
-		
+
 		contactInfo = new JLabel(emailText);
 		contactInfo.setBounds(0, 110, 400, 30);
 		contactInfo.setFont(new Font(null, Font.CENTER_BASELINE, 12));
 		contactInfo.setHorizontalAlignment(JLabel.CENTER);
 		contactInfo.setForeground(Color.decode("#dcddde"));
 		successPanel.add(contactInfo);
-		
+
 		ImageIcon image = new ImageIcon("src/main/GooberGLogo.png");
 		successFrame.setIconImage(image.getImage());
 		successFrame.add(successPanel);
@@ -418,16 +420,17 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		if (e.getSource() == searchBtn) {
 			className = searchText.getText().toUpperCase();
 			tutors = tutorsInClass(className);
+			String nullList[] = new String[1];
+			nullList[0] = "";
+			list.setListData(nullList);
+			scrollPane.add(list);
 
 			if (className.equals("")) {
-				String nullList[] = new String[1];
-				nullList[0] = "";
 				list.setListData(nullList);
 				scrollPane.add(list);
 				errorLabel.setText("<html> Please type in a course and try again.</html>");
 			} else if (tutors[0] == null) {
-				String nullList[] = new String[1];
-				nullList[0] = "";
+
 				list.setListData(nullList);
 				scrollPane.add(list);
 				errorLabel.setText(
@@ -438,32 +441,40 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 				scrollPane.add(list);
 				errorLabel.setText("");
 			}
+			titleLabel.setText("");
+			tutorLabel.setText("");
+			scheduleBtn.setVisible(false);
+			mondayRadio.setVisible(false);
+			tuesdayRadio.setVisible(false);
+			wednesdayRadio.setVisible(false);
+			thursdayRadio.setVisible(false);
+			fridayRadio.setVisible(false);
+			saturdayRadio.setVisible(false);
+			sundayRadio.setVisible(false);
 		}
 
 		if (e.getSource() == scheduleBtn) {
 			int counter = 0;
-            while (dayArray[counter].equals("") && counter < 6) {
-                if (counter < 6) {
-                    counter++;
-                }
-            }
-            daySelect = dayArray[counter];
-            for (int i = counter + 1; i < 7; i++) {
-                if ((dayArray[i].compareTo("") != 0)) {
-                    daySelect = daySelect + ", " + dayArray[i];
-                }
-            }
-            if (daySelect.equals("")) {
-            	errorLabel.setText("You have not selected any days to meet");
-            }
-            else {
-            	errorLabel.setText("");
-            	String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
-    					+ tutors[index].getLastName() + " on";
-    			String confirmText2 = daySelect + "?";
-    			confirmPage(confirmText, confirmText2);
-            }
-			
+			while (dayArray[counter].equals("") && counter < 6) {
+				if (counter < 6) {
+					counter++;
+				}
+			}
+			daySelect = dayArray[counter];
+			for (int i = counter + 1; i < 7; i++) {
+				if ((dayArray[i].compareTo("") != 0)) {
+					daySelect = daySelect + ", " + dayArray[i];
+				}
+			}
+			if (daySelect.equals("")) {
+				errorLabel.setText("You have not selected any days to meet");
+			} else {
+				errorLabel.setText("");
+				String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
+						+ tutors[index].getLastName() + " on";
+				String confirmText2 = daySelect + "?";
+				confirmPage(confirmText, confirmText2);
+			}
 
 		}
 
@@ -473,13 +484,14 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 					+ tutors[index].getLastName() + " on";
 			String successText2 = daySelect + ".";
 			String emailMessage = "(" + tutors[index].getEmail() + ")";
-			HomePage homepage = new HomePage(currentUser);
-			successPage(successText1, successText2, emailMessage);
 			for (int i = 0; i < 7; i++) {
 				if (dayArray[i].compareTo("") != 0) {
 					schedule(currentUser.getEmail(), tutors[index].getEmail(), dayArray[i], className);
 				}
 			}
+			successPage(successText1, successText2, emailMessage);
+			currentUser = returnUser(currentUser.getEmail());
+			HomePage homepage = new HomePage(currentUser);
 			confirmFrame.dispose();
 			frame.dispose();
 		}
@@ -494,7 +506,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		}
 
 		if (e.getSource() == homeBtn) {
-
+			currentUser = returnUser(currentUser.getEmail());
 			HomePage home = new HomePage(currentUser);
 			frame.dispose();
 		}
@@ -504,63 +516,92 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	public void valueChanged(ListSelectionEvent e) {
 		int index = list.getSelectedIndex();
 		if (!e.getValueIsAdjusting()) {
+			if (index == -1) {
 
-			if (tutors[index] == null) { // If no tutor was selected from the list
-
-				errorLabel.setText("No tutor selected.  Please select a tutor.");
-				titleLabel.setText("");
-				tutorLabel.setText("");
-				scheduleBtn.setVisible(false);
-				mondayRadio.setVisible(false);
-				tuesdayRadio.setVisible(false);
-				wednesdayRadio.setVisible(false);
-				thursdayRadio.setVisible(false);
-				fridayRadio.setVisible(false);
-				saturdayRadio.setVisible(false);
-				sundayRadio.setVisible(false);
 			} else {
+				if (tutors[index] == null) { // If no tutor was selected from the list
 
-				tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
-				titleLabel.setText("You have selected");
-				errorLabel.setText("");
-				scheduleBtn.setVisible(true);
-				mondayRadio.setVisible(true);
-				tuesdayRadio.setVisible(true);
-				wednesdayRadio.setVisible(true);
-				thursdayRadio.setVisible(true);
-				fridayRadio.setVisible(true);
-				saturdayRadio.setVisible(true);
-				sundayRadio.setVisible(true);
-				
-				for(int i = 0; i < 7; i++)
-		        {
-		        	if (tutors[index].getSchedule().week[i].availability.equals("unavailable"))
-		        	{
-		        		switch (i) {
-		                case 0:
-		                    mondayRadio.setEnabled(false);
-		                    break;
-		                case 1:
-		                	tuesdayRadio.setEnabled(false);
-		                    break;
-		                case 2:
-		                	wednesdayRadio.setEnabled(false);
-		                    break;
-		                case 3:
-		                	thursdayRadio.setEnabled(false);
-		                    break;
-		                case 4:
-		                	fridayRadio.setEnabled(false);
-		                    break;
-		                case 5:
-		                	saturdayRadio.setEnabled(false);
-		                    break;
-		                case 6:
-		                	sundayRadio.setEnabled(false);
-		                    break;
-		        		}
-		        	}
-		        }
+					errorLabel.setText("No tutor selected.  Please select a tutor.");
+					titleLabel.setText("");
+					tutorLabel.setText("");
+					scheduleBtn.setVisible(false);
+					mondayRadio.setVisible(false);
+					tuesdayRadio.setVisible(false);
+					wednesdayRadio.setVisible(false);
+					thursdayRadio.setVisible(false);
+					fridayRadio.setVisible(false);
+					saturdayRadio.setVisible(false);
+					sundayRadio.setVisible(false);
+				} else {
+
+					tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
+					titleLabel.setText("You have selected");
+					errorLabel.setText("");
+					scheduleBtn.setVisible(true);
+					mondayRadio.setVisible(true);
+					tuesdayRadio.setVisible(true);
+					wednesdayRadio.setVisible(true);
+					thursdayRadio.setVisible(true);
+					fridayRadio.setVisible(true);
+					saturdayRadio.setVisible(true);
+					sundayRadio.setVisible(true);
+										
+					for (int i = 0; i < 7; i++) {
+						for (int j = 0; j < currentUser.getSchedule().week[i].meetingList.size(); j++) {
+							if (((currentUser.getSchedule().week[i].meetingList.get(j).classCode.equals(searchText.getText().toUpperCase()))
+									&& (currentUser.getSchedule().week[i].meetingList.get(j).meetingWith.equals(tutors[index].getEmail())))) {
+								switch (i) {
+								case 0:
+									mondayRadio.setEnabled(false);
+									break;
+								case 1:
+									tuesdayRadio.setEnabled(false);
+									break;
+								case 2:
+									wednesdayRadio.setEnabled(false);
+									break;
+								case 3:
+									thursdayRadio.setEnabled(false);
+									break;
+								case 4:
+									fridayRadio.setEnabled(false);
+									break;
+								case 5:
+									saturdayRadio.setEnabled(false);
+									break;
+								case 6:
+									sundayRadio.setEnabled(false);
+									break;
+								}
+							}
+						}
+						if (tutors[index].getSchedule().week[i].availability.equals("unavailable")) {
+							switch (i) {
+							case 0:
+								mondayRadio.setEnabled(false);
+								break;
+							case 1:
+								tuesdayRadio.setEnabled(false);
+								break;
+							case 2:
+								wednesdayRadio.setEnabled(false);
+								break;
+							case 3:
+								thursdayRadio.setEnabled(false);
+								break;
+							case 4:
+								fridayRadio.setEnabled(false);
+								break;
+							case 5:
+								saturdayRadio.setEnabled(false);
+								break;
+							case 6:
+								sundayRadio.setEnabled(false);
+								break;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
