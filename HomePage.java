@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,8 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 import main.postMeetingReview;
+import main.Search;
 import main.SearchGui;
+import main.DOMmodifyXML;
 import static main.DOMreadXML.returnUser;
 
 public class HomePage implements ActionListener {
@@ -40,13 +45,13 @@ public class HomePage implements ActionListener {
 	HomePage(User passedUser) {
 		currentUser = passedUser;
 		int sizeCounter = 0;
-		
-		for (int s = 0; s < 7; s++) {
+																											
+		for (int s = 0; s < 7; s++) {		// Finds out how many meetings the user has scheduled
 			sizeCounter = sizeCounter + currentUser.getSchedule().week[s].meetingList.size();
 		}
 		upcomingString = new String[sizeCounter];
 		int stringCounter = 0;
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 7; i++) {		// Pulls attributes from the user to update the upcoming meetings String array and adds it to the JList on the home page
 			if (currentUser.getSchedule().week[i].meetingList.size() != 0) {
 				for (int j = 0; j < currentUser.getSchedule().week[i].meetingList.size(); j++) {
 					User tutorUser = returnUser(currentUser.getSchedule().week[i].meetingList.get(j).meetingWith);
@@ -120,7 +125,7 @@ public class HomePage implements ActionListener {
 		frame.setResizable(false);
 		frame.setTitle("Goober - Homepage");
 
-		if (currentUser.getRole().equals("Tutor")) {        // Changes the homepage to the tutor's perspective if a tutor logs in
+		if (currentUser.getRole().equals("Tutor")) {
 			classButton = new JButton("Add/View Classes");
 			classButton.setBounds(250, 175, 300, 40);
 			classButton.setBackground(Color.decode("#7289da"));
@@ -137,7 +142,7 @@ public class HomePage implements ActionListener {
 			scheduleButton.addActionListener(this);
 			panel.add(scheduleButton);
 
-		} else {                                            // Changes the homepage to the student's perspective if a student logs in
+		} else {
 			searchButton = new JButton("Schedule A Meeting With A Tutor");
 			searchButton.setBounds(250, 175, 300, 40);
 			searchButton.setBackground(Color.decode("#7289da"));

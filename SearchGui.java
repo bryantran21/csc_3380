@@ -127,8 +127,6 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName() + " (" + avg + ")";
 		}
-
-//		Arrays.sort(tutorNames,0,count);
 	}
 
 	public SearchGui(User passedUser) {
@@ -313,7 +311,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 		frame.setVisible(true);
 	}
 
-	public void confirmPage(String text1, String text2) {
+	public void confirmPage(String text1, String text2) {		// A page that acts like a dialogue box to confirm the actions from the search frame
 
 		confirmFrame = new JFrame();
 		confirmFrame.setBounds(600, 250, 415, 150);
@@ -362,7 +360,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 	}
 
-	public void successPage(String text1, String text2, String emailText) {
+	public void successPage(String text1, String text2, String emailText) {		// A page that acts like a notification stating updates have been made to the user
 
 		successFrame = new JFrame();
 		successFrame.setBounds(600, 250, 415, 200);
@@ -425,17 +423,17 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 			list.setListData(nullList);
 			scrollPane.add(list);
 
-			if (className.equals("")) {
+			if (className.equals("")) {			// If the text field is empty...
 				list.setListData(nullList);
 				scrollPane.add(list);
 				errorLabel.setText("<html> Please type in a course and try again.</html>");
-			} else if (tutors[0] == null) {
+			} else if (tutors[0] == null) {		// If there is a course entered, but no tutors teach that course...
 
 				list.setListData(nullList);
 				scrollPane.add(list);
 				errorLabel.setText(
 						"<html> There are currently no tutors for this course.<br/>  Please enter a different course.</html>");
-			} else {
+			} else {							// Else, display the list of tutors for the course
 				sortTutors();
 				list.setListData(tutorNames);
 				scrollPane.add(list);
@@ -455,20 +453,20 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 		if (e.getSource() == scheduleBtn) {
 			int counter = 0;
-			while (dayArray[counter].equals("") && counter < 6) {
+			while (dayArray[counter].equals("") && counter < 6) {		// Increase a counter up until the first day that is selected
 				if (counter < 6) {
 					counter++;
 				}
 			}
 			daySelect = dayArray[counter];
-			for (int i = counter + 1; i < 7; i++) {
+			for (int i = counter + 1; i < 7; i++) {						// Starts at the second day selected, creating a string with commas after each up until the last one
 				if ((dayArray[i].compareTo("") != 0)) {
 					daySelect = daySelect + ", " + dayArray[i];
 				}
 			}
-			if (daySelect.equals("")) {
+			if (daySelect.equals("")) {									// If no days were selected...
 				errorLabel.setText("You have not selected any days to meet");
-			} else {
+			} else {													// Adds the constructed string into a notification label
 				errorLabel.setText("");
 				String confirmText = "Schedule to meet with " + tutors[index].getFirstName() + " "
 						+ tutors[index].getLastName() + " on";
@@ -478,7 +476,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 
 		}
 
-		if (e.getSource() == confirmBtn) {
+		if (e.getSource() == confirmBtn) {		// Creates a new notification box stating when you have scheduled to meet with chosen tutor
 
 			String successText1 = "You have successfully scheduled to meet with " + tutors[index].getFirstName() + " "
 					+ tutors[index].getLastName() + " on";
@@ -489,23 +487,23 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 					schedule(currentUser.getEmail(), tutors[index].getEmail(), dayArray[i], className);
 				}
 			}
+			successPage(successText1, successText2, emailMessage);
 			currentUser = returnUser(currentUser.getEmail());
 			HomePage homepage = new HomePage(currentUser);
-			successPage(successText1, successText2, emailMessage);
 			confirmFrame.dispose();
 			frame.dispose();
 		}
-		if (e.getSource() == declineBtn) {
+		if (e.getSource() == declineBtn) {		// Closes dialogue box and returns to search screen
 			confirmFrame.dispose();
 
 		}
-		if (e.getSource() == logoutBtn) {
+		if (e.getSource() == logoutBtn) {		// logout of user
 
 			LoginGui login = new LoginGui();
 			frame.dispose();
 		}
 
-		if (e.getSource() == homeBtn) {
+		if (e.getSource() == homeBtn) {			// return home
 			currentUser = returnUser(currentUser.getEmail());
 			HomePage home = new HomePage(currentUser);
 			frame.dispose();
@@ -515,8 +513,8 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		int index = list.getSelectedIndex();
-		if (!e.getValueIsAdjusting()) {
-			if (index == -1) {
+		if (!e.getValueIsAdjusting()) {		// Checks the index of the JList (chosen tutoor)
+			if (index == -1) {				// Base case for if JList is empty
 
 			} else {
 				if (tutors[index] == null) { // If no tutor was selected from the list
@@ -546,7 +544,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 					saturdayRadio.setVisible(true);
 					sundayRadio.setVisible(true);
 										
-					for (int i = 0; i < 7; i++) {
+					for (int i = 0; i < 7; i++) {		// Goes through a loop to check each that the user doesn't schedule a tutor for class xxx on the same day as previously scheduled for class xxx
 						for (int j = 0; j < currentUser.getSchedule().week[i].meetingList.size(); j++) {
 							if (((currentUser.getSchedule().week[i].meetingList.get(j).classCode.equals(searchText.getText().toUpperCase()))
 									&& (currentUser.getSchedule().week[i].meetingList.get(j).meetingWith.equals(tutors[index].getEmail())))) {
@@ -573,9 +571,35 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 									sundayRadio.setEnabled(false);
 									break;
 								}
+							}		// updates the radio buttons to true if the cases above failed
+							else {
+								switch(i)
+								{
+								case 0:
+									mondayRadio.setEnabled(true);
+									break;
+								case 1:
+									tuesdayRadio.setEnabled(true);
+									break;
+								case 2:
+									wednesdayRadio.setEnabled(true);
+									break;
+								case 3:
+									thursdayRadio.setEnabled(true);
+									break;
+								case 4:
+									fridayRadio.setEnabled(true);
+									break;
+								case 5:
+									saturdayRadio.setEnabled(true);
+									break;
+								case 6:
+									sundayRadio.setEnabled(true);
+									break;
+								}
 							}
 						}
-						if (tutors[index].getSchedule().week[i].availability.equals("unavailable")) {
+						if (tutors[index].getSchedule().week[i].availability.equals("unavailable")) {		// Updates the radio buttons to match the selected tutor's availability
 							switch (i) {
 							case 0:
 								mondayRadio.setEnabled(false);
@@ -600,6 +624,32 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 								break;
 							}
 						}
+						else {
+							switch(i)
+							{
+							case 0:
+								mondayRadio.setEnabled(true);
+								break;
+							case 1:
+								tuesdayRadio.setEnabled(true);
+								break;
+							case 2:
+								wednesdayRadio.setEnabled(true);
+								break;
+							case 3:
+								thursdayRadio.setEnabled(true);
+								break;
+							case 4:
+								fridayRadio.setEnabled(true);
+								break;
+							case 5:
+								saturdayRadio.setEnabled(true);
+								break;
+							case 6:
+								sundayRadio.setEnabled(true);
+								break;
+							}
+						}
 					}
 				}
 			}
@@ -609,7 +659,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		daySelect = "";
-		if (e.getStateChange() == ItemEvent.SELECTED) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {		// Stores the string of the radio button that is selected
 			Object source = e.getSource();
 			if (source == mondayRadio) {
 				dayArray[0] = "Monday";
@@ -633,7 +683,7 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 				dayArray[6] = "Sunday";
 			}
 		}
-		if (e.getStateChange() == ItemEvent.DESELECTED) {
+		if (e.getStateChange() == ItemEvent.DESELECTED) {	// Clears the string of the radio button that is selected
 			Object source = e.getSource();
 			if (source == mondayRadio) {
 				dayArray[0] = "";

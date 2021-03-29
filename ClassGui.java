@@ -5,12 +5,15 @@ package main;
  * @since 3/22/21
  * @about adding/viewing classes for each student
  */
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -18,19 +21,32 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
+import java.util.stream.Stream;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import main.Classes.classClass;
+import main.DOMmodifyXML;
+import main.DOMreadXML;
+import main.UserSchedule.Meeting;
+import main.postMeetingReview.ComparatorUser;
+
 import static main.DOMmodifyXML.addClass;
+import static main.DOMmodifyXML.schedule;
+import static main.DOMreadXML.avgRating;
 import static main.DOMreadXML.returnUser;
 import static main.DOMmodifyXML.deleteCourse;
 
-public class ClassGui implements ActionListener, ListSelectionListener {
+public class ClassGui implements ActionListener{
 
 	private JPanel panel;
 	private JFrame frame;
@@ -65,8 +81,6 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 	private User currentUser;
 	private JList courseList;
 
-
-
 	public class ComparatorUser implements Comparator { // A comparator function used to alphabetically compare users
 
 		public int compare(Object arg0, Object arg1) {
@@ -92,6 +106,8 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 		{
 			coursesSorted[i] = courses[i];
 		}
+
+//		Arrays.sort(tutorNames,0,count);
 	}
 
 	public ClassGui(User passedUser) {
@@ -102,6 +118,9 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 800, 600);
 		frame.setLocationRelativeTo(null);
+//        scrollPanel = new JPanel();		// Right panel that hosts objects
+
+//        submittedLabel = new JLabel(); 	// Label that shows up after rating is submitted
 		panel = new JPanel();
 		panel.setBackground(Color.decode("#36393f"));
 
@@ -298,9 +317,9 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 	public void actionPerformed(ActionEvent e) {
 		
                 if (e.getSource() == addButton) {
-			if (addText.getText().isEmpty()) { //Checks to see if the textbox is empty.
+			if (addText.getText().isEmpty()) {
 				errorLabel.setText("Please enter a course number");
-			} else if (gradeBox.getSelectedIndex() >= 2) { //Checks to see if a tutor has a B or higher.
+			} else if (gradeBox.getSelectedIndex() >= 2) {
 				errorLabel.setText("You do not have an appropriate grade to tutor this class.");
 			} else {
 				String confirmText1 = "Do you want to add " + addText.getText().toUpperCase()
@@ -311,8 +330,8 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 				errorLabel.setText("");
 			}
 		}
-                if (e.getSource() == deleteClassButton) { 
-			if (courseList.getSelectedIndex() == -1) { //Checks to see if no class is clicked to delete.
+                if (e.getSource() == deleteClassButton) {
+			if (courseList.getSelectedIndex() == -1) {
 				errorLabel.setText("Please select a class you would like to delete.");
 			} else {
 				String confirmText1 = "Do you want to delete " + courses[courseList.getSelectedIndex()]
@@ -326,15 +345,15 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 			}
 		}
 	
-		if (e.getSource() == homeButton) { //Checks for button to go back to home page
+		if (e.getSource() == homeButton) {
 			HomePage home = new HomePage(currentUser);
 			frame.dispose();
 		}
-		if (e.getSource() == logoutButton) { // Logs user out their profile. 
+		if (e.getSource() == logoutButton) {
 			LoginGui login = new LoginGui();
 			frame.dispose();
 		}
-		if (e.getSource() == confirmBtnAdd) { // Adds class to the tutor's profile.
+		if (e.getSource() == confirmBtnAdd) {
 
 			String successText1 = "You have successfully addded " + addText.getText().toUpperCase() + ".";
 			successPage(successText1);
@@ -354,8 +373,7 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 			addText.setText("");
 			gradeBox.setSelectedIndex(0);
 		}
-		if(e.getSource() == confirmBtnDel) //Asks if you'd like the confirm the class you added.
-		{
+		if(e.getSource() == confirmBtnDel) {
 			int index = courseList.getSelectedIndex();
                         String successText1 = "You have successfully deleted " + courses[courseList.getSelectedIndex()] + ".";
 			successPage(successText1);
@@ -365,22 +383,21 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 			courseArrayListSize = courseArrayList.size();
 			courses = new String[courseArrayListSize];
 			coursesSorted = new String[courseArrayListSize];
-			for (int increment = 0; increment < courseArrayListSize; increment++) { 
+                        
+                        
+
+			for (int increment = 0; increment < courseArrayListSize; increment++) {
 				courses[increment] = courseArrayList.get(increment).className;
 			}
 			sortCourses();
 			courseList.setListData(coursesSorted);
 			confirmFrame.dispose();
 		}
-		if (e.getSource() == declineBtn) { //Asks if you'd like to decline the class. 
+		if (e.getSource() == declineBtn) {
 			confirmFrame.dispose();
                         addText.setText("");
 		}
 		
-        }
+	}
 
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    }
+}
