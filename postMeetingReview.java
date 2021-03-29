@@ -8,7 +8,6 @@ package main;
  * rating. Meant for after they've had a meeting.
  */
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,9 +15,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -29,13 +26,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.Scanner;
-import java.util.stream.Stream;
 import javax.swing.ImageIcon;
 import static main.DOMreadXML.listOfTutors;
-import main.HomePage;
 import static main.DOMmodifyXML.ratings;
 import static main.DOMreadXML.avgRating;
 
@@ -65,7 +58,6 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
 	private JLabel nanLabel;
 	private JButton homeButton;
 
-	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	User tutors[] = listOfTutors(); // Receives the list of tutors from the database
 	String tutorNames[] = new String[500];
 
@@ -87,8 +79,6 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
 	{
 
 		int count = 0;
-		User temp = null;
-
 		ComparatorUser comparator = new ComparatorUser();
 
 		for (int i = 0; tutors[i] != null; i++) // For loop that runs through entire list of tutors
@@ -111,7 +101,6 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
 			tutorNames[i] = tutors[i].getLastName() + ", " + tutors[i].getFirstName() + " (" + avg + ")";
 		}
 
-//		Arrays.sort(tutorNames,0,count);
 	}
 
 	public postMeetingReview(User passedUser) {
@@ -285,22 +274,22 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
 		{
 			String labelText = "You have given " + tutors[index].getFirstName() + " " + tutors[index].getLastName()
 					+ " a rating of " + ratingSlider.getValue();
-			HomePage homepage = new HomePage(currentUser);
+			new HomePage(currentUser);
 			submittedRating(labelText);
 			frame.dispose();
 			ratings(tutors[index].getEmail(), String.valueOf(ratingSlider.getValue()));
 		}
 		if (e.getSource() == homeButton) {
-			HomePage home = new HomePage(currentUser);
+			new HomePage(currentUser);
 			frame.dispose();
 		}
 		if (e.getSource() == logoutButton) {
-			LoginGui login = new LoginGui();
+			new LoginGui();
 			frame.dispose();
 		}
 		if (e.getSource() == returnButton) // Closes the current window and returns to the home page
 		{
-			HomePage homepage = new HomePage(currentUser);
+			new HomePage(currentUser);
 			frame.dispose();
 		}
 	}
@@ -322,7 +311,8 @@ public class postMeetingReview implements ActionListener, ListSelectionListener 
 				titleLabel.setText("LEAVE A RATING FOR");
 				tutorLabel.setText(tutors[index].getFirstName() + " " + tutors[index].getLastName());
 				String avg = String.valueOf(avgRating(tutors[index].getEmail()));
-				int maxLength = (avg.length() < 4) ? avg.length() : 4;
+				int maxLength = (avg.length() < 4) ? avg.length() : 4; // cuts the string off to "round" to 2 decimal
+																		// places
 				avg = avg.substring(0, maxLength);
 				averageRating.setText("Average rating is: " + avg);
 				errorLabel.setText("");
