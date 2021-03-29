@@ -65,6 +65,8 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 	private User currentUser;
 	private JList courseList;
 
+
+
 	public class ComparatorUser implements Comparator { // A comparator function used to alphabetically compare users
 
 		public int compare(Object arg0, Object arg1) {
@@ -376,4 +378,9 @@ public class ClassGui implements ActionListener, ListSelectionListener {
 		}
 		
         }
-}
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    }
