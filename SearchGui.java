@@ -489,9 +489,9 @@ public class SearchGui implements ActionListener, ListSelectionListener, ItemLis
 					schedule(currentUser.getEmail(), tutors[index].getEmail(), dayArray[i], className);
 				}
 			}
-			successPage(successText1, successText2, emailMessage);
 			currentUser = returnUser(currentUser.getEmail());
 			HomePage homepage = new HomePage(currentUser);
+			successPage(successText1, successText2, emailMessage);
 			confirmFrame.dispose();
 			frame.dispose();
 		}
