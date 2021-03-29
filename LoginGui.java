@@ -45,11 +45,7 @@ public class LoginGui implements ActionListener {
         panel.setLayout(null);
 
         titleLabel = new JLabel("Enter Your Login Information");
-//        titleLabel.setSize(250, 30);
         titleLabel.setBounds(125, 125, 600, 50);
-//        titleLabel.setHorizontalAlignment(JLabel.CENTER);
-//        titleLabel.setVerticalAlignment(JLabel.CENTER);
-//        titleLabel.setLocation(frame.getSize().width/2-titleLabel.getX()/2, 5);
         titleLabel.setFont(new Font(null, Font.CENTER_BASELINE, 40));
         titleLabel.setForeground(Color.decode("#dcddde"));
         panel.add(titleLabel);

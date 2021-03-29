@@ -29,7 +29,6 @@ public class HomePage implements ActionListener {
 	private static JPanel panel;
 	private static JFrame frame;
 	private static JLabel titleLabel;
-	private static JLabel welcomeLabel;
 	private static JButton searchButton;
 	private static JButton reviewButton;
 	private static JLabel success;
@@ -62,12 +61,6 @@ public class HomePage implements ActionListener {
 							+ currentUser.getSchedule().week[i].meetingList.get(j).meetingWith + ")";
 					upcomingString[stringCounter] = newMeetingString;
 					stringCounter++;
-					
-					
-//					System.out.println(currentUser.getSchedule().week[i].dayName + " - "
-//							+ currentUser.getSchedule().week[i].meetingList.get(j).classCode + " with "
-//							+ tutorUser.getFirstName() + " " + tutorUser.getLastName() + " ("
-//							+ currentUser.getSchedule().week[i].meetingList.get(j).meetingWith + ")");
 				}
 			}
 		}
@@ -173,35 +166,35 @@ public class HomePage implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == searchButton) // Sends the user to a window to search for tutors
 		{
-			SearchGui search = new SearchGui(currentUser);
+			new SearchGui(currentUser);
 			frame.dispose();
 		}
 
 		if (e.getSource() == reviewButton) // Sends the user to a page to rate a previous tutor
 		{
-			postMeetingReview pmr = new postMeetingReview(currentUser);
+			new postMeetingReview(currentUser);
 			frame.dispose();
 		}
 
-		if (e.getSource() == settingsBtn) {
-			Settings settings = new Settings(currentUser);
+		if (e.getSource() == settingsBtn) { // Sends the user to the settings page
+			new Settings(currentUser);
 			frame.dispose();
 		}
 
 		if (e.getSource() == logoutBtn) // Logs the user out of the application
 		{
-			LoginGui login = new LoginGui();
+			new LoginGui();
 			frame.dispose();
 		}
 
-		if (e.getSource() == classButton) {
-			ClassGui clgui = new ClassGui(currentUser);
+		if (e.getSource() == classButton) { // Sends the user to a page to manage classes
+			new ClassGui(currentUser);
 			frame.dispose();
 		}
 
-		if (e.getSource() == scheduleButton) {
+		if (e.getSource() == scheduleButton) {	// Sends the user to a page to manage availability
 			frame.dispose();
-			Schedule sch = new Schedule(currentUser);
+			new Schedule(currentUser);
 
 		}
 	}

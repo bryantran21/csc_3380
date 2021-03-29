@@ -5,6 +5,7 @@ package main;
  * @author Anthony Duong
  *
  */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -75,7 +76,7 @@ public class Settings implements ActionListener {
 
     private User currentUser;
 
-    Settings(User passedUser) { // A prompt that shows the user their account information and allows them to change certain login credentials
+    Settings(User passedUser) {         // A prompt that shows the user their account information and allows them to change certain login credentials
         currentUser = passedUser;
 
         panel = new JPanel();
@@ -161,7 +162,7 @@ public class Settings implements ActionListener {
 
     }
 
-    public void changeEmail() { // A prompt that lets the user change their email
+    public void changeEmail() {         // A prompt that lets the user change their email
 
         emailFrame = new JFrame();
         emailFrame.setBounds(600, 250, 400, 300);
@@ -230,7 +231,7 @@ public class Settings implements ActionListener {
         emailFrame.setVisible(true);
     }
 
-    public void changePW() { // A prompt that allows the user to change their password
+    public void changePW() {        // A prompt that allows the user to change their password
 
         pwFrame = new JFrame();
         pwFrame.setBounds(600, 250, 400, 350);
@@ -295,14 +296,15 @@ public class Settings implements ActionListener {
         pwPanel.add(errorLabel2);
 
         errorLabel3 = new JLabel("");
-        errorLabel3.setBounds(113, 190, 400, 30);
+        errorLabel3.setBounds(0, 190, 400, 30);
         errorLabel3.setFont(new Font(null, Font.CENTER_BASELINE, 12));
+        errorLabel3.setHorizontalAlignment(JLabel.CENTER);
         errorLabel3.setForeground(Color.RED);
         errorLabel3.setVisible(false);
         pwPanel.add(errorLabel3);
 
         pwSubmit = new JButton("Save Password");
-        pwSubmit.setBounds(110, 220, 160, 30);
+        pwSubmit.setBounds(120, 220, 160, 30);
         pwSubmit.setBackground(Color.decode("#7289da"));
         pwSubmit.setForeground(Color.decode("#dcddde"));
         pwSubmit.setFocusable(false);
@@ -310,7 +312,7 @@ public class Settings implements ActionListener {
         pwPanel.add(pwSubmit);
 
         pwCancel = new JButton("Cancel");
-        pwCancel.setBounds(110, 260, 160, 30);
+        pwCancel.setBounds(120, 260, 160, 30);
         pwCancel.setBackground(Color.decode("#7289da"));
         pwCancel.setForeground(Color.decode("#dcddde"));
         pwCancel.setFocusable(false);
@@ -326,7 +328,7 @@ public class Settings implements ActionListener {
 
     }
 
-    public void successMsg(String text1, String text2) { // Notifies the user that their password or email has successfully been changed
+    public void successMsg(String text1, String text2) {        // Notifies the user that their password or email has successfully been changed
 
         successFrame = new JFrame();
         successFrame.setBounds(600, 250, 350, 200);
@@ -357,7 +359,7 @@ public class Settings implements ActionListener {
         successFrame.setVisible(true);
     }
 
-    public void deleteAcc() { // A prompt that asks for the user to confirm to delete an account
+    public void deleteAcc() {       // A prompt that asks for the user to confirm to delete an account
 
         deleteFrame = new JFrame();
         deleteFrame.setBounds(600, 250, 350, 200);
@@ -405,7 +407,7 @@ public class Settings implements ActionListener {
 
     }
 
-    public void deleteMsg() { // Notifies the user that the account has successfully been deleted
+    public void deleteMsg() {       // Notifies the user that the account has successfully been deleted
 
         deleteFrame2 = new JFrame();
         deleteFrame2.setBounds(600, 250, 350, 200);
@@ -441,39 +443,39 @@ public class Settings implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == logoutBtn) // Logs the user out of the application
+        if (e.getSource() == logoutBtn)         // Logs the user out of the application
         {
             LoginGui login = new LoginGui();
             frame.dispose();
         }
 
-        if (e.getSource() == homeBtn) // Returns the user to the homepage
+        if (e.getSource() == homeBtn)           // Returns the user to the homepage
         {
             HomePage home = new HomePage(currentUser);
             frame.dispose();
         }
 
-        if (e.getSource() == emailChangeBtn) // Brings up a prompt that allows the user to change their email
+        if (e.getSource() == emailChangeBtn)        // Brings up a prompt that allows the user to change their email
         {
             changeEmail();
         }
 
-        if (e.getSource() == emailCancel) // Closes the email change prompt
+        if (e.getSource() == emailCancel)           // Closes the email change prompt
         {
             emailFrame.dispose();
         }
 
-        if (e.getSource() == emailSubmit) // Checks the validity of the entered email and saves it if it passes
+        if (e.getSource() == emailSubmit)       // Checks the validity of the entered email and saves it if it passes
         {
-            if (currentUser.getEmail().equals(newEmailText.getText())) { // Denies the email change if the new email matches the current email
+            if (currentUser.getEmail().equals(newEmailText.getText())) {        // Denies the email change if the new email matches the current email
 
                 errorLabel.setText("Please enter a different email.");
                 newEmailText.setText("");
-            } else if (newEmailText.getText().isEmpty()) { // Denies the email change if there is no email entered
+            } else if (newEmailText.getText().isEmpty()) {          // Denies the email change if there is no email entered
 
                 errorLabel.setText("Please enter a valid email.");
                 newEmailText.setText("");
-            } else { // Successfully saves the email change
+            } else {                // Successfully saves the email change
 
                 updateEmail(currentUser.getEmail(), newEmailText.getText());
                 currentUser = returnUser(newEmailText.getText());
@@ -486,33 +488,33 @@ public class Settings implements ActionListener {
             }
         }
 
-        if (e.getSource() == pwChangeBtn) // Brings up a prompt to change passwords
+        if (e.getSource() == pwChangeBtn)       // Brings up a prompt to change passwords
         {
             changePW();
         }
 
-        if (e.getSource() == pwCancel) { // Closes the change password prompt
+        if (e.getSource() == pwCancel) {        // Closes the change password prompt
             pwFrame.dispose();
         }
 
-        if (e.getSource() == pwSubmit) { // Checks the validity of the password and saves it if it passes
+        if (e.getSource() == pwSubmit) {        // Checks the validity of the password and saves it if it passes
 
             if (!currentPWText.getText().equalsIgnoreCase(currentUser.getPassword())) {
 
-                errorLabel3.setText("       Incorrect Password");
+                errorLabel3.setText("Incorrect Password");
                 errorLabel3.setVisible(true);
                 errorLabel2.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPWText2.setText("");
-            } else if (newPWText.getText().equals(currentUser.getPassword())) { // Denies the password change if the new password matches the current password
+            } else if (newPWText.getText().equals(currentUser.getPassword())) {         // Denies the password change if the new password matches the current password
 
                 errorLabel2.setVisible(true);
                 errorLabel3.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPWText2.setText("");
-            } else if (newPWText.getText().isEmpty() || newPWText2.getText().isEmpty()) {
+            } else if (newPWText.getText().isEmpty() || newPWText2.getText().isEmpty()) {       // Checks if any of the password fields are blank
 
                 errorLabel3.setText("Passwords cannot be blank");
                 errorLabel3.setVisible(true);
@@ -520,16 +522,16 @@ public class Settings implements ActionListener {
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPWText2.setText("");
-            } else if (!newPWText.getText().equals(newPWText2.getText())) { // Denies the password change if confirm password does not match the new password
+            } else if (!newPWText.getText().equals(newPWText2.getText())) {         // Denies the password change if confirm password does not match the new password
 
-                errorLabel3.setText("  Passwords do not match");
+                errorLabel3.setText("Passwords do not match");
                 errorLabel3.setVisible(true);
                 errorLabel2.setVisible(false);
                 currentPWText.setText("");
                 newPWText.setText("");
                 newPWText2.setText("");
 
-            } else { // Successfully saves the password change
+            } else {        // Successfully saves the password change
 
                 updatePassword(currentUser.getEmail(), newPWText.getText());
                 currentUser = returnUser(emailLabel.getText());
@@ -540,12 +542,12 @@ public class Settings implements ActionListener {
             }
         }
 
-        if (e.getSource() == deleteBtn) // Brings up a prompt to confirm removal of an account
+        if (e.getSource() == deleteBtn)         // Brings up a prompt to confirm removal of an account
         {
             deleteAcc();
         }
 
-        if (e.getSource() == deleteYes) // Confirms the option to delete the account, closes the current prompt and brings the user back to the login page
+        if (e.getSource() == deleteYes)         // Confirms the option to delete the account, closes the current prompt and brings the user back to the login page
         {
             deleteAccount(currentUser.getEmail());
             LoginGui login = new LoginGui();
@@ -554,12 +556,12 @@ public class Settings implements ActionListener {
             deleteFrame.dispose();
         }
 
-        if (e.getSource() == deleteNo) // Cancels the option to delete account
+        if (e.getSource() == deleteNo)          // Cancels the option to delete account
         {
             deleteFrame.dispose();
         }
 
-        if (e.getSource() == deleteOK) // Notifies the user that their account has been deleted
+        if (e.getSource() == deleteOK)      // Notifies the user that their account has been deleted
         {
 
             deleteFrame2.dispose();
