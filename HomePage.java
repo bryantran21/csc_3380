@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,12 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
 import main.postMeetingReview;
-import main.Search;
 import main.SearchGui;
-import main.DOMmodifyXML;
 import static main.DOMreadXML.returnUser;
 
 public class HomePage implements ActionListener {
@@ -125,7 +120,7 @@ public class HomePage implements ActionListener {
 		frame.setResizable(false);
 		frame.setTitle("Goober - Homepage");
 
-		if (currentUser.getRole().equals("Tutor")) {
+		if (currentUser.getRole().equals("Tutor")) {        // Changes the homepage to the tutor's perspective if a tutor logs in
 			classButton = new JButton("Add/View Classes");
 			classButton.setBounds(250, 175, 300, 40);
 			classButton.setBackground(Color.decode("#7289da"));
@@ -142,7 +137,7 @@ public class HomePage implements ActionListener {
 			scheduleButton.addActionListener(this);
 			panel.add(scheduleButton);
 
-		} else {
+		} else {                                            // Changes the homepage to the student's perspective if a student logs in
 			searchButton = new JButton("Schedule A Meeting With A Tutor");
 			searchButton.setBounds(250, 175, 300, 40);
 			searchButton.setBackground(Color.decode("#7289da"));
