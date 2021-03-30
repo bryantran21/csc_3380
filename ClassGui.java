@@ -1,19 +1,11 @@
 package main;
 
-/**
- * @author Bryan, Blake
- * @since 3/22/21
- * @about adding/viewing classes for each student
- */
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -21,28 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSlider;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.Scanner;
-import java.util.stream.Stream;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import main.Classes.classClass;
-import main.DOMmodifyXML;
-import main.DOMreadXML;
-import main.UserSchedule.Meeting;
-import main.postMeetingReview.ComparatorUser;
-
 import static main.DOMmodifyXML.addClass;
-import static main.DOMmodifyXML.schedule;
-import static main.DOMreadXML.avgRating;
 import static main.DOMreadXML.returnUser;
 import static main.DOMmodifyXML.deleteCourse;
 
