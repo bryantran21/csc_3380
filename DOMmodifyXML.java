@@ -230,20 +230,19 @@ public class DOMmodifyXML {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
-
 			doc.getDocumentElement().normalize();
 
 			NodeList nList = doc.getElementsByTagName("User");
 
-			for (int temp = 0; temp < nList.getLength(); temp++) {
+			for (int temp = 0; temp < nList.getLength(); temp++) {	//go through nodelist of users in the database
 
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
-						Node parentNode = eElement.getParentNode();
+					if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if passed user email matches the current user's email,
+						Node parentNode = eElement.getParentNode();												//get the parent node of the user and delete its child(the target user)
 						parentNode.removeChild(eElement);
 					}
 				}
@@ -281,20 +280,19 @@ public class DOMmodifyXML {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
-
 			doc.getDocumentElement().normalize();
 
 			NodeList nList = doc.getElementsByTagName("User");
 
-			for (int temp = 0; temp < nList.getLength(); temp++) {
+			for (int temp = 0; temp < nList.getLength(); temp++) {		//...go through nodelist of users (once again...)
 
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
-						eElement.getElementsByTagName("email").item(0).setTextContent(newEmail);
+					if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if passed user email matches the current user's email...
+						eElement.getElementsByTagName("email").item(0).setTextContent(newEmail);				//overwrite old email with new email
 					}
 				}
 			}
@@ -331,20 +329,19 @@ public class DOMmodifyXML {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
-
 			doc.getDocumentElement().normalize();
 
 			NodeList nList = doc.getElementsByTagName("User");
 
-			for (int temp = 0; temp < nList.getLength(); temp++) {
+			for (int temp = 0; temp < nList.getLength(); temp++) {		//going through the nodelist of users...
 
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
-						eElement.getElementsByTagName("password").item(0).setTextContent(newPassword);
+					if (userEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if the passed user email matches the current user in the nodelist's email
+						eElement.getElementsByTagName("password").item(0).setTextContent(newPassword);			//overwrite old password with new password
 					}
 				}
 			}
@@ -381,31 +378,30 @@ public class DOMmodifyXML {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(filepath);
-
 			doc.getDocumentElement().normalize();
 
 			NodeList nList = doc.getElementsByTagName("User");
 
-			for (int temp = 0; temp < nList.getLength(); temp++) {
+			for (int temp = 0; temp < nList.getLength(); temp++) {			//go through nodelist of users
 
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+					if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if tutorEmail matches the current user's email...
 
-						NodeList week = eElement.getElementsByTagName("day");
-						for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {
-							Node day = week.item(iWeek);
+						NodeList week = eElement.getElementsByTagName("day");	//make a nodelist of the days in the week in the user's xml structure
+						for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {			//go through each day in the nodelist
+							Node day = week.item(iWeek);		//make a single day node from the current day in the week
 
 							if (day.getNodeType() == Node.ELEMENT_NODE) {
 
 								Element dayElement = (Element) day;
 								if (meetingDay
-										.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {
+										.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {		//if the passed meeting day matches the current day...
 									NamedNodeMap attr = day.getAttributes();
-									Node dayAttr = attr.getNamedItem("availability");
+									Node dayAttr = attr.getNamedItem("availability");							//update the day's availability to the passed availability status
 									dayAttr.setTextContent(availability);
 								}
 							}
@@ -460,42 +456,42 @@ public class DOMmodifyXML {
 					Element eElement = (Element) nNode;
 					if (tutorEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if passed tutor email matches the current node's email
 
-						Element meetingWith = doc.createElement("meetingWith");
-						meetingWith.appendChild(doc.createTextNode(studentEmail));		//
-						meetingWith.setAttribute("classCode", classCode);
-						NodeList week = eElement.getElementsByTagName("day");
-						for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {
+						Element meetingWith = doc.createElement("meetingWith");			//make a new "meetingWith" element
+						meetingWith.appendChild(doc.createTextNode(studentEmail));		//add the passed student email to meetingWith element
+						meetingWith.setAttribute("classCode", classCode);				//and set the classCode attribute to the passed classCode
+						NodeList week = eElement.getElementsByTagName("day");			//make a nodelist from the days in the week in the tutor
+						for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {		//go through each day in the week
 							Node day = week.item(iWeek);
 
 							if (day.getNodeType() == Node.ELEMENT_NODE) {
 
 								Element dayElement = (Element) day;
 								if (meetingDay
-										.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {
-									day.appendChild(meetingWith);
+										.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {		//if the passed meeting day matches the current day's name...
+									day.appendChild(meetingWith);													//then append the meetingWith element that has the classcode and the student
+																													//whom the tutor is meeting with stored in it to the current day
 
 								}
 							}
 						}
 					}
 
-					if (studentEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+					if (studentEmail.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {		//if passed student email matches the current node's email
 
-						Element meetingWith = doc.createElement("meetingWith");
-						meetingWith.appendChild(doc.createTextNode(tutorEmail));
-						meetingWith.setAttribute("classCode", classCode);
-
-						NodeList week = eElement.getElementsByTagName("day");
-						for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {
+						Element meetingWith = doc.createElement("meetingWith");       //make a new "meetingWith" element                       
+						meetingWith.appendChild(doc.createTextNode(tutorEmail));      //add the passed student email to meetingWith element    
+						meetingWith.setAttribute("classCode", classCode);             //and set the classCode attribute to the passed classCode
+						NodeList week = eElement.getElementsByTagName("day");         //make a nodelist from the days in the week in the student  
+						for (int iWeek = 0; iWeek < week.getLength(); iWeek++) {      //go through each day in the week                        
 							Node day = week.item(iWeek);
 
 							if (day.getNodeType() == Node.ELEMENT_NODE) {
 
 								Element dayElement = (Element) day;
 								if (meetingDay
-										.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {
-									day.appendChild(meetingWith);
-
+										.equals(dayElement.getElementsByTagName("dayText").item(0).getTextContent())) {		//if the passed meeting day matches the current day's name...
+									day.appendChild(meetingWith);                                                    //then append the meetingWith element that has the classcode and the tutor
+                                                                                                                     //whom the student is meeting with stored in it to the current day            
 								}
 							}
 						}
@@ -542,22 +538,22 @@ public class DOMmodifyXML {
 
 			NodeList nList = doc.getElementsByTagName("User");
 
-			for (int temp = 0; temp < nList.getLength(); temp++) {
+			for (int temp = 0; temp < nList.getLength(); temp++) {		//go through user nodelist
 
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+					if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if passed email matches the current user's email...
 						Element classElement = doc.createElement("class");
-						classElement.appendChild(doc.createTextNode(newClass));
+						classElement.appendChild(doc.createTextNode(newClass));			//add the new class string as text into the element and set the grade attribute to the passed grade
 						classElement.setAttribute("grade", grade);
-						Node Classes = eElement.getElementsByTagName("classes").item(0);
-						Classes.appendChild(classElement);
+						Node Classes = eElement.getElementsByTagName("classes").item(0);	//make a node from the user's classes element
+						Classes.appendChild(classElement);					//and append the new class element into the classes' list of elements
 						NamedNodeMap attr = Classes.getAttributes();
 						Node classesAttr = attr.getNamedItem("numOf");
-						int numOfClasses = Integer.valueOf(classesAttr.getTextContent());
+						int numOfClasses = Integer.valueOf(classesAttr.getTextContent());		//increase the number of classes attribute
 						numOfClasses++;
 						classesAttr.setTextContent(String.valueOf(numOfClasses));
 					}
@@ -600,21 +596,21 @@ public class DOMmodifyXML {
 
 			NodeList nList = doc.getElementsByTagName("User");
 
-			for (int temp = 0; temp < nList.getLength(); temp++) {
+			for (int temp = 0; temp < nList.getLength(); temp++) {		//go through user nodelist
 
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {
+					if (email.equals(eElement.getElementsByTagName("email").item(0).getTextContent())) {	//if passed email matches the current user's email
 						Element newRating = doc.createElement("rating");
-						newRating.appendChild(doc.createTextNode(rating));
+						newRating.appendChild(doc.createTextNode(rating));	//create a rating element and add the passed rating as the text content of it
 						Node Ratings = eElement.getElementsByTagName("ratings").item(0);
-						Ratings.appendChild(newRating);
+						Ratings.appendChild(newRating);								//and append it to the list of ratings element
 						NamedNodeMap attr = Ratings.getAttributes();
-						Node nodeAttr = attr.getNamedItem("numOf");
-						int numOfRatings = Integer.valueOf(nodeAttr.getTextContent());
+						Node nodeAttr = attr.getNamedItem("numOf");			
+						int numOfRatings = Integer.valueOf(nodeAttr.getTextContent());	//increase the number of ratings attribute
 						numOfRatings++;
 						nodeAttr.setTextContent(String.valueOf(numOfRatings));
 					}

@@ -3,10 +3,12 @@ package main;
 import java.util.ArrayList;
 
 import main.Classes.classClass;
-import main.UserSchedule.Day;
 import main.UserSchedule.Meeting;
 
 public class User {
+	/*
+	 * The user class which stores all the data a user would have in the database into an object that can be used and manipulated in the frontend
+	 */
 	
 	private final String email;
 	private final String firstName;
@@ -17,7 +19,7 @@ public class User {
 	private Classes classes;
 	private UserSchedule schedule;
 	
-	private User(userBuilder builder) {
+	private User(userBuilder builder) {		//Builder Pattern
 		this.email = builder.email;
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
@@ -28,47 +30,47 @@ public class User {
 		this.schedule = builder.schedule;
 	}
 	
-	public String getEmail() {
+	public String getEmail() {		//email getter
 		return email;
 	}
 	
-	public String getFirstName() {
+	public String getFirstName() {		//first name getter
 		return firstName;
 	}
 	
-	public String getLastName() {
+	public String getLastName() {		//last name getter
 		return lastName;
 	}
 	
-	public String getPassword() {
+	public String getPassword() {		//password getter
 		return password;
 	}
 	
-	public String getRole() {
+	public String getRole() {		//role getter
 		return role;
 	}
 	
-	public Ratings getRatings() {
+	public Ratings getRatings() {		//ratings getter
 		return ratings;
 	}
 	
-	public Classes getClasses() {
+	public Classes getClasses() {		//classes getter
 		return classes;
 	}
 	
-	public UserSchedule getSchedule() {
+	public UserSchedule getSchedule() {		//schedule getter
 		return schedule;
 	}
 	
-	public ArrayList<classClass> getclassList() {
+	public ArrayList<classClass> getclassList() {		//arraylist of classes getter
 		return classes.classList;
 	}
 	
-	public ArrayList<Meeting> getMeetingList(String day) {
+	public ArrayList<Meeting> getMeetingList(String day) {		//arraylist of meetings getter for a specific day of the week
 		int index = 0;
 		
-		switch (day) {
-		case "Monday":
+		switch (day) {		//this switch will get the index that a particular day is stored in the week array
+		case "Monday":		//the week array keeps Monday at index 0, Tuesday at 1,...Sunday at 6
 			index = 0;
 			break;
 		case "Tuesday":
@@ -105,6 +107,10 @@ public class User {
 		private Classes classes;
 		private UserSchedule schedule;
 		
+		/*
+		 * User Builder
+		 */
+		
 		public userBuilder(String email, String firstName, String lastName, String password, String role, Ratings ratings, Classes classes, UserSchedule schedule) {
 			this.email = email;
 			this.firstName = firstName;
@@ -116,14 +122,14 @@ public class User {
 			this.schedule = schedule;
 		}
 		
-		public userBuilder addRating(int newRating) {
+		public userBuilder addRating(int newRating) {	//adds a rating to the user
 
 			this.ratings.ratingList.add(newRating);
 			this.ratings.numOfRatings++;
 			return this;
 		}
 		
-		public userBuilder addClass(String className, String grade) {
+		public userBuilder addClass(String className, String grade) {	//adds a class to the user
 			classClass newClass = new classClass();
 			newClass.className = className;
 			newClass.grade = grade;
@@ -132,14 +138,14 @@ public class User {
 			return this;
 		}
 		
-		public userBuilder addSchedule(UserSchedule schedule) {
+		public userBuilder addSchedule(UserSchedule schedule) {		//adds a schedule to the user
 			this.schedule = schedule;
 			return this;
 		}
 		
 		
-		public User build() {
-			User user = new User(this);
+		public User build() {		//builder
+			User user = new User(this);		
 			return user;
 		}
 		
