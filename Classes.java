@@ -1,3 +1,7 @@
+/*
+ * @author Trevor Huval
+ */
+
 package main;
 
 import java.util.ArrayList;

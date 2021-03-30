@@ -1,5 +1,5 @@
 /*
- * 
+ * @author Trevor Huval
  */
 
 package main;
